@@ -1,4 +1,4 @@
-file_name,sr,load,rate,dir_name,label
+file_name,sample_rate,load,rotation_hz,dir_name,label
 1 - Three Baseline Conditions/baseline_1.mat,97656,270,25,1 - Three Baseline Conditions,0
 1 - Three Baseline Conditions/baseline_2.mat,97656,270,25,1 - Three Baseline Conditions,0
 1 - Three Baseline Conditions/baseline_3.mat,97656,270,25,1 - Three Baseline Conditions,0
