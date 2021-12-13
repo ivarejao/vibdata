@@ -15,8 +15,7 @@ setup(
         'matplotlib',
         'importlib',
         'scipy',
-        'os', 'tqdm',
-        'abc', 'typing',
+        'tqdm',
         'sklearn', 'torchvision'
     ]
 
