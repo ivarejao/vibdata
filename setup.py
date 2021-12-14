@@ -9,11 +9,10 @@ setup(
     author_email='lucashsmello@gmail.com',
     description='A DeepLearn approuch to vibrational signals for bearing fault classification',
     packages=['datahandler', 'datahandler.PU', 'datahandler.SEU', 'datahandler.CWRU', 'datahandler.MFPT'],
-    install_requires=[
+    install_requires[
         'pandas',
         'numpy',
         'matplotlib',
-        'importlib',
         'scipy',
         'tqdm',
         'sklearn', 'torchvision'
