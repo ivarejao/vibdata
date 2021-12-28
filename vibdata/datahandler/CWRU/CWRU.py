@@ -1,4 +1,4 @@
-from datahandler.base import RawVibrationDataset, DownloadableDataset
+from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
 from scipy.io import loadmat

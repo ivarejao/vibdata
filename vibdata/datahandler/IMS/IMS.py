@@ -1,5 +1,5 @@
 # Code made in Pycharm by Igor Varejao
-from datahandler.base import RawVibrationDataset, DownloadableDataset
+from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 
 class IMS_raw(RawVibrationDataset, DownloadableDataset):
 
