@@ -8,8 +8,10 @@ setup(
     author='Lucas Henrique Sousa Mello',
     author_email='lucashsmello@gmail.com',
     description='A library for loading vibration signals datasets',
-    packages=['vibdata', 'vibdata.datahandler', 'vibdata.datahandler.PU', 'vibdata.datahandler.SEU', 'vibdata.datahandler.CWRU', 'vibdata.datahandler.MFPT'],
-    package_data={'vibdata.datahandler.PU': ['PU.csv'],'vibdata.datahandler.SEU': ['SEU.csv'],'vibdata.datahandler.CWRU': ['CWRU.csv'],'vibdata.datahandler.MFPT': ['MFPT.csv']},
+    packages=['vibdata', 'vibdata.datahandler', 'vibdata.datahandler.PU', 'vibdata.datahandler.SEU', 'vibdata.datahandler.CWRU', 'vibdata.datahandler.MFPT',
+              'vibdata.datahandler.transforms'],
+    package_data={'vibdata.datahandler.PU': ['PU.csv'], 'vibdata.datahandler.SEU': ['SEU.csv'],
+                  'vibdata.datahandler.CWRU': ['CWRU.csv'], 'vibdata.datahandler.MFPT': ['MFPT.csv']},
     install_requires=[
         'pandas',
         'numpy',
