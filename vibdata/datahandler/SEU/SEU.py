@@ -36,6 +36,8 @@ class SEU_raw(RawVibrationDataset, DownloadableDataset):
                 sep = ','
             else:
                 sep = '\t'
-            channels = pd.read_csv(full_fname, sep=sep, skiprows=16, names=['ch'+str(i) for i in range(1, 9)])
+            # there is a extra column because of an extra separator
+            channels = pd.read_csv(full_fname, sep=sep, skiprows=16, names=['ch'+str(i) for i in range(1, 10)])
+            channels = channels.iloc[:, :8]
             sigs.append(channels.values.T)
         return {'signal': np.vstack(sigs), 'metainfo': self.getMetaInfo()}
