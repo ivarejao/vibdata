@@ -1,4 +1,4 @@
-from datahandler import MFPT_raw
+from vibdata.datahandler import MFPT_raw
 import argparse
 
 parser = argparse.ArgumentParser()
