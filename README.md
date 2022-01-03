@@ -10,7 +10,7 @@ using a variety of open bearing datasets.
 ## Download a dataset
 You can download automatically a dataset to any directory, if the dataset is not already available locally:
 ```python
-from datahandler import MFPT_raw
+from vibdata.datahandler import MFPT_raw
 
 root_dir = "MY_DATASET_DIR" # Where to save and load datasets.
 D = MFPT_raw(root_dir, download=True) # This will download the dataset to root_dir if not already available in root_dir.
@@ -20,13 +20,13 @@ print("Number of signals:", len(D.asSimpleForm()['signal'])) # Prints the number
 ```
 
 ## Transformations
-This package provides some transformations commonly used in machinery signal processing (see [signal.py](datahandler/transforms/signal.py)).
-It is possible to implement more new transformations using the interface [Transformer](datahandler/transforms/signal.py#L15). It implements the transform method and inherits sklearn BaseEstimator, so it can be directly used in a sklearn pipeline: 
+This package provides some transformations commonly used in machinery signal processing (see [signal.py](vibdata/datahandler/transforms/signal.py)).
+It is possible to implement more new transformations using the interface [Transformer](vibdata/datahandler/transforms/signal.py#L14). It implements the transform method and inherits sklearn BaseEstimator, so it can be directly used in a sklearn pipeline: 
 
 ```python
 from sklearn.pipeline import make_pipeline
-from datahandler import MFPT_raw
-from datahandler.transforms.signal import *
+from vibdata.datahandler import MFPT_raw
+from vibdata.datahandler.transforms.signal import *
 
 transforms = make_pipeline( StandardScaler(on_field='signal', type='all'),
                             Split(1024),
