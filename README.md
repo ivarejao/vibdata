@@ -42,6 +42,8 @@ D_transformed = transforms.transform(D.asSimpleForm())
 print(D_transformed['signal'].shape)
 ```
 
+# Test code
+Run `python -m pytest`. Requires installing `pytest`.
 
 # Contact
 
