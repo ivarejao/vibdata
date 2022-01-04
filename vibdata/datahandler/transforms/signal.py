@@ -4,6 +4,7 @@ from sklearn import preprocessing
 from sklearn.base import TransformerMixin, BaseEstimator
 import numpy as np
 import pandas as pd
+from scipy import interpolate
 
 
 # class SplitTransform(TransformerMixin, BaseEstimator):
@@ -78,7 +79,7 @@ class FilterByValue(Transform):
             valid_values = ~valid_values
         data = data.copy()
         data['metainfo'] = data['metainfo'][valid_values]
-        data['signal'] = data['signal'][valid_values]
+        data['signal'] = np.array(data['signal'], dtype=object)[valid_values]
         return data
 
 
@@ -164,7 +165,7 @@ class FFT(TransformOnFieldClass):
             x = np.fft.fft(x)
             x = np.abs(x) / len(x)
             n = x.shape[0]
-            x = x[:n//2]
+            x = x[1:n//2]
             ret.append(x)
         return ret
 
@@ -200,6 +201,32 @@ class SklearnFitTransform(TransformOnFieldClass):
         if(self.on_row):
             return self.transformer.fit_transform(data.T).T
         return self.transformer.fit_transform(data)
+
+
+class NormalizeSampleRate(Transform):
+    def __init__(self, sample_rate) -> None:
+        super().__init__()
+        self.sample_rate = sample_rate
+
+    def transform(self, data):
+        data = data.copy()
+        metainfo = data['metainfo'].copy(deep=True)
+        sr = metainfo['sample_rate']
+        sigs = data['signal']
+        new_sigs_list = []
+        for i, sig in enumerate(sigs):
+            n = len(sig)
+            ratio = self.sample_rate/sr.iloc[i]
+            X = np.arange(len(sig))
+            f_interpolate = interpolate.interp1d(X, sig, kind='linear')
+            Xt = np.linspace(0, n-1, int(np.round(ratio*(n-1)+1)))
+            new_sig = f_interpolate(Xt)
+            new_sigs_list.append(new_sig)
+        metainfo['sample_rate'] = self.sample_rate
+        metainfo['old_sample_rate'] = sr
+        data['signal'] = new_sigs_list
+
+        return data
 
 
 # class StandardScaler(SklearnFitTransform):
