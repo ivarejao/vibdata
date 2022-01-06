@@ -77,7 +77,15 @@ class RawVibrationDataset:
         raise NotImplementedError
 
     @abstractmethod
-    def __getitem__(self) -> Dict:
+    def __getitem__(self, index) -> dict:
+        if(hasattr(index, '__iter__')):
+            sigs = []
+            metainfos = []
+            for i in index:
+                d = self[i]
+                sigs.append(d['signal'])
+                metainfos.append(d['metainfo'])
+            return {'signal': sigs, 'metainfo': pd.concat(metainfos, axis=1).T}
         raise NotImplementedError
 
     def __len__(self):

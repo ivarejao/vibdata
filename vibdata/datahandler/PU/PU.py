@@ -31,10 +31,21 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
         else:
             super().__init__(root_dir=root_dir, download_resources=PU_raw.resources)
 
-    def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         with resources.path(__package__, "PU.csv") as r:
-            metainfo = pd.read_csv(r)
-        return metainfo
+            self._metainfo = pd.read_csv(r)
+
+    def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
+        return self._metainfo
+
+    def __getitem__(self, i) -> dict:
+        if(isinstance(i, int)):
+            data_i = self._metainfo.iloc[i]
+            fname, bearing_code = data_i['file_name'], data_i['bearing_code']
+            full_fname = os.path.join(self.raw_folder, bearing_code, fname)
+            data = loadmat(full_fname, simplify_cells=True)[fname.split('.')[0]]
+            sig = PU_raw._getVibration_1(data)
+            return {'signal': sig, 'metainfo': data_i}
+        return super().__getitem__(i)
 
     @staticmethod
     def _getVibration_1(data):
@@ -52,4 +63,4 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
             full_fname = os.path.join(self.raw_folder, b, f)
             data = loadmat(full_fname, simplify_cells=True)[f.split('.')[0]]
             sigs.append(PU_raw._getVibration_1(data))
-        return {'signal':sigs, 'metainfo': metainfo}
+        return {'signal': sigs, 'metainfo': metainfo}

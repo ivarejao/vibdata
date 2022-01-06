@@ -7,11 +7,6 @@ import pandas as pd
 from scipy import interpolate
 
 
-# class SplitTransform(TransformerMixin, BaseEstimator):
-#     def fit(self, X, y=None):
-#         return self
-
-
 class Transform(BaseEstimator):
     @abstractmethod
     def transform(self, data):
@@ -179,7 +174,7 @@ class SelectFields(Transform):
     def transform(self, data):
         ret = {f: data[f] for f in self.fields}
         metainfo = data['metainfo']
-        ret.update({f: metainfo[f] for f in self.metainfo_fields})
+        ret.update({f: metainfo[f].values if f != 'index' else metainfo.index.values for f in self.metainfo_fields})
         return ret
 
 
@@ -271,3 +266,4 @@ class toBinaryClassification(Transform):
         metainfo.loc[~mask, 'label'] = 1
         data['metainfo'] = metainfo
         return data
+
