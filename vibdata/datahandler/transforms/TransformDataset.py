@@ -8,9 +8,10 @@ import os
 import pickle
 from tqdm import tqdm
 import numpy as np
+import torch
 
 
-def transform_and_saveDataset(dataset: RawVibrationDataset, transforms, dir_path: str):
+def transform_and_saveDataset(dataset: RawVibrationDataset, transforms, dir_path: str, batch_size=1024):
     m = hashlib.md5()
     to_encode = [transforms, dataset.__class__.__name__, len(dataset), dataset.getMetaInfo()]
     for e in to_encode:
@@ -28,8 +29,8 @@ def transform_and_saveDataset(dataset: RawVibrationDataset, transforms, dir_path
     else:
         os.makedirs(dir_path)
 
-    dataloader = DataLoader(dataset, batch_size=None,
-                            sampler=BatchSampler(SequentialSampler(dataset), 1024, False))
+    dataloader = DataLoader(dataset, batch_size=None, collate_fn=lambda x:x, # do not convert to Tensor
+                            sampler=BatchSampler(SequentialSampler(dataset), batch_size, False))
     metainfo_list = []
     fid = 0
     for data in tqdm(dataloader):
