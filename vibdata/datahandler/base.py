@@ -84,8 +84,8 @@ class RawVibrationDataset:
             for i in index:
                 d = self[i]
                 sigs.append(d['signal'])
-                metainfos.append(d['metainfo'])
-            return {'signal': sigs, 'metainfo': pd.concat(metainfos, axis=1).T}
+                metainfos.append(pd.DataFrame([d['metainfo'].values], columns=d['metainfo'].index.values))
+            return {'signal': sigs, 'metainfo': pd.concat(metainfos)}
         raise NotImplementedError
 
     def __len__(self):
