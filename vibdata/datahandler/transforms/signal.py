@@ -158,9 +158,9 @@ class FFT(TransformOnFieldClass):
         ret = []
         for x in X:
             x = np.fft.fft(x)
-            x = np.abs(x) / len(x)
+            x = 2 * np.abs(x) / len(x)
             n = x.shape[0]
-            x = x[1:n//2]
+            x = x[:n//2]
             ret.append(x)
         return ret
 
@@ -266,4 +266,3 @@ class toBinaryClassification(Transform):
         metainfo.loc[~mask, 'label'] = 1
         data['metainfo'] = metainfo
         return data
-
