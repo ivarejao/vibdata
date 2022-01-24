@@ -11,6 +11,9 @@ from vibdata.datahandler.transforms.signal import Sequential
 
 
 class PickledDataset(Dataset):
+    """
+    This dataset loads a dataset saved by function `transform_and_saveDataset`.
+    """
     def __init__(self, root_dir, transforms=None) -> None:
         super().__init__()
         self.root_dir = root_dir
@@ -41,12 +44,12 @@ class PickledDataset(Dataset):
 
 def transform_and_saveDataset(dataset: RawVibrationDataset, transforms, dir_path: str, batch_size=1024) -> PickledDataset:
     """
-    This function applies `transform` to `dataset` and caches each transformed sample in a separated file in `dir_path`, 
+    This function applies `transforms` to `dataset` and caches each transformed sample in a separated file in `dir_path`, 
     and finally returns a Dataset object implementing `__getitem__`.
     If this function is called with the same arguments a second time, it returns the cached dataset. 
 
     Args:
-        dataset: Should be `RawVibrationDataset` object implementing `__getitem__` that accepts lists of integers as parameters.
+        dataset: Should be a `RawVibrationDataset` object implementing `__getitem__` that accepts lists of integers as parameters.
         transforms: A object (or a list of objects) implementing `__call__` or `transform`
         dir_path: path to the cache directory (Suggestion: use "/tmp" or another temporary directory)
         batch_size: 

@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from typing import Dict, List, Tuple
+from typing import Dict, List, Sequence, Tuple
 import pandas as pd
 import numpy as np
 import os
@@ -8,15 +8,26 @@ from urllib.error import URLError
 
 
 class DownloadableDataset:
-    def __init__(self, root_dir: str, download_resources: List[Tuple], download_mirrors: List = None,
+    def __init__(self, root_dir: str, download_resources: List[Tuple[str, str]], download_mirrors: List = None,
                  download_urls: List = None,
-                 extract_files=False, concatenate_mirror_filename=True) -> None:
+                 extract_files=False) -> None:
+        """
+        This class does not download the dataset if files are already present and their md5 hash (if available) are correct.
+        Otherwise, this constructor automatically download the dataset. 
+        Args:
+            root_dir (str): Root directory of dataset where dataset exists or where dataset will be saved when downloaded.
+            download_urls: List of urls of files to download. Each element corresponds to a file. The file name will be determined by `download_resources`.
+            download_mirrors: A list of urls to the "root directory" where files should be downloaded. A list of multiple urls can be provided to use multiples mirrors, 
+                meaning that if one url fails, the next one is used. The full url is determined by a concatenation of this url to the file_name in parameter `download_resources`.
+            download_resources: List of tuples (file_name, md5sum). The file_name is a string. The md5sum can be None or a string.
+            extract_files: If true, the downloaded files will be extracted (zip, tar.gz, ...).
+        """
+
         self.root_dir = root_dir
         self.download_resources = download_resources
         self.download_mirrors = download_mirrors
         self.download_urls = download_urls
         self.extract_files = extract_files
-        self.concatenate_mirror_filename = concatenate_mirror_filename
         if(download_mirrors is not None or download_urls is not None):
             self.download()
 
@@ -72,19 +83,26 @@ class DownloadableDataset:
 
 
 class RawVibrationDataset:
-    @abstractmethod
     def __iter__(self):
-        raise NotImplementedError
+        for i in range(len(self)):
+            yield self[i]
 
     @abstractmethod
     def __getitem__(self, index) -> dict:
+        """
+        returns: 
+            A dictionary with at least these two keys: 'signal', with a numpy matrix where each row is a vector of amplitudes of the signal; 
+                and 'metainfo', which returns the i-th row of the dataframe returned by `self.getMetaInfo`.
+
+        """
         if(hasattr(index, '__iter__')):
             sigs = []
             metainfos = []
             for i in index:
                 d = self[i]
                 sigs.append(d['signal'])
-                row = pd.DataFrame([d['metainfo'].values], columns=d['metainfo'].index.values, index = [d['metainfo'].name])
+                row = pd.DataFrame([d['metainfo'].values], columns=d['metainfo'].index.values,
+                                   index=[d['metainfo'].name])
                 metainfos.append(row)
             return {'signal': sigs, 'metainfo': pd.concat(metainfos)}
         raise NotImplementedError
@@ -92,25 +110,23 @@ class RawVibrationDataset:
     def __len__(self):
         return len(self.getLabels())
 
-    # @abstractmethod
-    # def getFreqSignals(self, ids=None):
-
     @abstractmethod
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         """
         This does not include the time-amplitude vectors.
+        Each row in returning table should refers to a single vibration signal and should have the 
+        same order as the signals returned by `self.__getitem__` (self[3]['metainfo']==self.getMetaInfo().iloc[3])
+
+        The returning table should have columns "sample_rate" (in Hz) and "label".
         """
-        pass
+        raise NotImplementedError
 
     def getLabels(self, as_str=False):
         return self.getMetaInfo(labels_as_str=as_str)['label'].values
 
     @abstractmethod
-    def getLabelsNames(self):
+    def getLabelsNames(self) -> Sequence[str]:
         raise NotImplementedError
 
     def getNumLabels(self) -> int:
         return len(self.getLabelsNames())
-
-    def asSimpleForm(self) -> Dict:
-        return self[:]

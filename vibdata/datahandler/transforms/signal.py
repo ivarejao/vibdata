@@ -132,12 +132,12 @@ class Split(Transform):
         data = data.copy()
         sigs = data[self.on_field]
         metainfo = data['metainfo'].copy(deep=False)
-
         ret = []
         for s in sigs:
             k = len(s) % self.window_size
             if(k > 0):
                 s = s[:-k]
+            assert(len(s) > 2)
             s = s.reshape(-1, self.window_size)
             ret.append(s)
 
@@ -266,3 +266,4 @@ class toBinaryClassification(Transform):
         metainfo.loc[~mask, 'label'] = 1
         data['metainfo'] = metainfo
         return data
+
