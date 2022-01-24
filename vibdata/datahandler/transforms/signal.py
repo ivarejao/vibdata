@@ -132,12 +132,12 @@ class Split(Transform):
         data = data.copy()
         sigs = data[self.on_field]
         metainfo = data['metainfo'].copy(deep=False)
-
         ret = []
         for s in sigs:
             k = len(s) % self.window_size
             if(k > 0):
                 s = s[:-k]
+            assert(len(s) > 2)
             s = s.reshape(-1, self.window_size)
             ret.append(s)
 
@@ -158,9 +158,9 @@ class FFT(TransformOnFieldClass):
         ret = []
         for x in X:
             x = np.fft.fft(x)
-            x = np.abs(x) / len(x)
+            x = 2 * np.abs(x) / len(x)
             n = x.shape[0]
-            x = x[1:n//2]
+            x = x[:n//2]
             ret.append(x)
         return ret
 
