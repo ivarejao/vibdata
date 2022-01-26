@@ -1,4 +1,8 @@
-class ThirdTest:
+from Test import BaseTest
+
+class ThirdTest(BaseTest):
+	# In this test no bearing got a Fault and it got recorded 6.324 times / files
+
 	file_names = [
 			"2004.03.30.14.21.57", "2004.04.05.04.51.57", "2004.04.08.05.31.57", "2004.03.20.03.21.57", "2004.04.04.16.21.57", "2004.04.04.16.31.57",
 			"2004.04.06.20.11.57", "2004.03.20.14.41.57", "2004.04.17.00.52.55", "2004.03.07.18.12.46", "2004.03.09.07.32.46", "2004.03.06.04.22.46",
@@ -1056,3 +1060,11 @@ class ThirdTest:
 			"2004.03.06.22.52.46", "2004.03.11.17.52.46", "2004.04.09.14.31.57", "2004.04.08.08.41.57", "2004.03.20.17.51.57", "2004.04.13.06.31.57",
 
 	]
+	num_bearings = 2
+	num_test = 3
+
+	def __init__(self):
+		super(ThirdTest, self).__init__()
+
+	def return_label(self, file_name: str, colunm: int) -> int:
+		return self.LABELS["Normal"]

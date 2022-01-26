@@ -1,4 +1,6 @@
 # Code made in Pycharm by Igor Varejao
+from importlib import resources
+
 import pandas as pd
 
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
@@ -33,7 +35,10 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
             super().__init__(root_dir=root_dir, download_resources=IMS_raw.resources, download_mirrors=None)
 
     # Implement the abstract methods from RawVibrationalDataset
+    # ---------------------------------------------------------
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
+        with resources.path(__package__, "IMS.csv") as path:
+            return pd.read_csv(path)
 
     def getLabelsNames(self):
-        return ['Normal', 'Outer Race', 'Inner Race', 'Roller Race']
+        return ['Normal', 'Degraded Outer Race', 'Outer Race', 'Degraded Inner Race', 'Inner Race', 'Degraded Roller Race', 'Roller Race']

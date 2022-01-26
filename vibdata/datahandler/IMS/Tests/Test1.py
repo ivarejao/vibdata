@@ -1,25 +1,7 @@
-from abc import abstractmethod
+from Test import BaseTest
 
-class Test():
-    LABELS = NotImplemented
-    file_names = NotImplemented
-
-    def __init__(self):
-        pass
-
-    @abstractmethod
-    def return_label(self, file_name, colunm):
-        idx = self.file_names.index(file_name)
-        pass
-
-    @staticmethod
-    def bearing(colunm):
-        return colunm // 2
-
-
-
-class FirstTest:
-    # Each file contains 2048 lines of 1 second record
+class FirstTest(BaseTest):
+    # Each file contains 2048 lines of 1 second record with 20 kHz sample rate
     # In each line there's 8 channels, made of 4 pairs, each pair
     # indicating the record of x-axis and y-axis of the bearing
     #
@@ -33,13 +15,14 @@ class FirstTest:
 
     # Classification is based on the paper that can be found in https://www.sciencedirect.com/science/article/abs/pii/S0957417418303324
     # Only Bearing 3 and Bearing 4 got Faults States, therefore, are recommended to use them.
+    # In this test it got recorded 2156 times / files.
     # | 			Bearing 3       	|
     # |---------------------------------|
     # | Healthy State       | Interval  |
     # |---------------------|-----------|
     # | Normal              | 0:1799    |
     # | Degraded Inner Race | 1800:2099 |
-    # | Race Fault          | 2100:2155 |
+    # | Inner Race Fault    | 2100:2155 |
     #
     #
     # | 			Bearing 4       	|
@@ -49,16 +32,6 @@ class FirstTest:
     # | Normal               | 0:1399    |
     # | Degraded Roller Race | 1400:1849 |
     # | Roller race Fault    | 1850:2155 |
-
-    LABELS = {
-        "Normal": 0,
-        "Degraded Inner Race": 1,
-        "Inner Race Fault": 2,
-        "Degraded Roller Race": 3,
-        "Roller Race Fault": 4,
-        "Degraded Outer Race": 5,
-        "Outer Race Fault": 6,
-    }
 
     file_names = [
         "2003.11.09.08.11.44", "2003.11.18.11.42.30", "2003.11.23.21.01.24", "2003.11.18.04.22.30",
@@ -781,22 +754,12 @@ class FirstTest:
         "2003.11.15.20.08.46", "2003.11.15.13.08.46",
         "2003.11.20.13.19.03", "2003.10.22.14.44.13",
     ]
+    num_bearings = 4
+    num_test = 1
 
-    @classmethod
-    def getDF(cls, path):
+    def __init__(self):
+        super(FirstTest, self).__init__()
 
-        cls.file_names
-
-
-
-    # Labels:
-    # 0 -> Normal
-    # 1 -> Degraded Inner Race
-    # 2 -> Inner Race Fault
-    # 3 -> Degraded Roller Race
-    # 4 -> Roller Race Fault
-    # 5 -> Degraded Outer Race
-    # 6 -> Outer Race Fault
     def return_label(self, file_name, colunm):
         idx = self.file_names.index(file_name)
         # Bearing 3
@@ -815,4 +778,5 @@ class FirstTest:
                 return self.LABELS["Degraded Roller Race"]
             else:
                 return self.LABELS["Roller Race Fault"]
-
+        else:
+            return self.LABELS["Normal"]
