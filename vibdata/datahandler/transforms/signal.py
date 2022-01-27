@@ -134,6 +134,10 @@ class Split(Transform):
         metainfo = data['metainfo'].copy(deep=False)
         ret = []
         for s in sigs:
+            if(len(s) < self.window_size):
+                snew = np.zeros(self.window_size, dtype=s.dtype)
+                snew[:len(s)] = s
+                s = snew
             k = len(s) % self.window_size
             if(k > 0):
                 s = s[:-k]
@@ -224,10 +228,6 @@ class NormalizeSampleRate(Transform):
         return data
 
 
-# class StandardScaler(SklearnFitTransform):
-#     def __init__(self, on_field=None, on_row=True, **kwargs):
-#         super().__init__(preprocessing.StandardScaler(**kwargs),
-#                          on_field=on_field, on_row=True)
 class StandardScaler(TransformOnFieldClass):
     def __init__(self, on_field=None, type='all') -> None:
         super().__init__(on_field=on_field)
@@ -247,10 +247,24 @@ class StandardScaler(TransformOnFieldClass):
         return ret
 
 
-class MinMaxScaler(SklearnFitTransform):
-    def __init__(self, on_field=None, feature_range=(0, 1), on_row=True, **kwargs):
-        super().__init__(preprocessing.MinMaxScaler(feature_range=feature_range, **kwargs),
-                         on_field=on_field, on_row=True)
+class MinMaxScaler(TransformOnFieldClass):
+    def __init__(self, on_field=None, type='all') -> None:
+        super().__init__(on_field=on_field)
+        self.type = type
+
+    def transform_(self, data):
+        ret = []
+        if(self.type == 'row'):
+            for row in data:
+                r = row-row.min()
+                ret.append(r/r.max())
+        elif(self.type == 'all'):
+            data_flatten = np.hstack(data)
+            mn, mx = data_flatten.min(), data_flatten.max()
+            ret = [(row-mn)/(mx-mn) for row in data]
+        else:
+            raise NotImplemented
+        return ret
 
 
 class toBinaryClassification(Transform):

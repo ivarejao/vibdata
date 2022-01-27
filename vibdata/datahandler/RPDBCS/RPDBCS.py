@@ -15,12 +15,15 @@ class RPDBCS_raw(RawVibrationDataset):
             from rpdbcs.datahandler.dataset import readDataset
             if(self.frequency_domain):
                 self.dataset = readDataset(feats_file="{}/RPDBCS_raw/labels.csv".format(self.root_dir),
-                                           freq_file="{}/RPDBCS_raw/freq.csv".format(self.root_dir), use_cache=False, npoints=1024*100,
+                                           freq_file="{}/RPDBCS_raw/freq.csv".format(self.root_dir),
+                                           use_cache=False, npoints=11000, remove_first=100,
                                            dtype=np.float32)
-                self.dataset.normalize('min')
+                self.dataset.normalize(37.28941975)
+                self.n_points = 6100
             else:
+                self.n_points = 1024*100
                 self.dataset = readDataset(feats_file="{}/RPDBCS_raw/labels.csv".format(self.root_dir),
-                                           time_file="{}/RPDBCS_raw/time".format(self.root_dir), use_cache=False, npoints=1024*100,
+                                           time_file="{}/RPDBCS_raw/time".format(self.root_dir), use_cache=False, npoints=n_points,
                                            dtype=np.float32)
         return self.dataset
 
@@ -43,18 +46,18 @@ class RPDBCS_raw(RawVibrationDataset):
 
         if(isinstance(i, int)):
             if(self.frequency_domain):
-                sig = dataset.getSignal(i).freq.getY()[:6100]
+                sig = dataset.getSignal(i).freq.getY()[:self.n_points]
             else:
-                sig = dataset.getSignal(i).time.getY()[:1024*100]
+                sig = dataset.getSignal(i).time.getY()[:self.n_points]
             return {'signal': sig, 'metainfo': df}
         i = np.arange(len(dataset))[i]
         n = len(i)
         if(self.frequency_domain):
-            sigs = dataset.asMatrix()[i, :6100]
+            sigs = dataset.asMatrix()[i, :self.n_points]
         else:
-            sigs = np.empty((n, 1024*100), dtype=np.float32)
+            sigs = np.empty((n, self.n_points), dtype=np.float32)
             for k, j in enumerate(i):
-                sigs[k] = dataset.getSignal(j).time.getY()[:1024*100]
+                sigs[k] = dataset.getSignal(j).time.getY()[:self.n_points]
 
         return {'signal': sigs, 'metainfo': df}
 
@@ -63,3 +66,4 @@ class RPDBCS_raw(RawVibrationDataset):
 
     def getLabelsNames(self):
         return ['Normal', 'Roçamento', 'Problemas na medição', 'Desalinhamento', 'Desbalanceamento']
+
