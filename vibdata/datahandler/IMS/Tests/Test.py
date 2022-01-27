@@ -2,7 +2,6 @@
 from abc import abstractmethod
 
 class BaseTest():
-
     # Labels:
     # 0 -> Normal
     # 1 -> Degraded Inner Race
@@ -21,23 +20,37 @@ class BaseTest():
         "Outer Race Fault": 6,
     }
     INVERT_LABELS = {val: key for key, val in LABELS.items()}
-
-    file_names = NotImplemented
     sample_rate = 20000  # Hz
-    num_bearings = NotImplemented
-    num_test = NotImplemented
+
+    # Each test class should initialize those variables
+    file_names = NotImplemented  # File names of test
+    num_bearings = NotImplemented  # Number of the bearing records
+    num_test = NotImplemented  # The id number of the test
+    md5sums_files = NotImplemented  # Md5sums of each file
 
     def __init__(self):
         pass
 
+    # Each test has a specific classification distribuition, so the user must
+    # implement these
     @abstractmethod
     def return_label(self, file_name: str, colunm: int) -> int:
         idx = self.file_names.index(file_name)
-        pass
+        raise NotImplementedError
 
+    # Give the bearing based on the colunm location in data
     @staticmethod
     def bearing(colunm: int) -> int:
         return (colunm // 2) + 1
+
+    # Return the colunm refeer to the bearing saved in the metadata
+    # E.g.:     '2.x' -> 2
+    #           '3.y' -> 5
+    @staticmethod
+    def back_bearing(data_bearing: str) -> int:
+        components = data_bearing.split('.')
+        bearing = (int(components[0]) - 1) * 2 + 1 if components[1] == 'y' else 0
+        return bearing
 
     # Method auxiliar to create metadata of the signals
     # file name / sample_rate / bearing / label / test
