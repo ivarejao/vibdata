@@ -19,6 +19,26 @@ class Transform(BaseEstimator):
         return self.transform(data)
 
 
+class Sampling(Transform):
+    def __init__(self, ratio: float, random_state=None) -> None:
+        super().__init__()
+        self.random_state = random_state
+        self.ratio = ratio
+        self.R = np.random.RandomState(self.random_state)
+
+    def transform(self, data):
+        sigs = data['signal']
+        metainfo = data['metainfo']
+        n = len(sigs)
+        idxs = self.R.choice(n, int(self.ratio*n), replace=False)
+        if(isinstance(sigs, list)):
+            sigs = [sigs[i] for i in idxs]
+        else:
+            sigs = sigs[idxs]
+        metainfo = metainfo.iloc[idxs]
+        return {'signal': sigs, 'metainfo': metainfo}
+
+
 class TransformOnField(Transform):
     def __init__(self, transformer: Transform, on_field=None) -> None:
         super().__init__()
@@ -155,8 +175,9 @@ class Split(Transform):
 
 
 class FFT(TransformOnFieldClass):
-    def __init__(self, on_field='signal') -> None:
+    def __init__(self, on_field='signal', discard_first_points=0) -> None:
         super().__init__(on_field=on_field)
+        self.discard_first_points = discard_first_points
 
     def transform_(self, X):
         ret = []
@@ -164,7 +185,7 @@ class FFT(TransformOnFieldClass):
             x = np.fft.fft(x)
             x = 2 * np.abs(x) / len(x)
             n = x.shape[0]
-            x = x[:n//2]
+            x = x[self.discard_first_points:n//2]
             ret.append(x)
         return ret
 
@@ -280,4 +301,3 @@ class toBinaryClassification(Transform):
         metainfo.loc[~mask, 'label'] = 1
         data['metainfo'] = metainfo
         return data
-
