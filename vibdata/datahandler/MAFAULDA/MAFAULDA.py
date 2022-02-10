@@ -1,58 +1,53 @@
-# Code made in Pycharm by Igor Varejao
 import os
 from importlib import resources
+from FilesNames import FileNames
 
 import numpy as np
 import pandas as pd
 
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
-from Tests.Test1 import FirstTest
-from Tests.Test2 import SecondTest
-from Tests.Test3 import ThirdTest
 
+class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
 
-class IMS_raw(RawVibrationDataset, DownloadableDataset):
-
-    source = "https://ti.arc.nasa.gov/c/3/"
+    source = "http://www02.smt.ufrj.br/~offshore/mfs/database/mafaulda/full.zip"
     DATAFILE_NAMES = {
-        '1stTest': FirstTest.file_names,
-        '2ndTest': SecondTest.file_names,
-        '3rdTest': ThirdTest.file_names
+        "horizontal-misalignment" : FileNames.horizontal_misalignment,
+        "imbalance" : FileNames.imbalance,
+        "normal" : FileNames.normal,
+        "overhang" : FileNames.overhang,
+        "underhang" : FileNames.underhang,
+        "vertical-misalignment" : FileNames.vertical_misalignment
     }
 
-    mirrors = ["https://ti.arc.nasa.gov/c/3/"]
-    resources = [('IMS.7s', 'd3ca5a418c2ed0887d68bc3f91991f12')]
+    mirrors = ["http://www02.smt.ufrj.br/~offshore/mfs/database/mafaulda/full.zip"]
+    resources = [('full.zip', 'd3ca5a418c2ed0887d68bc3f91991f12')]
 
-    #
+
     # Data file organization
-    #                  IMS.7z
+    #                  full.zip
     #                    |
     #      ----------------------------
     #     |             |             |
-    # 1st_test.rar 2nd_test.rar 3rd_test.rar
+    #   [--------types of labels--------]
     #    |             |             |
-    #   files        files         files
+    #   ...           ...           ...
     #
-    # Resources with all the md5sums
-    # There are three leves of extraction
-    # resources = {'Source': ('IMS.7s', 'd3ca5a418c2ed0887d68bc3f91991f12'),
     #
-    #              'Tests': {'1st_test.rar': 'bf1e651c295071a7168fa6fe60c5f214',
-    #                        '2nd_test.rar': '32893c492d76c9d3efe9130227f36af5',
-    #                        '3rd_test.rar': '11147ea5a16ceaeb5702f3340a72811a'},
+    # Some labels will have inner directories specifing some kind of info about the sample.
+    # E.g.
+    #           imbalance -> types of loads [6g, 10g, ...]
     #
-    #              'Files': {'1st_test.rar': FirstTest.md5sums_files,
-    #                        '2nd_test.rar': SecondTest.md5sums_files,
-    #                        '3rd_test.rar': ThirdTest.md5sums_files}
-    #              }
+    # For organization purpose we created a class that stores the file names in a different file
+
 
     # TODO: Find a way to extract the the rar packates of each test
 
+
     def __init__(self, root_dir: str, download=False):
         if (download):
-            super().__init__(root_dir=root_dir, download_resources=IMS_raw.resources, download_mirrors=IMS_raw.mirrors)
+            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources, download_mirrors=MAFAULDA_raw.mirrors)
         else:
-            super().__init__(root_dir=root_dir, download_resources=IMS_raw.resources, download_mirrors=None)
+            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources, download_mirrors=None)
 
     # Implement the abstract methods from RawVibrationalDataset
     # ---------------------------------------------------------
@@ -81,5 +76,6 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
             return pd.read_csv(path)
 
     def getLabelsNames(self):
-        return ['Normal', 'Degraded Outer Race', 'Outer Race', 'Degraded Inner Race', 'Inner Race',
-                'Degraded Roller Race', 'Roller Race']
+        return ['normal', 'horizontal_misalignment', 'vertical_misalignment', 'imbalance',
+                'underhang.cage_fault', 'underhang.outer_race', 'underhang.ball_fault',
+                'overhang.cage_fault', 'overhang.outer_race', 'overhang.ball_fault']
