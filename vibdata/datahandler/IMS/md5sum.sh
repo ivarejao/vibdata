@@ -21,3 +21,40 @@ for test in ${TESTS[@]}; do
   done
   echo "]," >> $SAVEPOINT
 done
+
+pyDirDir() {
+  DIRS=(`ls`)
+  printf "{ "
+  for dir in ${DIRS[@]}; do
+    printf "    \"${dir}\" : "
+    cd ${dir}
+    pyDir
+    cd ..
+    echo ","
+  done
+  echo "}"
+
+}
+
+pyDir() {
+  DIRS=(`ls`)
+  printf "{ "
+  for dir in ${DIRS[@]}; do
+    printf "    \"${dir}\" : "
+    cd ${dir}
+    pyList
+    cd ..
+    echo ","
+  done
+  echo "}"
+
+}
+
+pyList() {
+  LS=(`ls`)
+  printf "[ "
+  for f in ${LS[@]:0:${#LS[@]}-1}; do
+    printf "\"$f\", "
+  done
+  printf "\"${LS[-1]}\" ]"
+}
