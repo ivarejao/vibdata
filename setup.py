@@ -2,17 +2,17 @@ from setuptools import setup
 
 setup(
     name='vibdata',
-    version='0.5.0',
+    version='0.5.1',
     url='https://gitlab.com/ninfa-ufes/deep-rpdbcs/signal-datasets.git',
     license='private',
-    author='Lucas Henrique Sousa Mello',
+    author='Lucas, Igor, Joluan',
     author_email='lucashsmello@gmail.com',
     description='A library for loading vibration signals datasets',
     packages=['vibdata', 'vibdata.datahandler', 'vibdata.datahandler.PU', 'vibdata.datahandler.SEU', 'vibdata.datahandler.CWRU',
-     'vibdata.datahandler.MFPT', 'vibdata.datahandler.RPDBCS','vibdata.datahandler.UOC', 'vibdata.datahandler.transforms'],
+     'vibdata.datahandler.MFPT', 'vibdata.datahandler.RPDBCS','vibdata.datahandler.UOC','vibdata.datahandler.IMS','vibdata.datahandler.IMS.Tests', 'vibdata.datahandler.transforms'],
     package_data={'vibdata.datahandler.PU': ['PU.csv'], 'vibdata.datahandler.SEU': ['SEU.csv'],
                   'vibdata.datahandler.CWRU': ['CWRU.csv'], 'vibdata.datahandler.UOC': ['UOC.csv'],
-                  'vibdata.datahandler.MFPT': ['MFPT.csv']},
+                  'vibdata.datahandler.MFPT': ['MFPT.csv'], 'vibdata.datahandler.IMS': ['IMS.csv']},
     install_requires=[
         'pandas',
         'numpy',

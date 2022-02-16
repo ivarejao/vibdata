@@ -1,4 +1,4 @@
-from Test import BaseTest
+from .Test import BaseTest
 
 class ThirdTest(BaseTest):
 	# In this test no bearing got a Fault and it got recorded 6.324 times / files

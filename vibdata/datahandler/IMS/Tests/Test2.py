@@ -1,4 +1,4 @@
-from Test import BaseTest
+from .Test import BaseTest
 
 
 class SecondTest(BaseTest):

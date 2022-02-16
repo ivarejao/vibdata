@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
-from Tests.Test1 import FirstTest
-from Tests.Test2 import SecondTest
-from Tests.Test3 import ThirdTest
+from .Tests.Test1 import FirstTest
+from .Tests.Test2 import SecondTest
+from .Tests.Test3 import ThirdTest
 
 
 class IMS_raw(RawVibrationDataset, DownloadableDataset):

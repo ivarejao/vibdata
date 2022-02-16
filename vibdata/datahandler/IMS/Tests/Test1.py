@@ -1,4 +1,4 @@
-from Test import BaseTest
+from .Test import BaseTest
 
 class FirstTest(BaseTest):
     # Each file contains 2048 lines of 1 second record with 20 kHz sample rate
