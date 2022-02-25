@@ -3,9 +3,8 @@ from typing import Dict, List, Sequence, Tuple
 import pandas as pd
 import numpy as np
 import os
-from torchvision.datasets.utils import download_url, download_and_extract_archive
+from torchvision.datasets.utils import download_url, download_and_extract_archive, download_file_from_google_drive, extract_archive
 from urllib.error import URLError
-
 
 class DownloadableDataset:
     def __init__(self, root_dir: str, download_resources: List[Tuple[str, str]], download_mirrors: List = None,
@@ -69,9 +68,11 @@ class DownloadableDataset:
                 try:
                     # print(f"Downloading {url}")
                     if(self.extract_files):
-                        download_and_extract_archive(url, download_root=self.raw_folder, filename=filename, md5=md5)
+                        download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
+                        extract_archive(self.raw_folder + f'/{filename}', self.raw_folder + f'/{filename[:-4]}')
+                        # download_and_extract_archive(url, download_root=self.raw_folder, filename=filename, md5=md5)
                     else:
-                        download_url(url, root=self.raw_folder, filename=filename, md5=md5)
+                        download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
                 except URLError as error:
                     print("Failed to download:\n{}".format(error))
                     continue
