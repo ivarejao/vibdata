@@ -53,26 +53,36 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
         else:
             super().__init__(root_dir=root_dir, download_resources=IMS_raw.resources, download_mirrors=None)
 
+    @staticmethod
+    def __getTest(idx):
+        if (idx < 2156*8):
+            return '1st_test'
+        elif (2156*8 <= idx < 3140*8):
+            return '2nd_test'
+        else:
+            return '3rd_test'
+
     # Implement the abstract methods from RawVibrationalDataset
     # ---------------------------------------------------------
     def __getitem__(self, idx) -> dict:
         if (not hasattr(idx, '__len__') and not isinstance(idx, slice)):
-            return self.__getitem__([idx]).iloc[0]
+            # return self.__getitem__([idx]).iloc[0]
+            return self.__getitem__([idx])
         df = self.getMetaInfo()
         if (isinstance(idx, slice)):
-            rows = df.iloc[idx.start: idx.step: idx.stop]
+            rows = df.iloc[idx.start: idx.stop: idx.step]
+            range_idx = list(range(idx.start, idx.stop, idx.step))
         else:
             rows = df.iloc[idx]
+            range_idx = idx
 
         file_name = rows['file_name']
         bear_name = rows['bearing.position']
         signal_datas = np.empty(len(bear_name), dtype=object)
 
-        for i, (f, b) in enumerate(zip(file_name, bear_name)):
-            print(f, b)
-            print("This is self.raw_folder: ", self.raw_folder)
-            file_data = np.genfromtxt(os.path.join(self.raw_folder, f), delimiter=',')
-            signal_datas[i] = file_data[:, FirstTest.back_bearing(b)]
+        for i, (f, b, fidx) in enumerate(zip(file_name, bear_name, range_idx)):
+            file_data = np.loadtxt(os.path.join(self.raw_folder, f"{self.__getTest(fidx)}/{f}"), delimiter='\t', unpack=True)
+            signal_datas[i] = file_data[FirstTest.back_bearing(b), :]
         signal_datas = signal_datas
 
         return {'signal': signal_datas, 'metainfo': rows}

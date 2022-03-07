@@ -27,15 +27,20 @@ class DownloadableDataset:
         self.download_mirrors = download_mirrors
         self.download_urls = download_urls
         self.extract_files = extract_files
+        self.download_done = False
         if(download_mirrors is not None or download_urls is not None):
             self.download()
 
         if not self._check_exists():
             raise RuntimeError('Dataset not found. You can use download=True to download it.')
+        self.download_done = True
 
     @property
     def raw_folder(self) -> str:
-        return os.path.join(self.root_dir, self.__class__.__name__)
+        if self.download_done:
+            return os.path.join(self.root_dir, self.__class__.__name__, self.download_resources[0][0][:-4])
+        else:
+            return os.path.join(self.root_dir, self.__class__.__name__)
 
     def _check_exists(self) -> bool:
         for url, _ in self.download_resources:
