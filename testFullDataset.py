@@ -14,6 +14,9 @@ def testDataset(dataset_name: str, dataset_class):
     cprint("Labels:", color="red")
     [print(l)for l in dataset_class.getLabelsNames()]
     print("\nMetainfo.shape: ", meta.shape)
+
+    n_samples = meta.shape[0]
+
     print(f"META:\n {meta.head()}\n\n")
 
     print(colored("ONE ITEM:\n", color='yellow'))
@@ -22,7 +25,7 @@ def testDataset(dataset_name: str, dataset_class):
     print(f"META:\n {sample['metainfo']}")
 
     print(colored("\nSLICE ITEM:\n", color='blue'))
-    sample = dataset_class[2152*8:2158*8:2]
+    sample = dataset_class[n_samples-8:n_samples:2]
     print(f"RAW:\n {sample['signal']}", end="\n\n")
     print(f"META:\n {sample['metainfo']}")
 

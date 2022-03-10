@@ -31,7 +31,7 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
 
     def __getitem__(self, i) -> pd.DataFrame:
         if(not hasattr(i, '__len__') and not isinstance(i, slice)):
-            return self.__getitem__([i]).iloc[0]
+            return self.__getitem__([i])
         df = self.getMetaInfo()
         if(isinstance(i, slice)):
             rows = df.iloc[i.start:i.step:i.stop]
