@@ -165,10 +165,13 @@ def download_file_from_google_drive(file_id: str, root: str, filename: Optional[
 
         response = session.get(url, params={'id': file_id}, stream=True)
         token = utils._get_confirm_token(response)
-
-        while ("application/zip" not in response.headers['Content-Type']):  # Igor
-            response = session.get(url, params={'id': file_id, 'confirm': True}, stream=True)  # Igor
-
+        max_iter = 3
+        while ("application/" not in response.headers['Content-Type']):
+            print(f"CONTET-TYPE: {response.headers['Content-Type']}")
+            max_iter -= 1
+            response = session.get(url, params={'id': file_id, 'confirm': True}, stream=True)
+            if max_iter <= 0:
+                raise GetsExceeded(response.headers['Content-Type'])
 
         # Ideally, one would use response.status_code to check for quota limits, but google drive is not consistent
         # with their own API, refer https://github.com/pytorch/vision/issues/2992#issuecomment-730614517.
@@ -189,3 +192,14 @@ def download_file_from_google_drive(file_id: str, root: str, filename: Optional[
 
         utils._save_response_content(itertools.chain((first_chunk, ), response_content_generator), fpath)
         response.close()
+
+
+class GetsExceeded(BaseException):
+
+    def __init__(self, ctype, message="Gets Exceeded, with the last one returning a content-type: "):
+        self.contentType = ctype
+        self.message = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f'{self.message} -> {self.contentType}'
