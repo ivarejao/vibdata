@@ -3,6 +3,8 @@ from termcolor import colored, cprint
 
 from vibdata.datahandler.IMS.IMS import IMS_raw
 from vibdata.datahandler.UOC.UOC import UOC_raw
+from vibdata.datahandler.XJTU.XJTU import XJTU_raw
+from vibdata.datahandler.MFPT.MFPT import MFPT_raw
 
 def testDataset(dataset_name: str, dataset_class):
     space_len = (13-len(dataset_name))//2
@@ -30,8 +32,8 @@ def testDataset(dataset_name: str, dataset_class):
     print(f"META:\n {sample['metainfo']}")
 
 if __name__ == "__main__":
-    D = UOC_raw('/tmp', download=True)
-    testDataset("UOC", D)
+    D = MFPT_raw('/tmp', download=True)
+    testDataset("MFPT", D)
 
 
 
