@@ -34,7 +34,7 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
             return self.__getitem__([i])
         df = self.getMetaInfo()
         if(isinstance(i, slice)):
-            rows = df.iloc[i.start:i.step:i.stop]
+            rows = df.iloc[i.start:i.stop:i.step]
         else:
             rows = df.iloc[i]
 
@@ -42,10 +42,10 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
         position = rows['position']
         
         signal_datas = np.empty(len(file_name), dtype=object)
-        full_fname = os.path.join(self.raw_folder, file_name[0])
+        full_fname = os.path.join(self.raw_folder, file_name.iloc[0])
         data = loadmat(full_fname, simplify_cells=True)['AccTimeDomain']
 
-        for i, (f,p) in enumerate(zip(file_name,position)):
+        for i, (f,p) in enumerate(zip(file_name, position)):
             signal_datas[i] = data[:, p]
         signal_datas = signal_datas
 
