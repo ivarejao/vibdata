@@ -66,7 +66,12 @@ def transform_and_saveDataset(dataset: Iterable, transforms, dir_path: str, batc
     if(hasattr(transforms, 'get_params')):
         to_encode.append(transforms.get_params())
     for e in to_encode:
-        m.update(repr(e).encode('utf-8'))
+        e = repr(e)
+        if(' at 0x' in e):
+            i = e.index(' at 0x')
+            j = e[i:].index('>')
+            e = e[:i]+e[i+j:]
+        m.update(e.encode('utf-8'))
     hash_code = m.hexdigest()
     hashfile = os.path.join(dir_path, 'hash_code')
 
