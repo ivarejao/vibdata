@@ -108,7 +108,7 @@ class RawVibrationDataset:
         raise NotImplementedError
 
     def __len__(self):
-        return len(self.getLabels())
+        return len(self.getMetaInfo())
 
     @abstractmethod
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
