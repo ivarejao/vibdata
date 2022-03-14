@@ -21,7 +21,9 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
     #              ('KB23.rar', None), ('KI03.rar', None), ('KI08.rar', None), ('KI18.rar', None),
     #              ('K004.rar', None), ('KA03.rar', None), ('KA07.rar', None), ('KA16.rar', None),
     #              ('KB24.rar', None), ('KI04.rar', None), ('KI14.rar', None), ('KI21.rar', None)]
-    urls = ["https://drive.google.com/file/d/1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii/view?usp=sharing"]
+    
+    #https://drive.google.com/file/d/1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii/view?usp=sharing
+    urls = ["1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii"]
     resources = [('PU_bearing_dataset.zip', '1beb53c6fb79436895787e094a22302f')]
 
     def __init__(self, root_dir: str, download=False):
