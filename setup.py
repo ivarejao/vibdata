@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='vibdata',
-    version='0.5.2',
+    version='0.5.3',
     url='https://gitlab.com/ninfa-ufes/deep-rpdbcs/signal-datasets.git',
     license='private',
     author='Lucas, Igor, Joluan',

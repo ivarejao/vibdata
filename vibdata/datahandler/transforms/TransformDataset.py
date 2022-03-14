@@ -1,4 +1,5 @@
 
+from typing import Iterable
 from torch.utils.data import BatchSampler, SequentialSampler, DataLoader, Dataset
 import pandas as pd
 from vibdata.datahandler.base import RawVibrationDataset
@@ -14,6 +15,7 @@ class PickledDataset(Dataset):
     """
     This dataset loads a dataset saved by function `transform_and_saveDataset`.
     """
+
     def __init__(self, root_dir, transforms=None) -> None:
         super().__init__()
         self.root_dir = root_dir
@@ -42,26 +44,29 @@ class PickledDataset(Dataset):
         return len(self.file_names)
 
 
-def transform_and_saveDataset(dataset: RawVibrationDataset, transforms, dir_path: str, batch_size=1024) -> PickledDataset:
+def transform_and_saveDataset(dataset: Iterable, transforms, dir_path: str, batch_size=1024) -> PickledDataset:
     """
     This function applies `transforms` to `dataset` and caches each transformed sample in a separated file in `dir_path`, 
     and finally returns a Dataset object implementing `__getitem__`.
     If this function is called with the same arguments a second time, it returns the cached dataset. 
 
     Args:
-        dataset: Should be a `RawVibrationDataset` object implementing `__getitem__` that accepts lists of integers as parameters.
+        dataset: Should be an iterable object implementing `__len__` and `__getitem__`. 
+            The `__getitem__` method should accept lists of integers as parameters.
         transforms: A object (or a list of objects) implementing `__call__` or `transform`
         dir_path: path to the cache directory (Suggestion: use "/tmp" or another temporary directory)
         batch_size: 
     """
     if(not hasattr(transforms, 'transform') and not callable(transforms)):
         if(hasattr(transforms, '__iter__')):
-            transforms = Sequential(*transforms)
+            transforms = Sequential(transforms)
 
     m = hashlib.md5()
-    to_encode = [transforms, dataset.__class__.__name__, len(dataset), dataset.getMetaInfo()]
+    to_encode = [dataset.__class__.__name__, len(dataset), dir(dataset), transforms.__class__.__name__]
+    if(hasattr(transforms, 'get_params')):
+        to_encode.append(transforms.get_params())
     for e in to_encode:
-        m.update(str(e).encode('utf-8'))
+        m.update(repr(e).encode('utf-8'))
     hash_code = m.hexdigest()
     hashfile = os.path.join(dir_path, 'hash_code')
 

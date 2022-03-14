@@ -7,7 +7,7 @@ import pandas as pd
 from scipy import interpolate
 
 
-class Transform(BaseEstimator):
+class Transform(BaseEstimator, TransformerMixin):
     @abstractmethod
     def transform(self, data):
         pass
@@ -120,9 +120,9 @@ class asType(TransformOnFieldClass):
 
 
 class Sequential(Transform):
-    def __init__(self, *transforms):
+    def __init__(self, transforms: List[Transform]):
         super().__init__()
-        self.transforms: List[Transform] = list(transforms)
+        self.transforms = transforms
 
     def transform(self, data):
         for t in self.transforms:
