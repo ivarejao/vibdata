@@ -1,0 +1,9 @@
+default:
+    image: python:3.8
+    before_script:
+       - pip install -U .
+stages:
+    - test
+test:
+    script:
+        - pytest
