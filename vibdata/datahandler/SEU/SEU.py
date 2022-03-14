@@ -1,3 +1,4 @@
+from typing import Dict
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
@@ -17,18 +18,35 @@ class SEU_raw(RawVibrationDataset, DownloadableDataset):
         else:
             super().__init__(root_dir=root_dir, download_resources=SEU_raw.resources, download_mirrors=None)
 
-    def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         with resources.path(__package__, "SEU.csv") as r:
-            metainfo = pd.read_csv(r)
+            self._metainfo = pd.read_csv(r)
+
+    def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
+        metainfo = self._metainfo.copy(False)
         metainfo['file_name'] = metainfo['file_name'].apply(lambda x: [x]*8)
         metainfo = metainfo.explode('file_name', ignore_index=True)
         metainfo['channel'] = np.arange(len(metainfo)) % 8
         return metainfo
 
+    def __getitem__(self, i):
+        if(not isinstance(i, int)):
+            return super().__getitem__(i)
+
+        mi_i = self.getMetaInfo().iloc[i]
+        f = mi_i['file_name']
+        full_fname = os.path.join(self.raw_folder, SEU_raw.root_dir, f)
+        if('ball_20_0' in f):
+            sep = ','
+        else:
+            sep = '\t'
+        # there is a extra column because of an extra separator
+        channels = pd.read_csv(full_fname, sep=sep, skiprows=16, names=['ch'+str(j) for j in range(1, 10)]).values
+        channels = channels[:, :8]
+        sig_i = channels[:, mi_i['channel']]
+        return {'signal': sig_i, 'metainfo': mi_i}
+
     def asSimpleForm(self):
-        with resources.path(__package__, "SEU.csv") as r:
-            metainfo1 = pd.read_csv(r)
-        filenames = metainfo1['file_name']
+        filenames = self._metainfo['file_name']
         sigs = []
         for f in filenames:
             full_fname = os.path.join(self.raw_folder, SEU_raw.root_dir, f)
