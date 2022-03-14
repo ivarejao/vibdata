@@ -5,3 +5,4 @@ from .UOC.UOC import UOC_raw
 from .SEU.SEU import SEU_raw
 from .RPDBCS.RPDBCS import RPDBCS_raw
 from .IMS.IMS import IMS_raw
+from .XJTU.XJTU import XJTU_raw

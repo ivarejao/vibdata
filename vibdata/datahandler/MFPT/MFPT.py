@@ -10,23 +10,24 @@ class MFPT_raw(RawVibrationDataset, DownloadableDataset):
     """
     FIXME: metainfo
     """
-    mirrors = ["https://www.mfpt.org/wp-content/uploads/2020/02/"]
+    # mirrors = ["https://www.mfpt.org/wp-content/uploads/2020/02/"]
+    urls = ["1VxGlOMCEED7jy2qAoE9nKYAK8h5i6TIb"]
     resources = [("MFPT-Fault-Data-Sets-20200227T131140Z-001.zip", '965fa4161fe2c669d375eeb104079d1b')]
     root_dir = 'MFPT Fault Data Sets'
 
     def __init__(self, root_dir: str, download=False):
         if(download):
-            super().__init__(root_dir=root_dir, download_resources=MFPT_raw.resources, download_mirrors=MFPT_raw.mirrors,
+            super().__init__(root_dir=root_dir, download_resources=MFPT_raw.resources, download_urls=MFPT_raw.urls,
                              extract_files=True)
         else:
-            super().__init__(root_dir=root_dir, download_resources=MFPT_raw.resources, download_mirrors=None)
+            super().__init__(root_dir=root_dir, download_resources=MFPT_raw.resources, download_urls=None)
 
     def __getitem__(self, i) -> pd.DataFrame:
         if(not hasattr(i, '__len__') and not isinstance(i, slice)):
-            return self.__getitem__([i]).iloc[0]
+            return self.__getitem__([i])
         df = self.getMetaInfo()
         if(isinstance(i, slice)):
-            rows = df.iloc[i.start:i.step:i.stop]
+            rows = df.iloc[i.start:i.stop:i.step]
         else:
             rows = df.iloc[i]
         file_name = rows['file_name']
