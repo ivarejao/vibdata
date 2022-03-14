@@ -37,7 +37,10 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
 
     def __getitem__(self, i) -> pd.DataFrame:
         if(not hasattr(i, '__len__') and not isinstance(i, slice)):
-            return self.__getitem__([i])
+            ret = self.__getitem__([i])
+            ret['signal'] = ret['signal'][i]
+            ret['metainfo'] = ret['metainfo'].iloc[i]
+            return ret
         df = self.getMetaInfo()
         if(isinstance(i, slice)):
             rows = df.iloc[i.start:i.stop:i.step]
