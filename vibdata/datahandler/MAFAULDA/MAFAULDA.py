@@ -18,8 +18,8 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
         "underhang" : FileNames.underhang,
         "vertical-misalignment" : FileNames.vertical_misalignment
     }
-
-    mirrors = ["http://www02.smt.ufrj.br/~offshore/mfs/database/mafaulda/full.zip"]
+    #https://drive.google.com/file/d/1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY/view?usp=sharing
+    mirrors = ["1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY"]
     resources = [('full.zip', 'd3ca5a418c2ed0887d68bc3f91991f12')]
 
 
@@ -45,7 +45,8 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
 
     def __init__(self, root_dir: str, download=False):
         if (download):
-            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources, download_mirrors=MAFAULDA_raw.mirrors)
+            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources, download_mirrors=MAFAULDA_raw.mirrors,
+                             extract_files=True)
         else:
             super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources, download_mirrors=None)
 

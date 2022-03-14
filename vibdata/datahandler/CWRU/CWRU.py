@@ -67,22 +67,26 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
                'a73513cd1c97a39c16d7ef16e5acc193', 'e282d5813c40d2cc4ecb5dd718e07bee', '120fe20ba5923de1863f3a6a520eabed',
                '5ff8eff57cf75b7245e010012d66d3b9', '134de2b4de2a562ed8d788b10b67039b', 'd05f3df2271c3e091b306a78bd5d071b']
 
-    mirrors = ["https://engineering.case.edu/sites/default/files"]
-    resources = [(name, md5_value) for name, md5_value in zip(ALLNAMES, MD5SUMS)]
+    #mirrors = ["https://engineering.case.edu/sites/default/files"]
+    #resources = [(name, md5_value) for name, md5_value in zip(ALLNAMES, MD5SUMS)]
+    #https://drive.google.com/file/d/1G2vfms1QDlkdzqL_LAQdMIQAoludxBNj/view?usp=sharing
+    mirrors = ["1G2vfms1QDlkdzqL_LAQdMIQAoludxBNj"]
+    resources = [('CWRU.zip','d7d3042161080fc82e99d78464fa2914')]
     # resources = [('97.mat', 'ee410e7243aefcd8b7120876556464e7')]
 
     def __init__(self, root_dir: str, download=False):
         if(download):
-            super().__init__(root_dir=root_dir, download_resources=CWRU_raw.resources, download_mirrors=CWRU_raw.mirrors)
+            super().__init__(root_dir=root_dir, download_resources=CWRU_raw.resources, download_urls=CWRU_raw.mirrors,
+                             extract_files=True)
         else:
-            super().__init__(root_dir=root_dir, download_resources=CWRU_raw.resources, download_mirrors=None)
+            super().__init__(root_dir=root_dir, download_resources=CWRU_raw.resources)
 
     def __getitem__(self, i) -> pd.DataFrame:
         if(not hasattr(i, '__len__') and not isinstance(i, slice)):
-            return self.__getitem__([i]).iloc[0]
+            return self.__getitem__([i])
         df = self.getMetaInfo()
         if(isinstance(i, slice)):
-            rows = df.iloc[i.start:i.step:i.stop]
+            rows = df.iloc[i.start:i.stop:i.step]
         else:
             rows = df.iloc[i]
         file_name = rows['file_name']
