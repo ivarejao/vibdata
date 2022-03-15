@@ -6,16 +6,17 @@ import os
 
 
 class SEU_raw(RawVibrationDataset, DownloadableDataset):
-    mirrors = ["https://github.com/cathysiyu/Mechanical-datasets/archive/refs/heads"]
+    # mirrors = ["https://github.com/cathysiyu/Mechanical-datasets/archive/refs/heads"]
+    ulrs = ["1sEbS-CxL9ZIsIY9_a_ZMU6S7Oavwvhoj"]
     resources = [("master.zip", '7800d1f4d6ee404f2d84ff7e60209902')]
     root_dir = os.path.join('Mechanical-datasets-master', 'gearbox')
 
     def __init__(self, root_dir: str, download=False):
         if(download):
-            super().__init__(root_dir=root_dir, download_resources=SEU_raw.resources, download_mirrors=SEU_raw.mirrors,
+            super().__init__(root_dir=root_dir, download_resources=SEU_raw.resources, download_urls=SEU_raw.ulrs,
                              extract_files=True)
         else:
-            super().__init__(root_dir=root_dir, download_resources=SEU_raw.resources, download_mirrors=None)
+            super().__init__(root_dir=root_dir, download_resources=SEU_raw.resources, download_urls=None)
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         with resources.path(__package__, "SEU.csv") as r:

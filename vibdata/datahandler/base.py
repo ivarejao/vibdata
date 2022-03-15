@@ -28,11 +28,10 @@ class DownloadableDataset:
         self.download_urls = download_urls
         self.extract_files = extract_files
         self.download_done = False
-        if(download_mirrors is not None or download_urls is not None):
-            self.download()
-
         if not self._check_exists():
-            raise RuntimeError('Dataset not found. You can use download=True to download it.')
+            self.download()
+            if not self._check_exists():
+                raise RuntimeError('Dataset not found. You can use download=True to download it.')
         self.download_done = True
 
     @property
@@ -44,8 +43,8 @@ class DownloadableDataset:
 
     def _check_exists(self) -> bool:
         for url, _ in self.download_resources:
-            fpath = os.path.join(self.raw_folder, url)
-            if(not os.path.isfile(fpath)):
+            fpath = os.path.join(self.raw_folder, url[:-4])
+            if(not os.path.isdir(fpath)):
                 return False
         return True
 
@@ -75,6 +74,7 @@ class DownloadableDataset:
                     if(self.extract_files):
                         download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
                         extract_archive(self.raw_folder + f'/{filename}', self.raw_folder + f'/{filename[:-4]}')
+                        os.remove(self.raw_folder + f'/{filename}')
                     else:
                         download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
                 except URLError as error:
@@ -167,7 +167,6 @@ def download_file_from_google_drive(file_id: str, root: str, filename: Optional[
         token = utils._get_confirm_token(response)
         max_iter = 3
         while ("application/" not in response.headers['Content-Type']):
-            print(f"CONTET-TYPE: {response.headers['Content-Type']}")
             max_iter -= 1
             response = session.get(url, params={'id': file_id, 'confirm': True}, stream=True)
             if max_iter <= 0:
