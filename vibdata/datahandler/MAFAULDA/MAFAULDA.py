@@ -1,6 +1,6 @@
 import os
 from importlib import resources
-from FilesNames import FileNames
+#from FilesNames import FileNames
 
 import numpy as np
 import pandas as pd
@@ -10,6 +10,7 @@ from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
 
     source = "http://www02.smt.ufrj.br/~offshore/mfs/database/mafaulda/full.zip"
+    """
     DATAFILE_NAMES = {
         "horizontal-misalignment" : FileNames.horizontal_misalignment,
         "imbalance" : FileNames.imbalance,
@@ -18,8 +19,9 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
         "underhang" : FileNames.underhang,
         "vertical-misalignment" : FileNames.vertical_misalignment
     }
-
-    mirrors = ["http://www02.smt.ufrj.br/~offshore/mfs/database/mafaulda/full.zip"]
+    """
+    #https://drive.google.com/file/d/1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY/view?usp=sharing
+    mirrors = ["1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY"]
     resources = [('full.zip', 'd3ca5a418c2ed0887d68bc3f91991f12')]
 
 
@@ -44,11 +46,11 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
 
 
     def __init__(self, root_dir: str, download=False):
-        if (download):
-            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources, download_mirrors=MAFAULDA_raw.mirrors)
+        if(download):
+            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources, download_urls=MAFAULDA_raw.mirrors,
+                                extract_files=True)
         else:
-            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources, download_mirrors=None)
-
+            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources)
     # Implement the abstract methods from RawVibrationalDataset
     # ---------------------------------------------------------
     def __getitem__(self, idx) -> dict:

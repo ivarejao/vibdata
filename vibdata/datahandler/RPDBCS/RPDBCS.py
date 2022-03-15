@@ -23,7 +23,7 @@ class RPDBCS_raw(RawVibrationDataset):
             else:
                 self.n_points = 1024*100
                 self.dataset = readDataset(feats_file="{}/RPDBCS_raw/labels.csv".format(self.root_dir),
-                                           time_file="{}/RPDBCS_raw/time".format(self.root_dir), use_cache=False, npoints=n_points,
+                                           time_file="{}/RPDBCS_raw/time".format(self.root_dir), use_cache=False, npoints=self.n_points,
                                            dtype=np.float32)
         return self.dataset
 
