@@ -3,7 +3,7 @@ from typing import Dict, List, Sequence, Tuple, Optional
 import pandas as pd
 import numpy as np
 import os
-from torchvision.datasets.utils import download_url, extract_archive
+from vibdata.datahandler.utils import download_file_from_google_drive, extract_archive_and_remove
 from urllib.error import URLError
 
 class DownloadableDataset:
@@ -70,11 +70,9 @@ class DownloadableDataset:
             for url_mirror in urls_list:
                 url = url_mirror[i]
                 try:
-                    # print(f"Downloading {url}")
                     if(self.extract_files):
                         download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
-                        extract_archive(self.raw_folder + f'/{filename}', self.raw_folder + f'/{filename[:-4]}')
-                        os.remove(self.raw_folder + f'/{filename}')
+                        extract_archive_and_remove(self.raw_folder + f'/{filename}', self.raw_folder + f'/{filename[:-4]}')
                     else:
                         download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
                 except URLError as error:
@@ -136,69 +134,3 @@ class RawVibrationDataset:
     def getNumLabels(self) -> int:
         return len(self.getLabelsNames())
 
-def download_file_from_google_drive(file_id: str, root: str, filename: Optional[str] = None, md5: Optional[str] = None):
-    """Download a Google Drive file from  and place it in root.
-
-    Args:
-        file_id (str): id of file to be downloaded
-        root (str): Directory to place downloaded file in
-        filename (str, optional): Name to save the file under. If None, use the id of the file.
-        md5 (str, optional): MD5 checksum of the download. If None, do not check
-    """
-    # Based on https://stackoverflow.com/questions/38511444/python-download-files-from-google-drive-using-url
-    import requests
-    import itertools
-    import torchvision.datasets.utils as utils
-    url = "https://docs.google.com/uc?export=download"
-
-    root = os.path.expanduser(root)
-    if not filename:
-        filename = file_id
-    fpath = os.path.join(root, filename)
-
-    os.makedirs(root, exist_ok=True)
-
-    if os.path.isfile(fpath) and utils.check_integrity(fpath, md5):
-        print('Using downloaded and verified file: ' + fpath)
-    else:
-        session = requests.Session()
-
-        response = session.get(url, params={'id': file_id}, stream=True)
-        token = utils._get_confirm_token(response)
-        max_iter = 3
-        while ("application/" not in response.headers['Content-Type']):
-            max_iter -= 1
-            response = session.get(url, params={'id': file_id, 'confirm': True}, stream=True)
-            if max_iter <= 0:
-                raise GetsExceeded(response.headers['Content-Type'])
-
-        # Ideally, one would use response.status_code to check for quota limits, but google drive is not consistent
-        # with their own API, refer https://github.com/pytorch/vision/issues/2992#issuecomment-730614517.
-        # Should this be fixed at some place in future, one could refactor the following to no longer rely on decoding
-        # the first_chunk of the payload
-        response_content_generator = response.iter_content(32768)
-        first_chunk = None
-        while not first_chunk:  # filter out keep-alive new chunks
-            first_chunk = next(response_content_generator)
-
-        if utils._quota_exceeded(first_chunk):
-            msg = (
-                f"The daily quota of the file {filename} is exceeded and it "
-                f"can't be downloaded. This is a limitation of Google Drive "
-                f"and can only be overcome by trying again later."
-            )
-            raise RuntimeError(msg)
-
-        utils._save_response_content(itertools.chain((first_chunk, ), response_content_generator), fpath)
-        response.close()
-
-
-class GetsExceeded(BaseException):
-
-    def __init__(self, ctype, message="Gets Exceeded, with the last one returning a content-type: "):
-        self.contentType = ctype
-        self.message = message
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f'{self.message} -> {self.contentType}'

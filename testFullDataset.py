@@ -33,7 +33,7 @@ def testDataset(dataset_name: str, dataset_class):
     print(f"META:\n {sample['metainfo']}")
 
 if __name__ == "__main__":
-    D = SEU_raw('/tmp', download=True)
+    D = UOC_raw('/tmp', download=True)
     testDataset("SEU", D)
 
 
