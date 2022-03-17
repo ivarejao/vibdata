@@ -5,6 +5,7 @@ from vibdata.datahandler.IMS.IMS import IMS_raw
 from vibdata.datahandler.UOC.UOC import UOC_raw
 from vibdata.datahandler.XJTU.XJTU import XJTU_raw
 from vibdata.datahandler.MFPT.MFPT import MFPT_raw
+from vibdata.datahandler.SEU.SEU import SEU_raw
 
 def testDataset(dataset_name: str, dataset_class):
     space_len = (13-len(dataset_name))//2
@@ -32,8 +33,8 @@ def testDataset(dataset_name: str, dataset_class):
     print(f"META:\n {sample['metainfo']}")
 
 if __name__ == "__main__":
-    D = MFPT_raw('/tmp', download=True)
-    testDataset("MFPT", D)
+    D = UOC_raw('/tmp', download=True)
+    testDataset("SEU", D)
 
 
 
