@@ -10,11 +10,11 @@ setup(
     description='A library for loading vibration signals datasets',
     packages=['vibdata', 'vibdata.datahandler', 'vibdata.datahandler.PU', 'vibdata.datahandler.SEU', 'vibdata.datahandler.CWRU',
      'vibdata.datahandler.MFPT', 'vibdata.datahandler.RPDBCS','vibdata.datahandler.UOC','vibdata.datahandler.IMS','vibdata.datahandler.IMS.Tests',
-     'vibdata.datahandler.XJTU', 'vibdata.datahandler.transforms'],
+     'vibdata.datahandler.XJTU', 'vibdata.datahandler.EAS', 'vibdata.datahandler.transforms'],
     package_data={'vibdata.datahandler.PU': ['PU.csv'], 'vibdata.datahandler.SEU': ['SEU.csv'],
                   'vibdata.datahandler.CWRU': ['CWRU.csv'], 'vibdata.datahandler.UOC': ['UOC.csv'],
                   'vibdata.datahandler.MFPT': ['MFPT.csv'], 'vibdata.datahandler.IMS': ['IMS.csv'],
-                  'vibdata.datahandler.XJTU': ['XJTU.csv']},
+                  'vibdata.datahandler.XJTU': ['XJTU.csv'], 'vibdata.datahandler.EAS': ['EAS.csv']},
     install_requires=[
         'pandas',
         'numpy',
