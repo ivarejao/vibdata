@@ -46,6 +46,7 @@ print(D_transformed[3]['signal'].shape)
 ### Common transformations
 ```python
 from vibdata.datahandler.transforms.signal import FilterByValue, StandardScaler, MinMaxScaler, Split, FFT, asType, SelectFields, toBinaryClassification, NormalizeSampleRate, Sampling
+import pandas as pd
 
 COMMON_TRANSFORMERS = [
     # sampling for testing purporses only. Use whole dataset when everything is working properly.
@@ -98,6 +99,7 @@ XJTU_TRANSFORMERS = [
 ## Sample classification
 ```python
 from vibdata.datahandler import MFPT_raw
+from vibdata.datahandler.transforms.TransformDataset import transform_and_saveDataset
 from skorch.dataset import ValidSplit # pip install skorch
 from skorch.classifier import NeuralNetClassifier
 from pytorch_balanced_sampler.sampler import BalancedDataLoader # pip install git+https://github.com/Lucashsmello/pytorch-balanced-sampler
@@ -107,8 +109,11 @@ import torch
 from torch import nn
 from torch.utils.data.dataset import Subset
 from sklearn.metrics import f1_score
+import numpy as np
+
 
 ####Class and functions for transforming data#####
+
 def _transform_output(data):
     """
     Renames data. It just converts the input format into a format that pytorch accepts.
@@ -118,6 +123,7 @@ def _transform_output(data):
     data['X'] = data['signal']
     del data['signal']
     return data, label
+
 
 class TransformsDataset(torch.utils.data.IterableDataset):
     def __init__(self, D: torch.utils.data.IterableDataset, transforms) -> None:
@@ -145,17 +151,19 @@ class TransformsDataset(torch.utils.data.IterableDataset):
 
 
 ### Defining dataset ###
-D = XJTU_raw('datasets', download=True)
+D = XJTU_raw('/tmp/', download=True)
 cache_dir = '/tmp/cache_signals_data'
-D = transform_and_saveDataset(D, MFPT_TRANSFORMERS, cache_dir)
+D = transform_and_saveDataset(D, XJTU_TRANSFORMERS, cache_dir, batch_size=3000)
 
-Y = D.metainfo['label']
+Y = D.metainfo['label'].astype(int)
 group_ids = D.metainfo['index']
-D = TransformsDataset(Dtarget, _transform_output)
+D = TransformsDataset(D, _transform_output)
 D.labels = Y
 ########################
 
 ### Defining model and parameters ###
+
+
 class RPDBCS2020Net(nn.Module):
     def __init__(self, input_size=6100, output_size=8, activation_function=nn.PReLU(), random_state=None):
         if(random_state is not None):
@@ -180,20 +188,21 @@ class RPDBCS2020Net(nn.Module):
 
         # print('>>>Number of parameters: ',sum(p.numel() for p in self.parameters()))
 
-    def forward(self, x):
-        if(x.dim() == 2):
-            x = x.reshape(x.shape[0], 1, x.shape[1])
-        output = self.convnet(x)
+    def forward(self, X, **kwargs):
+        if(X.dim() == 2):
+            X = X.reshape(X.shape[0], 1, X.shape[1])
+        output = self.convnet(X)
         output = self.fc(output)
         return output
 
-DEFAULT_NETPARAMS = {
+
+DEFAULT_NET_PARAMS = {
     'device': 'cuda',
     'criterion': nn.CrossEntropyLoss,
     'max_epochs': 100,
     'batch_size': 128,
     'train_split': ValidSplit(0.1, stratified=True),
-    'iterator_train': BalancedDataLoader, 'iterator_train__shuffle': True    
+    'iterator_train': BalancedDataLoader, 'iterator_train__shuffle': True
 }
 
 DEFAULT_OPTIM_PARAMS = {'weight_decay': 1e-4, 'lr': 1e-3,
@@ -204,25 +213,25 @@ DEFAULT_OPTIM_PARAMS = {"optimizer__"+key: v for key, v in DEFAULT_OPTIM_PARAMS.
 DEFAULT_OPTIM_PARAMS['optimizer'] = AdaBelief
 
 module_params = {
-    'encode_size': D.getNumLabels(), 
-    'input_size': 6100
+    'module__output_size': len(np.unique(Y)),
+    'module__input_size': 6100
 }
 
-net = NeuralNetClassifier(**module_params, **DEFAULT_NET_PARAMS, **DEFAULT_OPTIM_PARAMS)
+net = NeuralNetClassifier(module=RPDBCS2020Net, **module_params, **DEFAULT_NET_PARAMS, **DEFAULT_OPTIM_PARAMS)
 
 #####################################
 
 ### Evaluation ###
-sampler = StratifiedGroupKFold(n_splits=4,shuffle=True)
+sampler = StratifiedGroupKFold(n_splits=4, shuffle=True)
 train_idxs, test_idxs = next(sampler.split(Y, Y, group_ids))
 Ytrain, Ytest = Y[train_idxs], Y[test_idxs]
-Dtrain = Subset(Dtrain, train_idxs)
-Dtest = Subset(Dtest, test_idxs)
+Dtrain = Subset(D, train_idxs)
+Dtest = Subset(D, test_idxs)
 
-net.fit(Dtrain,Ytrain)
+net.fit(Dtrain, Ytrain)
 Ypred = net.predict(Dtest)
 score = f1_score(Ytest, Ypred, average='macro')
-print("F1-macro:",score)
+print("F1-macro:", score)
 ##################
 
 ```
