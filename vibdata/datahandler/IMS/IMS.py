@@ -46,21 +46,23 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
     #                        '3rd_test.rar': ThirdTest.md5sums_files}
     #              }
 
-    def __init__(self, root_dir: str, download=False):
+    def __init__(self, root_dir: str, download=False, with_thirdtest=False):
         if (download):
             super().__init__(root_dir=root_dir, download_resources=IMS_raw.resources, download_urls=IMS_raw.urls,
                              extract_files=True)
         else:
             super().__init__(root_dir=root_dir, download_resources=IMS_raw.resources, download_mirrors=None)
+        self.third_test = with_thirdtest
 
-    @staticmethod
-    def __getTest(idx):
-        if (idx < 2156*8):
+    def __getTest(self, idx):
+        if (idx < 17250):
             return '1st_test'
-        elif (2156*8 <= idx < 3140*8):
+        elif (17250 <= idx < 21184):
             return '2nd_test'
-        else:
+        elif self.third_test:
             return '3rd_test'
+        else:
+            raise IndexError(f"{idx} out of range")
 
     # Implement the abstract methods from RawVibrationalDataset
     # ---------------------------------------------------------
@@ -89,7 +91,10 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         with resources.path(__package__, "IMS.csv") as path:
-            return pd.read_csv(path)
+            if self.third_test:
+                return pd.read_csv(path)
+            else:
+                return pd.read_csv(path)[:21184]
 
     def getLabelsNames(self):
         return ['Normal', 'Degraded Outer Race', 'Outer Race', 'Degraded Inner Race', 'Inner Race',
