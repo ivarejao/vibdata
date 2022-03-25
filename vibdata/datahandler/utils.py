@@ -30,23 +30,26 @@ def _get_confirm_token(response: "requests.models.Response") -> Optional[str]:  
 
     return None
 
-def _chunked_iterable(iterable, size):  # Igor
-    import itertools  # Igor
-    it = iter(iterable)  # Igor
-    while True:  # Igor
-        chunk = tuple(itertools.islice(it, size))  # Igor
-        if not chunk:  # Igor
-            break  # Igor
-        yield chunk  # Igor
+def _chunked_iterable(iterable, size):
+    import itertools
+    it = iter(iterable)
+    while True:
+        chunk = tuple(itertools.islice(it, size))
+        if not chunk:
+            break
+        yield chunk
 
 def _save_response_content(
         response_gen: Iterator[bytes], destination: str,  # type: ignore[name-defined]
 ) -> None:
-    # CHUNK_SIZE = 32768   # Igor
+    # CHUNK_SIZE = 32768
+    total_size = 0
+    for chunk in response_gen:
+        total_size += len(chunk)
     with open(destination, "wb") as f:
-        pbar = tqdm(total=None)
+        pbar = tqdm(total=total_size)
         progress = 0
-        # _chunked_iterable(response_gen, CHUNK_SIZE) # Igor
+        # _chunked_iterable(response_gen, CHUNK_SIZE)
         for chunk in response_gen:
             if chunk:  # filter out keep-alive new chunks
                 f.write(chunk)
