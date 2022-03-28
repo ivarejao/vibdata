@@ -67,16 +67,20 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
     # Implement the abstract methods from RawVibrationalDataset
     # ---------------------------------------------------------
     def __getitem__(self, idx) -> dict:
-        if (not hasattr(idx, '__len__') and not isinstance(idx, slice)):
-            # return self.__getitem__([idx]).iloc[0]
-            return self.__getitem__([idx])
-        df = self.getMetaInfo()
-        if (isinstance(idx, slice)):
-            rows = df.iloc[idx.start: idx.stop: idx.step]
-            range_idx = list(range(idx.start, idx.stop, idx.step))
-        else:
-            rows = df.iloc[idx]
-            range_idx = idx
+        try:
+            if (not hasattr(idx, '__len__') and not isinstance(idx, slice)):
+                # return self.__getitem__([idx]).iloc[0]
+                return self.__getitem__([idx])
+            df = self.getMetaInfo()
+            if (isinstance(idx, slice)):
+                rows = df.iloc[idx.start: idx.stop: idx.step]
+                range_idx = list(range(idx.start, idx.stop, idx.step))
+            else:
+                rows = df.iloc[idx]
+                range_idx = idx
+        except IndexError as error:
+            print(f"{error} with idx={idx}")
+            exit(1)
 
         file_name = rows['file_name']
         bear_name = rows['bearing.position']
