@@ -1,14 +1,14 @@
 import os
 from importlib import resources
-#from FilesNames import FileNames
+# from FilesNames import FileNames
 
 import numpy as np
 import pandas as pd
 
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 
-class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
 
+class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
     source = "http://www02.smt.ufrj.br/~offshore/mfs/database/mafaulda/full.zip"
     """
     DATAFILE_NAMES = {
@@ -20,10 +20,9 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
         "vertical-misalignment" : FileNames.vertical_misalignment
     }
     """
-    #https://drive.google.com/file/d/1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY/view?usp=sharing
-    mirrors = ["1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY"]
-    resources = [('full.zip', 'd3ca5a418c2ed0887d68bc3f91991f12')]
-
+    # https://drive.google.com/file/d/1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY/view?usp=sharing
+    urls = mirrors = ["1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY"]
+    resources = [('MAFAULDA.zip', 'd3ca5a418c2ed0887d68bc3f91991f12')]
 
     # Data file organization
     #                  full.zip
@@ -41,41 +40,63 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
     #
     # For organization purpose we created a class that stores the file names in a different file
 
-
-    # TODO: Find a way to extract the the rar packates of each test
-
-
     def __init__(self, root_dir: str, download=False):
-        if(download):
-            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources, download_urls=MAFAULDA_raw.mirrors,
-                                extract_files=True)
+        if (download):
+            super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources,
+                             download_urls=MAFAULDA_raw.urls,
+                             extract_files=True)
         else:
             super().__init__(root_dir=root_dir, download_resources=MAFAULDA_raw.resources)
+
     # Implement the abstract methods from RawVibrationalDataset
     # ---------------------------------------------------------
+
     def __getitem__(self, idx) -> dict:
         if (not hasattr(idx, '__len__') and not isinstance(idx, slice)):
-            return self.__getitem__([idx]).iloc[0]
-        df = self.getMetaInfo()
-        if (isinstance(idx, slice)):
-            rows = df.iloc[idx.start: idx.step: idx.stop]
-        else:
-            rows = df.iloc[idx]
+            return self.__getitem__([idx])
 
+        try:
+            df = self.getMetaInfo()
+            if (isinstance(idx, slice)):
+                rows = df.iloc[idx.start: idx.stop: idx.step]
+            else:
+                rows = df.iloc[idx]
+        except IndexError as error:
+            print(f"{error} with index: {idx}")
+            exit(1)
+
+        # Get the metadata that are important to us
         file_name = rows['file_name']
-        bear_name = rows['bearing']
+        bear_name = rows['col']
+        labels = rows['label']
+        test_measure = rows['test_measure']
+
+        # Create object that will store the vibedata
         signal_datas = np.empty(len(bear_name), dtype=object)
 
-        for i, (f, b) in enumerate(zip(file_name, bear_name)):
-            file_data = np.gentext(os.path.join(self.raw_folder, f), delimiter=',')
-            signal_datas[i] = file_data[:, FirstTest.back_bearing(b)]
+        # Begin to load the vibdata of the signals required
+        for i, (f, b, t, l) in enumerate(zip(file_name, bear_name, test_measure, labels)):
+            # print(f"ROW: {rows.iloc[i]}")
+            # There's a subtype
+            if "." in l:
+                sub_labels = l.split(".")
+            else:
+                sub_labels = l
+            # If there isn't a test measurement
+            if t == "":
+                raw_path = os.path.join(self.raw_folder, sub_labels, f)
+            else:
+                raw_path = os.path.join(self.raw_folder, *sub_labels, t, f)
+
+            vib_data = np.loadtxt(raw_path, delimiter=',')
+            signal_datas[i] = vib_data[:, b]
         signal_datas = signal_datas
 
         return {'signal': signal_datas, 'metainfo': rows}
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        with resources.path(__package__, "IMS.csv") as path:
-            return pd.read_csv(path)
+        with resources.path(__package__, "MAFAULDA.csv") as path:
+            return pd.read_csv(path, na_filter=False)
 
     def getLabelsNames(self):
         return ['normal', 'horizontal_misalignment', 'vertical_misalignment', 'imbalance',
