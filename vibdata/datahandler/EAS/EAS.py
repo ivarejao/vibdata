@@ -51,7 +51,7 @@ class EAS_raw(RawVibrationDataset, DownloadableDataset):
             for i, (f,fp,lp) in enumerate(zip(file_name, first_position, last_position)):
                 if f == uf:
                     signal_datas[i] = data[fp:lp+1]
-        signal_datas = signal_datas
+        signal_datas = np.hstack(signal_datas).T
 
         return {'signal': signal_datas, 'metainfo': rows}
 

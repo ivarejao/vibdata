@@ -55,7 +55,7 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
             data = pd.read_csv(full_fname)
 
             signal_datas[i] = data
-        signal_datas = signal_datas
+        signal_datas = np.hstack(signal_datas).T
 
         return {'signal': signal_datas, 'metainfo': rows}
 
