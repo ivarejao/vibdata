@@ -55,9 +55,22 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
             data = pd.read_csv(full_fname)
 
             signal_datas[i] = data
-        signal_datas = np.hstack(signal_datas).T
+        signal_datas = signal_datas
 
         return {'signal': signal_datas, 'metainfo': rows}
+
+    def custom_xjtu_filter(data: dict):
+        metainfo: pd.DataFrame = data['metainfo']
+        mask = metainfo['fault'].notna()
+        metainfo = metainfo[mask].copy()
+        signal = data['signal'][mask]
+        signal = np.hstack(signal).T
+        metainfo['label'] = pd.factorize(metainfo['fault'])[0]
+        metainfo = pd.DataFrame(metainfo.values.repeat(2, axis=0),
+                                columns=metainfo.columns)
+    
+        return {'signal': signal,
+                'metainfo': metainfo}
 
     def asSimpleForm(self):
         metainfo = self.getMetaInfo()
