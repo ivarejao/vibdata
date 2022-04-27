@@ -14,7 +14,7 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
     LICENSE: Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) [https://creativecommons.org/licenses/by-nc/4.0/]
     """      
     urls = ["1oJHir0Faq_kgFnPPMaLSVyBJb6szjEOL"]
-    resources = [('UOC_gear_fault_dataset.zip', 'c33f1f6117ee4913257086007790df35')]
+    resources = [('UOC.zip', 'c33f1f6117ee4913257086007790df35')]
 
     def __init__(self, root_dir: str, download=False):
         if(download):

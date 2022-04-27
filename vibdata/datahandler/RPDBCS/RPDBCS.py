@@ -1,29 +1,40 @@
 from typing import Dict
-from ..base import RawVibrationDataset
+from ..base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
 
 
-class RPDBCS_raw(RawVibrationDataset):
-    def __init__(self, root_dir: str, frequency_domain=False, **kwargs):
+class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
+    urls = ["13KHGDnhkF5ZgcpVc90Rajovgwc27alX-"]
+    resources = [('RPDBCS.zip', 'b87be8049fc642d57b7de7c631e8e529')]
+
+    def __init__(self, root_dir: str, frequency_domain=False, download=False, **kwargs):
         self.root_dir = root_dir
         self.dataset = None
         self.frequency_domain = frequency_domain
+        if download:
+            super().__init__(root_dir=root_dir, download_resources=RPDBCS_raw.resources,
+                             download_urls=RPDBCS_raw.urls,
+                             extract_files=True)
+        else:
+            super().__init__(root_dir=root_dir, download_resources=RPDBCS_raw.resources)
+
 
     def _getDataset(self):
         if(self.dataset is None):
+            # You can get the rpdbcs pocket from https://gitlab.com/ninfa-ufes/deep-rpdbcs/rpdbcs-utils/-/wikis/home
             from rpdbcs.datahandler.dataset import readDataset
             if(self.frequency_domain):
-                self.dataset = readDataset(feats_file="{}/RPDBCS_raw/labels.csv".format(self.root_dir),
-                                           freq_file="{}/RPDBCS_raw/freq.csv".format(self.root_dir),
+                self.dataset = readDataset(feats_file="{}/RPDBCS_raw/RPDBCS/features.csv".format(self.root_dir),
+                                           freq_file="{}/RPDBCS_raw/RPDBCS/spectrum.csv".format(self.root_dir),
                                            use_cache=False, npoints=11000, remove_first=100,
                                            dtype=np.float32)
                 self.dataset.normalize(37.28941975)
                 self.n_points = 6100
             else:
                 self.n_points = 1024*100
-                self.dataset = readDataset(feats_file="{}/RPDBCS_raw/labels.csv".format(self.root_dir),
-                                           time_file="{}/RPDBCS_raw/time".format(self.root_dir), use_cache=False, npoints=self.n_points,
+                self.dataset = readDataset(feats_file="{}/RPDBCS_raw/RPDBCS/labels.csv".format(self.root_dir),
+                                           time_file="{}/RPDBCS_raw/RPDBCS/time".format(self.root_dir), use_cache=False, npoints=self.n_points,
                                            dtype=np.float32)
         return self.dataset
 

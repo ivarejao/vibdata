@@ -24,7 +24,7 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
     
     #https://drive.google.com/file/d/1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii/view?usp=sharing
     urls = ["1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii"]
-    resources = [('PU_bearing_dataset.zip', '1beb53c6fb79436895787e094a22302f')]
+    resources = [('PU.zip', '1beb53c6fb79436895787e094a22302f')]
 
     def __init__(self, root_dir: str, download=False):
         if(download):

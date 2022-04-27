@@ -7,3 +7,4 @@ from .RPDBCS.RPDBCS import RPDBCS_raw
 from .IMS.IMS import IMS_raw
 from .XJTU.XJTU import XJTU_raw
 from .EAS.EAS import EAS_raw
+from .MAFAULDA.MAFAULDA import MAFAULDA_raw

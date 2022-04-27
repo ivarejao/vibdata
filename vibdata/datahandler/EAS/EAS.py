@@ -14,7 +14,7 @@ class EAS_raw(RawVibrationDataset, DownloadableDataset):
     LICENSE: Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) [https://creativecommons.org/licenses/by-nc/4.0/]
     """ 
     urls = ["1YK8isJkibkCdjKwoc00POsxllFxQdh6_"]
-    resources = [('fraunhofer_eas_dataset_for_unbalance_detection_v1.zip', 'dff193b9ee04e2203b565bf2e635cb77')]
+    resources = [('EAS.zip', 'dff193b9ee04e2203b565bf2e635cb77')]
 
     def __init__(self, root_dir: str, download=False):
         if(download):

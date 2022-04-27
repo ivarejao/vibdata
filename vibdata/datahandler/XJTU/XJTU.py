@@ -20,7 +20,7 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
     """
     #https://drive.google.com/file/d/1dWc3YrRiXR5pwUMAhw8lBl5QvQWgv_2R/view?usp=sharing
     urls = ["1dWc3YrRiXR5pwUMAhw8lBl5QvQWgv_2R"]
-    resources = [('XJTU-SY_Bearing_Datasets.zip', '8bf2ac5e0c0fc3fb85273e6dbc7da817')]
+    resources = [('XJTU.zip', '8bf2ac5e0c0fc3fb85273e6dbc7da817')]
 
     def __init__(self, root_dir: str, download=False):
         if(download):

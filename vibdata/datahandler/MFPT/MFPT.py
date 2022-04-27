@@ -12,7 +12,7 @@ class MFPT_raw(RawVibrationDataset, DownloadableDataset):
     """
     # mirrors = ["https://www.mfpt.org/wp-content/uploads/2020/02/"]
     urls = ["1VxGlOMCEED7jy2qAoE9nKYAK8h5i6TIb"]
-    resources = [("MFPT-Fault-Data-Sets-20200227T131140Z-001.zip", '965fa4161fe2c669d375eeb104079d1b')]
+    resources = [("MFPT.zip", '965fa4161fe2c669d375eeb104079d1b')]
     root_dir = 'MFPT Fault Data Sets'
 
     def __init__(self, root_dir: str, download=False):

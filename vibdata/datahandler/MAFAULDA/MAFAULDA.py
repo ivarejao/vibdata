@@ -25,7 +25,7 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
     resources = [('MAFAULDA.zip', 'd3ca5a418c2ed0887d68bc3f91991f12')]
 
     # Data file organization
-    #                  full.zip
+    #                  MAFAULDA.zip
     #                    |
     #      ----------------------------
     #     |             |             |
