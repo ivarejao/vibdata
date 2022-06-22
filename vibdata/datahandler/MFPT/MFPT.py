@@ -2,7 +2,7 @@ from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
 from scipy.io import loadmat
-from importlib import resources
+from vibdata.datahandler.utils import _get_package_resource_dataframe
 import os
 
 
@@ -44,8 +44,8 @@ class MFPT_raw(RawVibrationDataset, DownloadableDataset):
         return {'signal': signal_datas, 'metainfo': rows, 'label_names': self.getLabelsNames()}
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        with resources.path(__package__, "MFPT.csv") as r:
-            return pd.read_csv(r)
+        df = _get_package_resource_dataframe(__package__, "MFPT.csv")
+        return df
 
     def getLabelsNames(self):
         return ['Normal', 'Outer Race', 'Inner Race']

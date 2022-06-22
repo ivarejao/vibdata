@@ -2,7 +2,7 @@ from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
 from scipy.io import loadmat
-from importlib import resources
+from vibdata.datahandler.utils import _get_package_resource_dataframe
 import os
 
 
@@ -107,8 +107,8 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
             yield self.__getitem__(i)
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        with resources.path(__package__, "CWRU.csv") as r:
-            return pd.read_csv(r)
+        df = _get_package_resource_dataframe(__package__, "CWRU.csv")
+        return df
 
     def getLabelsNames(self):
         return ['Normal', 'Inner Race', 'Ball', 'Outer Race']

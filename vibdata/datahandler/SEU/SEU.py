@@ -2,7 +2,7 @@ from typing import Dict
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
-from importlib import resources
+from vibdata.datahandler.utils import _get_package_resource_dataframe
 import os
 
 
@@ -21,8 +21,8 @@ class SEU_raw(RawVibrationDataset, DownloadableDataset):
             super().__init__(root_dir=root_dir, download_resources=SEU_raw.resources)
             
     def _metainfo(self) -> pd.DataFrame:
-        with resources.path(__package__, "SEU.csv") as r:
-            return pd.read_csv(r)
+        df = _get_package_resource_dataframe(__package__, "SEU.csv")
+        return df
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         metainfo = self._metainfo().copy(False)

@@ -1,7 +1,7 @@
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
-from importlib import resources
+from vibdata.datahandler.utils import _get_package_resource_dataframe
 import os
 from scipy.io import loadmat
 from tqdm import tqdm
@@ -33,8 +33,7 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
         else:
             super().__init__(root_dir=root_dir, download_resources=PU_raw.resources)
 
-        with resources.path(__package__, "PU.csv") as r:
-            self._metainfo = pd.read_csv(r)
+        self._metainfo = _get_package_resource_dataframe(__package__, "PU.csv")
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         return self._metainfo
