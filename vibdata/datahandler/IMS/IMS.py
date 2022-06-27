@@ -101,5 +101,5 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
                 return pd.read_csv(path)[:21184]
 
     def getLabelsNames(self):
-        return ['Normal', 'Degraded Outer Race', 'Outer Race', 'Degraded Inner Race', 'Inner Race',
-                'Degraded Roller Race', 'Roller Race']
+        return ['Normal', 'Degraded Outer Race', 'Outer Race Fault', 'Degraded Inner Race', 'Inner Race Fault',
+                'Degraded Roller Race', 'Roller Race Fault']

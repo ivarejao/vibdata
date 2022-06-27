@@ -25,8 +25,8 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
             # You can get the rpdbcs pocket from https://gitlab.com/ninfa-ufes/deep-rpdbcs/rpdbcs-utils/-/wikis/home
             from rpdbcs.datahandler.dataset import readDataset
             if(self.frequency_domain):
-                self.dataset = readDataset(feats_file="{}/RPDBCS_raw/RPDBCS/features.csv".format(self.root_dir),
-                                           freq_file="{}/RPDBCS_raw/RPDBCS/spectrum.csv".format(self.root_dir),
+                self.dataset = readDataset(feats_file="{}/RPDBCS_raw/RPDBCS/labels.csv".format(self.root_dir),
+                                           freq_file="{}/RPDBCS_raw/RPDBCS/freq.csv".format(self.root_dir),
                                            use_cache=False, npoints=11000, remove_first=100,
                                            dtype=np.float32)
                 self.dataset.normalize(37.28941975)

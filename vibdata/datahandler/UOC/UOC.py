@@ -60,4 +60,5 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
         return {'signal': sigs, 'metainfo': metainfo}
 
     def getLabelsNames(self):
-        return ['Healthy', 'Missing Tooth', 'Root Crack', 'Spalling', 'Chipping Tip']    
+        return ['Healthy', 'Missing Tooth', 'Root Crack', 'Spalling', 'Chipping Tip']
+
