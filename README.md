@@ -3,7 +3,7 @@
 This is a package made to help deep learning approach into the problem of bearing fault classification
 using a variety of open bearing datasets.
 
-![image](Datasets.png "Datasets")
+![image](./images/Datasets.png "Datasets")
 
 # Instructions 
 
