@@ -36,7 +36,7 @@ class MFPT_raw(RawVibrationDataset, DownloadableDataset):
         file_name = rows['file_name']
         signal_datas = np.empty(len(file_name), dtype=object)
         for i, f in enumerate(file_name):
-            data = loadmat(os.path.join(self.raw_folder, MFPT_raw.root_dir, f),
+            data = loadmat(os.path.join(self.raw_folder, f),
                            simplify_cells=True, variable_names=['bearing'])
             signal_datas[i] = data['bearing']['gs']
         signal_datas = signal_datas
