@@ -21,7 +21,37 @@ import requests
 import torch
 from torch.utils.model_zoo import tqdm
 
+import pandas as pd
+try:
+    from importlib.resources import path as resources_path
+except ImportError:
+    from pkg_resources import resource_stream as resources_path
+
 USER_AGENT = "pytorch/vision"
+
+
+def _get_package_resource_dataframe(
+    package: str,
+    resource: str,
+    **read_csv_kwargs,
+) -> pd.DataFrame:
+    """Compatibility function to load csv files for datasets.
+
+    Use it instead of 'read_csv' from pandas with importlib.
+    Works with Python>=3.6
+
+    Args:
+        package: package name
+        resource: csv filename
+        **read_csv_kwargs: extra kwargs to be passed to 'read_csv'
+
+    Returns:
+        Pandas dataframe
+    """
+
+    with resources_path(package, resource) as r:
+        df = pd.read_csv(r, **read_csv_kwargs)
+    return df
 
 
 def _save_response_content(

@@ -1,5 +1,5 @@
 import os
-from importlib import resources
+from vibdata.datahandler.utils import _get_package_resource_dataframe
 # from FilesNames import FileNames
 
 import numpy as np
@@ -95,8 +95,9 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
         return {'signal': signal_datas, 'metainfo': rows}
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        with resources.path(__package__, "MAFAULDA.csv") as path:
-            return pd.read_csv(path, na_filter=False)
+        df = _get_package_resource_dataframe(__package__, "MAFAULDA.csv",
+                                             na_filter=False)
+        return df
 
     def getLabelsNames(self):
         return ['normal', 'horizontal_misalignment', 'vertical_misalignment', 'imbalance',

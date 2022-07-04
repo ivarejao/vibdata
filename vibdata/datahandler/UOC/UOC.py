@@ -2,7 +2,7 @@
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
-from importlib import resources
+from vibdata.datahandler.utils import _get_package_resource_dataframe
 import os
 from scipy.io import loadmat
 from tqdm import tqdm
@@ -23,8 +23,7 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
         else:
             super().__init__(root_dir=root_dir, download_resources=UOC_raw.resources)
 
-        with resources.path(__package__, "UOC.csv") as r:
-            self._metainfo = pd.read_csv(r)
+        self._metainfo = _get_package_resource_dataframe(__package__, "UOC.csv")
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         return self._metainfo
@@ -60,5 +59,4 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
         return {'signal': sigs, 'metainfo': metainfo}
 
     def getLabelsNames(self):
-        return ['Healthy', 'Missing Tooth', 'Root Crack', 'Spalling', 'Chipping Tip']
-
+        return ['Healthy', 'Missing Tooth', 'Root Crack', 'Spalling', 'Chipping Tip']    

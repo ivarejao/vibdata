@@ -1,6 +1,6 @@
 # Code made in Pycharm by Igor Varejao
 import os
-from importlib import resources
+from vibdata.datahandler.utils import _get_package_resource_dataframe
 
 import numpy as np
 import pandas as pd
@@ -94,11 +94,11 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
         return {'signal': signal_datas, 'metainfo': rows}
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        with resources.path(__package__, "IMS.csv") as path:
-            if self.third_test:
-                return pd.read_csv(path)
-            else:
-                return pd.read_csv(path)[:21184]
+        df = _get_package_resource_dataframe(__package__, "IMS.csv")
+        if self.third_test:
+            return df
+        else:
+            return df[:21184]
 
     def getLabelsNames(self):
         return ['Normal', 'Degraded Outer Race', 'Outer Race Fault', 'Degraded Inner Race', 'Inner Race Fault',
