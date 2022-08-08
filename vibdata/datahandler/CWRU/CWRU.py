@@ -84,8 +84,8 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
     def __getitem__(self, i) -> dict:
         if(not hasattr(i, '__len__') and not isinstance(i, slice)):
             ret = self.__getitem__([i])
-            ret['signal'] = ret['signal'][i]
-            ret['metainfo'] = ret['metainfo'].iloc[i]
+            # ret['signal'] = ret['signal'].iloc[i]
+            # ret['metainfo'] = ret['metainfo'].iloc[i]
             return ret
         df = self.getMetaInfo()
         if(isinstance(i, slice)):
@@ -99,7 +99,6 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
             data = loadmat(os.path.join(self.raw_folder, f), simplify_cells=True, variable_names=[v])
             signal_datas[i] = data[v]
         signal_datas = signal_datas
-
         return {'signal': signal_datas, 'metainfo': rows}
 
     def __iter__(self):

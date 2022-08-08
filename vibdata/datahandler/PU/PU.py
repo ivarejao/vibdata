@@ -46,6 +46,20 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
             data = loadmat(full_fname, simplify_cells=True)[fname.split('.')[0]]
             sig = PU_raw._getVibration_1(data)
             return {'signal': sig, 'metainfo': data_i}
+        elif(isinstance(i, slice)):
+            range_idx = list(range(i.start, i.stop, i.step))
+
+            data_i = self._metainfo.iloc[i]
+            fname, bearing_code = data_i['file_name'], data_i['bearing_code']
+            signal_datas = np.empty(len(range_idx), dtype=object)
+            for j in range(len(range_idx)):
+                full_fname = os.path.join(self.raw_folder,
+                                          bearing_code.iloc[j],
+                                          fname.iloc[j])
+                data = loadmat(full_fname, simplify_cells=True)[fname.iloc[j].split('.')[0]]
+                signal_datas[j] = PU_raw._getVibration_1(data)
+
+            return {'signal': signal_datas, 'metainfo': data_i}
         return super().__getitem__(i)
 
     @staticmethod
@@ -65,3 +79,7 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
             data = loadmat(full_fname, simplify_cells=True)[f.split('.')[0]]
             sigs.append(PU_raw._getVibration_1(data))
         return {'signal': sigs, 'metainfo': metainfo}
+
+    def getLabelsNames(self) -> list:
+        return ['Normal', 'Outer ring Fault', 'Inner Ring Fault', 'OR + IR']
+

@@ -9,6 +9,7 @@ import pathlib
 import re
 import sys
 import tarfile
+import rarfile
 import urllib
 import urllib.error
 import urllib.request
@@ -259,8 +260,12 @@ def download_file_from_google_drive(file_id: str, root: str, filename: Optional[
 
     url = "https://drive.google.com/uc"
     params = dict(id=file_id, export="download")
+    print(f"Debug: {params}")
     with requests.Session() as session:
         response = session.get(url, params=params, stream=True)
+        other_response = session.get(url, params=params)
+        with open(root+"/thisout.html", "wb") as f:
+            f.write(other_response.content)
 
         for key, value in response.cookies.items():
             if key.startswith("download_warning"):
@@ -288,12 +293,14 @@ def _extract_tar(from_path: str, to_path: str, compression: Optional[str]) -> No
     with tarfile.open(from_path, f"r:{compression[1:]}" if compression else "r") as tar:
         tar.extractall(to_path)
 
+def _extract_rar(from_path: str, to_path: str, compression: Optional[str]) -> None:
+    with rarfile.RarFile(from_path) as rar:
+        rar.extractall(to_path)
 
 _ZIP_COMPRESSION_MAP: Dict[str, int] = {
     ".bz2": zipfile.ZIP_BZIP2,
     ".xz": zipfile.ZIP_LZMA,
 }
-
 
 def _extract_zip(from_path: str, to_path: str, compression: Optional[str]) -> None:
     with zipfile.ZipFile(
@@ -305,6 +312,7 @@ def _extract_zip(from_path: str, to_path: str, compression: Optional[str]) -> No
 _ARCHIVE_EXTRACTORS: Dict[str, Callable[[str, str, Optional[str]], None]] = {
     ".tar": _extract_tar,
     ".zip": _extract_zip,
+    ".rar": _extract_rar,
 }
 _COMPRESSED_FILE_OPENERS: Dict[str, Callable[..., IO]] = {
     ".bz2": bz2.open,

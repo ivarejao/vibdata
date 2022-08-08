@@ -1,12 +1,7 @@
 # Code made in Pycharm by Igor Varejao
 from termcolor import colored, cprint
 
-from vibdata.datahandler.IMS.IMS import IMS_raw
-from vibdata.datahandler.UOC.UOC import UOC_raw
-from vibdata.datahandler.XJTU.XJTU import XJTU_raw
-from vibdata.datahandler.MFPT.MFPT import MFPT_raw
-from vibdata.datahandler.SEU.SEU import SEU_raw
-from vibdata.datahandler.MAFAULDA.MAFAULDA import MAFAULDA_raw
+import vibdata.datahandler as base
 
 def testDataset(dataset_name: str, dataset_class):
     space_len = (13-len(dataset_name))//2
@@ -46,8 +41,12 @@ def testDataset(dataset_name: str, dataset_class):
 
 
 if __name__ == "__main__":
-    D = MAFAULDA_raw('/tmp', download=True)
-    testDataset("MAFAULDA", D)
-
-
-
+    modules = [base.CWRU_raw, base.EAS_raw, base.IMS_raw, base.MAFAULDA_raw, base.MFPT_raw, base.PU_raw, base.SEU_raw,
+               base.UOC_raw, base.XJTU_raw]
+    # modules = [base.UOC_raw, base.XJTU_raw, base.CWRU_raw]
+    modules = [base.CWRU_raw]
+    for dt in modules:
+        D = dt('/home/igor/Desktop/RPDBCS/Vibenet/local_data', download=True)
+        testDataset(str(type(D)), D)
+    # D = base.RPDBCS_raw('/home/igor/Desktop/RPDBCS/Vibenet/local_data', download=True, frequency_domain=True)
+    # testDataset(str(type(D)), D)
