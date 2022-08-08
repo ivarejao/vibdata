@@ -10,7 +10,6 @@ authors = ["Igor Varejão <imsvarejao@gmail.com>",
 python = ">=3.6.2"
 numpy = "^1.17.2"
 torch = "^1.7"
-torchvision = "^0.8.0"
 tqdm = "^4.0.0"
 requests = "^2.0.0"
 pandas = "~1.1.0"
