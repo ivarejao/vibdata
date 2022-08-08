@@ -19,11 +19,11 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
     resources = [('RPDBCS.zip', 'b87be8049fc642d57b7de7c631e8e529')]
 
     def __init__(self, root_dir: str, frequency_domain=False, download=False,
-                 **kwargs):
+                 n_points=6100, **kwargs):
         self.root_dir = root_dir
         self.frequency_domain = True
         self.dataset: Optional[np.ndarray] = None
-        self.n_points = 6100
+        self.n_points = n_points
 
         if download:
             super().__init__(root_dir=root_dir,
