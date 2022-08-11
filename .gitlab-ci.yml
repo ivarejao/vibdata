@@ -2,10 +2,10 @@ default:
     image: python:3.8
     before_script:
        - pip install -U pip
-       - pip install pytest 
-       - pip install -U .
+       - pip install poetry 
+       - poetry install
 stages:
     - test
 test:
     script:
-        - pytest
+        - poetry run pytest
