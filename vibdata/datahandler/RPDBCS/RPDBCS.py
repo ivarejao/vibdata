@@ -15,8 +15,8 @@ _labelNameToInt = {
 
 
 class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
-    urls = ["13KHGDnhkF5ZgcpVc90Rajovgwc27alX-"]
-    resources = [('RPDBCS.zip', 'b87be8049fc642d57b7de7c631e8e529')]
+    urls = ["1ATw19DjzDWbQKOqVKXPOIdOj7v2Vg61V"]
+    resources = [('RPDBCS-20221101.zip', '820dd009d911a7929eb769b53ba19b1d')]
 
     def __init__(self, root_dir: str, frequency_domain=False, download=False,
                  n_points=6100, **kwargs):
@@ -34,16 +34,22 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
             super().__init__(root_dir=root_dir,
                              download_resources=RPDBCS_raw.resources)
 
-        features_dir = Path(self.root_dir).joinpath('RPDBCS_raw', 'RPDBCS',
+        features_dir = Path(self.root_dir).joinpath('RPDBCS_raw',
+                                                    'RPDBCS-20221101',
                                                     'features.csv')
         self._metainfo = pd.read_csv(features_dir, sep=';')
 
     def _getDataset(self) -> np.ndarray:
         if self.dataset is None:
             dataset_dir = Path(self.root_dir).joinpath('RPDBCS_raw',
-                                                       'RPDBCS',
-                                                       'spectrum.csv')
-            self.dataset = np.loadtxt(dataset_dir, delimiter=';')
+                                                       'RPDBCS-20221101',
+                                                       'spectrum.npz')
+            dataset = []
+            with np.load(dataset_dir) as data:
+                for signal_id in self._metainfo['id']:
+                    signal = data[str(signal_id)][:self.n_points]
+                    dataset.append(signal)
+            self.dataset = np.array(dataset)
         return self.dataset
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
