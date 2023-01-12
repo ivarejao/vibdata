@@ -6,6 +6,7 @@ import os
 from vibdata.datahandler.utils import download_file_from_google_drive, extract_archive_and_remove
 from urllib.error import URLError
 
+
 class DownloadableDataset:
     def __init__(self, root_dir: str, download_resources: List[Tuple[str, str]], download_mirrors: List = None,
                  download_urls: List = None,
@@ -44,24 +45,24 @@ class DownloadableDataset:
     def _check_exists(self) -> bool:
         for url, _ in self.download_resources:
             fpath = os.path.join(self.raw_folder, url[:-4])
-            if(not os.path.isdir(fpath)):
+            if (not os.path.isdir(fpath)):
                 return False
         return True
 
     def download(self) -> None:
         """Download the dataset, if it doesn't exist already."""
 
-        if(self._check_exists()):
+        if (self._check_exists()):
             return
 
         os.makedirs(self.raw_folder, exist_ok=True)
 
         # download files
-        if(self.download_urls is None):
+        if (self.download_urls is None):
             urls_list = [[f"{mirror}/{filename}" for filename, _ in self.download_resources]
                          for mirror in self.download_mirrors]
         else:
-            if(isinstance(self.download_urls[0], str)):
+            if (isinstance(self.download_urls[0], str)):
                 urls_list = [self.download_urls]
             else:
                 urls_list = self.download_urls
@@ -70,9 +71,10 @@ class DownloadableDataset:
             for url_mirror in urls_list:
                 url = url_mirror[i]
                 try:
-                    if(self.extract_files):
+                    if (self.extract_files):
                         download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
-                        extract_archive_and_remove(self.raw_folder + f'/{filename}', self.raw_folder + f'/{filename[:-4]}')
+                        extract_archive_and_remove(self.raw_folder + f'/{filename}',
+                                                   self.raw_folder + f'/{filename[:-4]}')
                     else:
                         download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
                 except URLError as error:
@@ -86,6 +88,13 @@ class DownloadableDataset:
 
 
 class RawVibrationDataset:
+    labels = {'Normal': 0,
+           'Degraded Outer Race': 1,
+           'Outer Race': 2,
+           'Degraded Inner Race': 3,
+           'Inner Race': 4,
+           'Degraded Roller Race': 5, 'Roller Race': 6, 'Ball': 7, 'Cage': 8}
+
     def __iter__(self):
         for i in range(len(self)):
             yield self[i]
@@ -98,7 +107,7 @@ class RawVibrationDataset:
                 and 'metainfo', which returns the i-th row of the dataframe returned by `self.getMetaInfo`.
 
         """
-        if(hasattr(index, '__iter__')):
+        if (hasattr(index, '__iter__')):
             sigs = []
             metainfos = []
             for i in index:
@@ -133,4 +142,3 @@ class RawVibrationDataset:
 
     def getNumLabels(self) -> int:
         return len(self.getLabelsNames())
-
