@@ -54,15 +54,13 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
             super().__init__(root_dir=root_dir, download_resources=IMS_raw.resources, download_mirrors=None)
         self.third_test = with_thirdtest
 
-    def __getTest(self, idx):
-        if (idx < 17250):
+    def __getTest(self, ntest):
+        if ntest == 1:
             return '1st_test'
-        elif (17250 <= idx < 21184):
+        elif ntest == 2:
             return '2nd_test'
-        elif self.third_test:
-            return '3rd_test'
         else:
-            raise IndexError(f"{idx} out of range")
+            return '3rd_test'
 
     # Implement the abstract methods from RawVibrationalDataset
     # ---------------------------------------------------------
@@ -83,15 +81,18 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
             exit(1)
 
         file_name = rows['file_name']
+        tests = rows['test']
         bear_name = rows['bearing.position']
         signal_datas = np.empty(len(bear_name), dtype=object)
 
-        for i, (f, b, fidx) in enumerate(zip(file_name, bear_name, range_idx)):
-            file_data = np.loadtxt(os.path.join(self.raw_folder, f"{self.__getTest(fidx)}/{f}"), delimiter='\t', unpack=True)
+        for i, (f, b, t) in enumerate(zip(file_name, bear_name, tests)):
+            path_file = f"{self.__getTest(t)}/{f}"
+            file_data = np.loadtxt(os.path.join(self.raw_folder, path_file), delimiter='\t', unpack=True)
             signal_datas[i] = file_data[FirstTest.back_bearing(b), :]
         signal_datas = signal_datas
 
         return {'signal': signal_datas, 'metainfo': rows}
+
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         df = _get_package_resource_dataframe(__package__, "IMS.csv")
