@@ -88,12 +88,15 @@ class DownloadableDataset:
 
 
 class RawVibrationDataset:
-    labels = {'Normal': 0,
-           'Degraded Outer Race': 1,
-           'Outer Race': 2,
-           'Degraded Inner Race': 3,
-           'Inner Race': 4,
-           'Degraded Roller Race': 5, 'Roller Race': 6, 'Ball': 7, 'Cage': 8}
+    labels = {0: 'Normal',
+              1: 'Degraded Outer Race',
+              2: 'Outer Race',
+              3: 'Degraded Inner Race',
+              4: 'Inner Race',
+              5: 'Degraded Roller Race',
+              6: 'Roller Race',
+              7: 'Ball',
+              8: 'Cage'}
 
     def __iter__(self):
         for i in range(len(self)):
