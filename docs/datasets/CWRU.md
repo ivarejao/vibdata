@@ -27,7 +27,7 @@ Experiments were conducted using a 2 hp Reliance Electric motor, and acceleratio
 |    Ball    |       96       |
 | **Total**  |      294       |
 
-![image](./images/label_distribution_cwru.png)
+![image](../../images/CWRU/label_dist.png)
 
 
 #### Signal size distribution
@@ -77,7 +77,7 @@ Experiments were conducted using a 2 hp Reliance Electric motor, and acceleratio
 |  130549   |       2        |
 | **Total** |      294       |
 
-![image](./images/signalSize_distribution_cwru.png)
+![image](../../images/CWRU/signal_size_dist.png)
 
 
 #### Rotatory frequency distribution
@@ -89,4 +89,4 @@ Experiments were conducted using a 2 hp Reliance Electric motor, and acceleratio
 |     29.53      |       74       |
 |   **Total**    |      294       |
 
-![image](./images/frequency_distribution.png)
+![image](../../images/CWRU/frequency_dist.png)
