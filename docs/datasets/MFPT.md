@@ -7,13 +7,13 @@ This dataset provides access to bearing fault test to facilitate research into b
 
 - All data files are in Matlab double-precision (*.mat) format. The data structure holds the load, shaft rate, sample rate and a vector data.
 
-- Rotation: 25 Hz
+- Rotation Frequency: 25 Hz
 
 - Classes: Normal, Inner Race and Outer Race
 
 - Domain: Time
 
-- Sample rate: 48828 samples per second and 97656 samples per second
+- Sample Rate: 48828 and 97656 samples per second
 
 ## Summary
 
@@ -25,7 +25,7 @@ This dataset provides access to bearing fault test to facilitate research into b
 | Outer Race |       10       |
 | **Total**  |       20       |
 
-<!-- ![image](../../images/MFPT/label_dist.png) -->
+![image](../../images/MFPT/label_dist.png)
 
 
 #### Signal size distribution
@@ -35,7 +35,7 @@ This dataset provides access to bearing fault test to facilitate research into b
 |  585936   |       6        |
 | **Total** |       20       |
 
-<!-- ![image](../../images/MFPT/signal_size_dist.png) -->
+![image](../../images/MFPT/signal_size_dist.png)
 
 
 #### Rotatory frequency distribution
@@ -44,4 +44,4 @@ This dataset provides access to bearing fault test to facilitate research into b
 |       25       |       20       |
 |   **Total**    |       20       |
 
-<!-- ![image](../../images/MFPT/frequency_dist.png) -->
+![image](../../images/MFPT/frequency_dist.png)

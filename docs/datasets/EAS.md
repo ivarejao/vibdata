@@ -9,13 +9,13 @@ Datasets for 4 differently sized unbalances and for the unbalance-free case were
 
 - The dataset contains one csv file per measurement. All files are packed into one zip-file.
 
-- Rotation: Hz
+- Rotation Speed: 630 ~ 2330 RPM (Development Dataset) and 1060 ~ 1900 RPM (Evaluation Datasets)
 
 - Classes: Balanced and Unbalanced
 
 - Domain: Time
 
-- Sample rate: 4096 samples per second
+- Sample Rate: 4096 samples per second
 
 ## Summary
 
@@ -36,14 +36,3 @@ Datasets for 4 differently sized unbalances and for the unbalance-free case were
 | **Total** |                |
 
 <!-- ![image](../../images/EAS/signal_size_dist.png) -->
-
-
-#### Rotatory frequency distribution
-| Frequency (Hz) | Number samples |
-|:--------------:|:--------------:|
-|                |                |
-|                |                |
-|                |                |
-|   **Total**    |                |
-
-<!-- ![image](../../images/EAS/frequency_dist.png) -->

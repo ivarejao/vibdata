@@ -10,7 +10,9 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 
 - The run-to-failure data of 15 rolling element bearings are included in the data packet (XJTU-SY_Bearing_Datasets.zip). For each sampling, the acquired data were saved as a CSV file, in which the first column is the horizontal vibration signals and the second column is the vertical vibration signals.
 
-- Rotation: 35 ~ 40 Hz
+- Rotation Speed: 2100 ~ 2400 RPM
+
+- Rotation Frequency: 35 ~ 40 Hz
 
 - Classes: Inner Race, Outer Race and Cage
 
@@ -29,7 +31,7 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 |    NaN     |       2548     |
 | **Total**  |       9216     |
 
-<!-- ![image](../../images/XJTU/label_dist.png) -->
+![image](../../images/XJTU/label_dist.png)
 
 
 #### Signal size distribution
@@ -38,7 +40,7 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 |   32768   |      9216      |
 | **Total** |      9216      |
 
-<!-- ![image](../../images/XJTU/signal_size_dist.png) -->
+![image](../../images/XJTU/signal_size_dist.png)
 
 
 #### Rotatory frequency distribution
@@ -49,4 +51,4 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 |       40       |      7034      |
 |   **Total**    |      9216      |
 
-<!-- ![image](../../images/XJTU/frequency_dist.png) -->
+![image](../../images/XJTU/frequency_dist.png)
