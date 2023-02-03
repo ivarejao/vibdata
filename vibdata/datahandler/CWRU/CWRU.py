@@ -150,3 +150,6 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
         cwru_labels = self.getMetaInfo().label.unique()
         labels_name = [RawVibrationDataset.labels[l] for l in cwru_labels]
         return labels_name
+
+    def name(self):
+        return "CWRU"

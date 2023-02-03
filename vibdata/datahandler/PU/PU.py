@@ -83,3 +83,5 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
     def getLabelsNames(self) -> list:
         return ['Normal', 'Outer ring Fault', 'Inner Ring Fault', 'OR + IR']
 
+    def name(self):
+        return "PU"

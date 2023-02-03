@@ -60,3 +60,6 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
 
     def getLabelsNames(self):
         return ['Healthy', 'Missing Tooth', 'Root Crack', 'Spalling', 'Chipping Tip']    
+
+    def name(self):
+        return "UOC"

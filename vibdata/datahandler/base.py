@@ -88,15 +88,6 @@ class DownloadableDataset:
 
 
 class RawVibrationDataset:
-    labels = {0: 'Normal',
-              1: 'Degraded Outer Race',
-              2: 'Outer Race',
-              3: 'Degraded Inner Race',
-              4: 'Inner Race',
-              5: 'Degraded Roller Race',
-              6: 'Roller Race',
-              7: 'Ball',
-              8: 'Cage'}
 
     def __iter__(self):
         for i in range(len(self)):
@@ -124,6 +115,14 @@ class RawVibrationDataset:
 
     def __len__(self):
         return len(self.getMetaInfo())
+
+    @property
+    @abstractmethod
+    def name(self) -> str:
+        """
+        This should return the name of the dataset
+        """
+        pass
 
     @abstractmethod
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:

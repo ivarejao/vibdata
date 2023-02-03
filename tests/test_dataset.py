@@ -1,9 +1,22 @@
-# Code made in Pycharm by Igor Varejao
 from termcolor import colored, cprint
+import vibdata.datahandler as datahandler
+from vibdata.datahandler.base import RawVibrationDataset
+from argparse import ArgumentParser
 
-import vibdata.datahandler as base
+def parse_args():
+    """
+    Parse args
+    """
+    parser = ArgumentParser()
+    parser.add_argument("--root-dir", help="The directory where data will be stored", required=True)
 
-def testDataset(dataset_name: str, dataset_class):
+    args = parser.parse_args()
+    return args
+
+def test_dataset(dataset_name: str, dataset_class : RawVibrationDataset) -> None:
+    """
+    Test the essencial methods of RawVibrationDataset
+    """
     space_len = (13-len(dataset_name))//2
     print(colored("---------------\n" +
                   "|" + " "*space_len + dataset_name + " "*space_len + "|\n" +
@@ -41,12 +54,14 @@ def testDataset(dataset_name: str, dataset_class):
 
 
 if __name__ == "__main__":
-    modules = [base.CWRU_raw, base.EAS_raw, base.IMS_raw, base.MAFAULDA_raw, base.MFPT_raw, base.PU_raw, base.SEU_raw,
-               base.UOC_raw, base.XJTU_raw]
-    # modules = [base.UOC_raw, base.XJTU_raw, base.CWRU_raw]
-    modules = [base.CWRU_raw]
-    for dt in modules:
-        D = dt('/home/igor/Desktop/RPDBCS/Vibenet/local_data', download=True)
-        testDataset(str(type(D)), D)
-    # D = base.RPDBCS_raw('/home/igor/Desktop/RPDBCS/Vibenet/local_data', download=True, frequency_domain=True)
-    # testDataset(str(type(D)), D)
+    # Define the arguments
+    args = parse_args()
+    root_dir = args.root_dir
+
+    # modules = [datahandler.CWRU_raw, datahandler.EAS_raw, datahandler.IMS_raw, datahandler.MAFAULDA_raw, datahandler.MFPT_raw, datahandler.PU_raw, datahandler.SEU_raw,
+    #            datahandler.UOC_raw, datahandler.XJTU_raw]
+    modules = [datahandler.CWRU_raw]
+    for dataset in modules:
+        D = dataset(root_dir, download=True)
+        test_dataset(D.name(), D)
+

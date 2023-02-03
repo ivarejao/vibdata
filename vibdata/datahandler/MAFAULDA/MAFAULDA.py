@@ -103,3 +103,6 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
         return ['normal', 'horizontal_misalignment', 'vertical_misalignment', 'imbalance',
                 'underhang.cage_fault', 'underhang.outer_race', 'underhang.ball_fault',
                 'overhang.cage_fault', 'overhang.outer_race', 'overhang.ball_fault']
+
+    def name(self):
+        return "MAFAULDA"

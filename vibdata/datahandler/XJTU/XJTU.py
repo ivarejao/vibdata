@@ -84,3 +84,6 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
 
     def getLabelsNames(self):
         return ['Normal', 'Outer Race', 'Cage', 'Inner Race', 'NaN']  
+
+    def name(self):
+        return "XJTU"

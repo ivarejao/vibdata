@@ -62,3 +62,6 @@ class SEU_raw(RawVibrationDataset, DownloadableDataset):
             channels = channels.iloc[:, :8]
             sigs.append(channels.values.T)
         return {'signal': np.vstack(sigs), 'metainfo': self.getMetaInfo()}
+
+    def name(self):
+        return "SEU"

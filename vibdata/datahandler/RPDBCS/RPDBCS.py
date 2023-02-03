@@ -79,3 +79,6 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
     def getLabelsNames(self):
         return ['Normal', 'Rubbing', 'Faulty sensor', 'Misalignment',
                 'Unbalance']
+
+    def name(self):
+        return "RPDBCS"

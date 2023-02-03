@@ -66,3 +66,6 @@ class EAS_raw(RawVibrationDataset, DownloadableDataset):
 
     def getLabelsNames(self):
         return ['balanced','unbalanced']    
+
+    def name(self):
+        return "EAS"

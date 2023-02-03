@@ -49,3 +49,6 @@ class MFPT_raw(RawVibrationDataset, DownloadableDataset):
 
     def getLabelsNames(self):
         return ['Normal', 'Outer Race', 'Inner Race']
+
+    def name(self):
+        return "MFPT"
