@@ -1,4 +1,4 @@
-ile_name,label,unbalance_factor,sample_rate,first_position,last_position,volts
+file_name,label,unbalance_factor,sample_rate,first_position,last_position,volts
 0D.csv,balanced,0,4096,12288,94207,2.0
 0D.csv,balanced,0,4096,94208,176127,2.05
 0D.csv,balanced,0,4096,176128,258047,2.1
