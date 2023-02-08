@@ -1,21 +1,21 @@
 file_name,sample_rate,load,rotation_hz,dir_name,label
-1 - Three Baseline Conditions/baseline_1.mat,97656,270,25,1 - Three Baseline Conditions,Normal
-1 - Three Baseline Conditions/baseline_2.mat,97656,270,25,1 - Three Baseline Conditions,Normal
-1 - Three Baseline Conditions/baseline_3.mat,97656,270,25,1 - Three Baseline Conditions,Normal
-2 - Three Outer Race Fault Conditions/OuterRaceFault_1.mat,97656,270,25,2 - Three Outer Race Fault Conditions,Outer Race
-2 - Three Outer Race Fault Conditions/OuterRaceFault_2.mat,97656,270,25,2 - Three Outer Race Fault Conditions,Outer Race
-2 - Three Outer Race Fault Conditions/OuterRaceFault_3.mat,97656,270,25,2 - Three Outer Race Fault Conditions,Outer Race
-3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_1.mat,48828,25,25,3 - Seven More Outer Race Fault Conditions,Outer Race
-3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_2.mat,48828,50,25,3 - Seven More Outer Race Fault Conditions,Outer Race
-3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_3.mat,48828,100,25,3 - Seven More Outer Race Fault Conditions,Outer Race
-3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_4.mat,48828,150,25,3 - Seven More Outer Race Fault Conditions,Outer Race
-3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_5.mat,48828,200,25,3 - Seven More Outer Race Fault Conditions,Outer Race
-3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_6.mat,48828,250,25,3 - Seven More Outer Race Fault Conditions,Outer Race
-3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_7.mat,48828,300,25,3 - Seven More Outer Race Fault Conditions,Outer Race
-4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_1.mat,48828,0,25,4 - Seven Inner Race Fault Conditions,Inner Race
-4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_2.mat,48828,50,25,4 - Seven Inner Race Fault Conditions,Inner Race
-4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_3.mat,48828,100,25,4 - Seven Inner Race Fault Conditions,Inner Race
-4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_4.mat,48828,150,25,4 - Seven Inner Race Fault Conditions,Inner Race
-4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_5.mat,48828,200,25,4 - Seven Inner Race Fault Conditions,Inner Race
-4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_6.mat,48828,250,25,4 - Seven Inner Race Fault Conditions,Inner Race
-4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_7.mat,48828,300,25,4 - Seven Inner Race Fault Conditions,Inner Race
+1 - Three Baseline Conditions/baseline_1.mat,97656,270,25,1 - Three Baseline Conditions,23
+1 - Three Baseline Conditions/baseline_2.mat,97656,270,25,1 - Three Baseline Conditions,23
+1 - Three Baseline Conditions/baseline_3.mat,97656,270,25,1 - Three Baseline Conditions,23
+2 - Three Outer Race Fault Conditions/OuterRaceFault_1.mat,97656,270,25,2 - Three Outer Race Fault Conditions,25
+2 - Three Outer Race Fault Conditions/OuterRaceFault_2.mat,97656,270,25,2 - Three Outer Race Fault Conditions,25
+2 - Three Outer Race Fault Conditions/OuterRaceFault_3.mat,97656,270,25,2 - Three Outer Race Fault Conditions,25
+3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_1.mat,48828,25,25,3 - Seven More Outer Race Fault Conditions,25
+3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_2.mat,48828,50,25,3 - Seven More Outer Race Fault Conditions,25
+3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_3.mat,48828,100,25,3 - Seven More Outer Race Fault Conditions,25
+3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_4.mat,48828,150,25,3 - Seven More Outer Race Fault Conditions,25
+3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_5.mat,48828,200,25,3 - Seven More Outer Race Fault Conditions,25
+3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_6.mat,48828,250,25,3 - Seven More Outer Race Fault Conditions,25
+3 - Seven More Outer Race Fault Conditions/OuterRaceFault_vload_7.mat,48828,300,25,3 - Seven More Outer Race Fault Conditions,25
+4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_1.mat,48828,0,25,4 - Seven Inner Race Fault Conditions,24
+4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_2.mat,48828,50,25,4 - Seven Inner Race Fault Conditions,24
+4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_3.mat,48828,100,25,4 - Seven Inner Race Fault Conditions,24
+4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_4.mat,48828,150,25,4 - Seven Inner Race Fault Conditions,24
+4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_5.mat,48828,200,25,4 - Seven Inner Race Fault Conditions,24
+4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_6.mat,48828,250,25,4 - Seven Inner Race Fault Conditions,24
+4 - Seven Inner Race Fault Conditions/InnerRaceFault_vload_7.mat,48828,300,25,4 - Seven Inner Race Fault Conditions,24

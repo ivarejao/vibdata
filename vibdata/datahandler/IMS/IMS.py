@@ -101,9 +101,5 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
         else:
             return df[:21184]
 
-    def getLabelsNames(self):
-        return ['Normal', 'Degraded Outer Race', 'Outer Race Fault', 'Degraded Inner Race', 'Inner Race Fault',
-                'Degraded Roller Race', 'Roller Race Fault']
-
     def name(self):
         return "IMS"

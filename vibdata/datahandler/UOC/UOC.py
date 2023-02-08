@@ -58,8 +58,5 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
         sigs = loadmat(full_fname, simplify_cells=True)[file_info[1]]
         return {'signal': sigs, 'metainfo': metainfo}
 
-    def getLabelsNames(self):
-        return ['Healthy', 'Missing Tooth', 'Root Crack', 'Spalling', 'Chipping Tip']    
-
     def name(self):
         return "UOC"

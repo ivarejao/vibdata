@@ -64,8 +64,5 @@ class EAS_raw(RawVibrationDataset, DownloadableDataset):
             sigs.append(data[['Vibration_1','Vibration_2','Vibration_3']])
         return {'signal': sigs, 'metainfo': metainfo}
 
-    def getLabelsNames(self):
-        return ['balanced','unbalanced']    
-
     def name(self):
         return "EAS"

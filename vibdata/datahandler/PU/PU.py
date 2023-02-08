@@ -80,8 +80,5 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
             sigs.append(PU_raw._getVibration_1(data))
         return {'signal': sigs, 'metainfo': metainfo}
 
-    def getLabelsNames(self) -> list:
-        return ['Normal', 'Outer ring Fault', 'Inner Ring Fault', 'OR + IR']
-
     def name(self):
         return "PU"

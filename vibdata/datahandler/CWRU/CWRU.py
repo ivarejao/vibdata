@@ -113,6 +113,7 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
 
     def __init__(self, root_dir: str, download=False):
         if (download):
+            print(f"Downloading {self.name()}")
             super().__init__(root_dir=root_dir, download_resources=CWRU_raw.resources, download_urls=CWRU_raw.mirrors,
                              extract_files=True)
         else:
@@ -145,11 +146,6 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         df = _get_package_resource_dataframe(__package__, "CWRU.csv")
         return df
-
-    def getLabelsNames(self):
-        cwru_labels = self.getMetaInfo().label.unique()
-        labels_name = [RawVibrationDataset.labels[l] for l in cwru_labels]
-        return labels_name
 
     def name(self):
         return "CWRU"

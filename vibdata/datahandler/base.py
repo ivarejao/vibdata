@@ -1,9 +1,10 @@
 from abc import abstractmethod
-from typing import Dict, List, Sequence, Tuple, Optional
+from typing import Dict, List, Sequence, Tuple, Optional, Union
 import pandas as pd
 import numpy as np
 import os
 from vibdata.datahandler.utils import download_file_from_google_drive, extract_archive_and_remove
+from vibdata.definitions import LABELS_PATH
 from urllib.error import URLError
 
 
@@ -116,13 +117,12 @@ class RawVibrationDataset:
     def __len__(self):
         return len(self.getMetaInfo())
 
-    @property
     @abstractmethod
     def name(self) -> str:
         """
         This should return the name of the dataset
         """
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
@@ -135,12 +135,8 @@ class RawVibrationDataset:
         """
         raise NotImplementedError
 
-    def getLabels(self, as_str=False):
-        return self.getMetaInfo(labels_as_str=as_str)['label'].values
-
-    @abstractmethod
-    def getLabelsNames(self) -> Sequence[str]:
-        raise NotImplementedError
-
-    def getNumLabels(self) -> int:
-        return len(self.getLabelsNames())
+    def getLabels(self, as_str=False) -> Union[List[int], List[str]]:
+        df = pd.read_csv(LABELS_PATH)
+        meta_labels = df.loc[df['dataset'] == self.name()]
+        labels = meta_labels['label'] if as_str else meta_labels['id']
+        return labels.tolist()

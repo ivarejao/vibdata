@@ -1,937 +1,937 @@
 file_name,position,label,class,severity,class_label,sample_rate
-DataForClassification_TimeDomain.mat,0,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,1,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,2,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,3,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,4,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,5,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,6,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,7,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,8,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,9,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,10,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,11,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,12,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,13,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,14,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,15,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,16,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,17,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,18,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,19,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,20,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,21,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,22,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,23,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,24,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,25,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,26,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,27,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,28,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,29,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,30,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,31,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,32,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,33,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,34,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,35,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,36,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,37,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,38,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,39,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,40,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,41,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,42,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,43,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,44,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,45,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,46,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,47,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,48,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,49,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,50,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,51,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,52,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,53,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,54,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,55,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,56,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,57,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,58,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,59,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,60,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,61,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,62,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,63,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,64,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,65,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,66,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,67,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,68,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,69,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,70,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,71,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,72,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,73,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,74,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,75,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,76,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,77,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,78,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,79,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,80,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,81,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,82,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,83,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,84,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,85,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,86,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,87,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,88,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,89,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,90,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,91,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,92,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,93,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,94,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,95,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,96,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,97,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,98,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,99,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,100,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,101,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,102,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,103,0,Healthy,-,HT,20000
-DataForClassification_TimeDomain.mat,104,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,105,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,106,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,107,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,108,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,109,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,110,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,111,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,112,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,113,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,114,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,115,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,116,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,117,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,118,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,119,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,120,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,121,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,122,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,123,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,124,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,125,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,126,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,127,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,128,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,129,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,130,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,131,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,132,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,133,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,134,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,135,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,136,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,137,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,138,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,139,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,140,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,141,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,142,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,143,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,144,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,145,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,146,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,147,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,148,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,149,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,150,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,151,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,152,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,153,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,154,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,155,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,156,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,157,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,158,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,159,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,160,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,161,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,162,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,163,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,164,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,165,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,166,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,167,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,168,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,169,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,170,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,171,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,172,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,173,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,174,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,175,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,176,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,177,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,178,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,179,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,180,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,181,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,182,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,183,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,184,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,185,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,186,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,187,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,188,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,189,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,190,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,191,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,192,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,193,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,194,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,195,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,196,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,197,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,198,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,199,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,200,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,201,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,202,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,203,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,204,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,205,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,206,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,207,1,Missing Tooth,-,MT,20000
-DataForClassification_TimeDomain.mat,208,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,209,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,210,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,211,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,212,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,213,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,214,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,215,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,216,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,217,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,218,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,219,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,220,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,221,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,222,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,223,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,224,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,225,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,226,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,227,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,228,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,229,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,230,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,231,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,232,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,233,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,234,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,235,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,236,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,237,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,238,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,239,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,240,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,241,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,242,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,243,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,244,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,245,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,246,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,247,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,248,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,249,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,250,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,251,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,252,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,253,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,254,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,255,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,256,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,257,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,258,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,259,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,260,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,261,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,262,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,263,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,264,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,265,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,266,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,267,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,268,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,269,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,270,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,271,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,272,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,273,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,274,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,275,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,276,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,277,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,278,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,279,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,280,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,281,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,282,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,283,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,284,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,285,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,286,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,287,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,288,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,289,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,290,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,291,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,292,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,293,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,294,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,295,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,296,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,297,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,298,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,299,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,300,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,301,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,302,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,303,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,304,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,305,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,306,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,307,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,308,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,309,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,310,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,311,2,Root Crack,-,RT,20000
-DataForClassification_TimeDomain.mat,312,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,313,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,314,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,315,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,316,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,317,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,318,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,319,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,320,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,321,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,322,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,323,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,324,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,325,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,326,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,327,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,328,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,329,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,330,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,331,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,332,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,333,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,334,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,335,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,336,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,337,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,338,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,339,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,340,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,341,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,342,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,343,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,344,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,345,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,346,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,347,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,348,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,349,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,350,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,351,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,352,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,353,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,354,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,355,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,356,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,357,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,358,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,359,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,360,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,361,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,362,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,363,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,364,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,365,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,366,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,367,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,368,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,369,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,370,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,371,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,372,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,373,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,374,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,375,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,376,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,377,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,378,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,379,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,380,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,381,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,382,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,383,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,384,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,385,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,386,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,387,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,388,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,389,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,390,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,391,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,392,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,393,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,394,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,395,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,396,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,397,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,398,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,399,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,400,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,401,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,402,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,403,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,404,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,405,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,406,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,407,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,408,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,409,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,410,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,411,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,412,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,413,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,414,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,415,3,Spalling,-,SP,20000
-DataForClassification_TimeDomain.mat,416,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,417,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,418,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,419,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,420,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,421,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,422,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,423,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,424,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,425,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,426,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,427,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,428,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,429,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,430,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,431,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,432,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,433,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,434,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,435,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,436,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,437,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,438,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,439,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,440,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,441,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,442,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,443,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,444,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,445,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,446,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,447,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,448,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,449,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,450,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,451,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,452,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,453,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,454,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,455,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,456,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,457,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,458,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,459,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,460,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,461,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,462,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,463,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,464,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,465,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,466,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,467,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,468,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,469,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,470,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,471,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,472,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,473,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,474,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,475,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,476,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,477,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,478,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,479,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,480,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,481,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,482,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,483,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,484,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,485,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,486,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,487,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,488,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,489,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,490,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,491,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,492,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,493,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,494,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,495,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,496,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,497,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,498,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,499,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,500,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,501,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,502,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,503,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,504,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,505,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,506,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,507,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,508,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,509,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,510,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,511,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,512,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,513,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,514,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,515,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,516,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,517,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,518,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,519,4,Chipping Tip,1,CT1,20000
-DataForClassification_TimeDomain.mat,520,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,521,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,522,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,523,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,524,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,525,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,526,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,527,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,528,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,529,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,530,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,531,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,532,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,533,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,534,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,535,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,536,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,537,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,538,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,539,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,540,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,541,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,542,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,543,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,544,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,545,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,546,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,547,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,548,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,549,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,550,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,551,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,552,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,553,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,554,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,555,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,556,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,557,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,558,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,559,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,560,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,561,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,562,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,563,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,564,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,565,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,566,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,567,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,568,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,569,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,570,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,571,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,572,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,573,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,574,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,575,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,576,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,577,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,578,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,579,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,580,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,581,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,582,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,583,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,584,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,585,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,586,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,587,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,588,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,589,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,590,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,591,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,592,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,593,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,594,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,595,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,596,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,597,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,598,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,599,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,600,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,601,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,602,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,603,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,604,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,605,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,606,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,607,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,608,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,609,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,610,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,611,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,612,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,613,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,614,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,615,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,616,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,617,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,618,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,619,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,620,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,621,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,622,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,623,5,Chipping Tip,2,CT2,20000
-DataForClassification_TimeDomain.mat,624,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,625,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,626,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,627,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,628,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,629,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,630,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,631,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,632,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,633,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,634,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,635,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,636,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,637,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,638,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,639,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,640,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,641,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,642,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,643,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,644,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,645,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,646,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,647,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,648,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,649,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,650,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,651,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,652,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,653,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,654,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,655,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,656,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,657,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,658,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,659,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,660,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,661,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,662,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,663,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,664,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,665,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,666,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,667,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,668,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,669,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,670,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,671,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,672,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,673,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,674,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,675,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,676,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,677,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,678,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,679,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,680,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,681,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,682,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,683,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,684,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,685,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,686,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,687,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,688,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,689,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,690,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,691,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,692,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,693,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,694,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,695,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,696,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,697,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,698,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,699,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,700,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,701,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,702,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,703,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,704,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,705,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,706,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,707,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,708,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,709,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,710,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,711,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,712,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,713,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,714,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,715,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,716,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,717,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,718,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,719,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,720,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,721,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,722,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,723,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,724,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,725,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,726,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,727,6,Chipping Tip,3,CT3,20000
-DataForClassification_TimeDomain.mat,728,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,729,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,730,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,731,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,732,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,733,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,734,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,735,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,736,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,737,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,738,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,739,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,740,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,741,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,742,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,743,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,744,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,745,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,746,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,747,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,748,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,749,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,750,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,751,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,752,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,753,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,754,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,755,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,756,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,757,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,758,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,759,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,760,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,761,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,762,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,763,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,764,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,765,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,766,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,767,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,768,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,769,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,770,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,771,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,772,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,773,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,774,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,775,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,776,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,777,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,778,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,779,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,780,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,781,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,782,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,783,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,784,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,785,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,786,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,787,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,788,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,789,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,790,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,791,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,792,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,793,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,794,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,795,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,796,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,797,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,798,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,799,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,800,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,801,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,802,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,803,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,804,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,805,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,806,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,807,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,808,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,809,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,810,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,811,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,812,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,813,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,814,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,815,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,816,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,817,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,818,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,819,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,820,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,821,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,822,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,823,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,824,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,825,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,826,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,827,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,828,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,829,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,830,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,831,7,Chipping Tip,4,CT4,20000
-DataForClassification_TimeDomain.mat,832,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,833,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,834,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,835,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,836,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,837,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,838,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,839,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,840,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,841,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,842,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,843,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,844,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,845,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,846,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,847,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,848,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,849,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,850,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,851,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,852,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,853,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,854,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,855,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,856,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,857,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,858,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,859,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,860,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,861,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,862,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,863,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,864,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,865,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,866,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,867,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,868,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,869,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,870,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,871,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,872,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,873,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,874,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,875,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,876,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,877,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,878,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,879,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,880,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,881,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,882,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,883,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,884,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,885,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,886,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,887,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,888,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,889,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,890,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,891,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,892,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,893,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,894,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,895,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,896,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,897,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,898,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,899,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,900,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,901,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,902,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,903,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,904,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,905,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,906,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,907,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,908,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,909,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,910,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,911,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,912,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,913,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,914,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,915,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,916,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,917,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,918,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,919,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,920,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,921,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,922,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,923,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,924,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,925,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,926,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,927,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,928,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,929,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,930,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,931,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,932,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,933,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,934,8,Chipping Tip,5,CT5,20000
-DataForClassification_TimeDomain.mat,935,8,Chipping Tip,5,CT5,20000
+DataForClassification_TimeDomain.mat,0,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,1,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,2,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,3,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,4,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,5,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,6,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,7,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,8,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,9,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,10,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,11,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,12,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,13,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,14,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,15,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,16,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,17,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,18,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,19,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,20,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,21,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,22,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,23,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,24,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,25,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,26,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,27,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,28,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,29,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,30,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,31,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,32,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,33,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,34,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,35,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,36,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,37,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,38,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,39,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,40,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,41,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,42,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,43,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,44,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,45,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,46,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,47,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,48,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,49,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,50,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,51,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,52,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,53,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,54,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,55,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,56,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,57,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,58,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,59,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,60,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,61,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,62,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,63,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,64,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,65,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,66,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,67,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,68,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,69,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,70,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,71,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,72,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,73,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,74,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,75,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,76,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,77,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,78,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,79,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,80,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,81,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,82,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,83,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,84,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,85,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,86,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,87,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,88,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,89,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,90,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,91,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,92,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,93,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,94,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,95,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,96,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,97,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,98,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,99,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,100,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,101,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,102,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,103,0,35,-,HT,20000
+DataForClassification_TimeDomain.mat,104,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,105,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,106,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,107,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,108,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,109,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,110,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,111,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,112,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,113,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,114,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,115,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,116,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,117,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,118,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,119,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,120,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,121,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,122,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,123,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,124,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,125,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,126,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,127,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,128,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,129,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,130,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,131,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,132,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,133,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,134,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,135,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,136,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,137,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,138,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,139,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,140,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,141,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,142,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,143,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,144,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,145,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,146,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,147,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,148,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,149,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,150,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,151,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,152,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,153,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,154,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,155,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,156,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,157,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,158,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,159,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,160,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,161,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,162,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,163,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,164,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,165,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,166,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,167,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,168,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,169,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,170,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,171,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,172,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,173,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,174,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,175,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,176,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,177,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,178,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,179,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,180,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,181,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,182,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,183,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,184,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,185,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,186,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,187,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,188,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,189,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,190,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,191,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,192,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,193,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,194,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,195,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,196,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,197,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,198,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,199,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,200,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,201,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,202,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,203,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,204,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,205,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,206,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,207,1,36,-,MT,20000
+DataForClassification_TimeDomain.mat,208,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,209,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,210,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,211,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,212,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,213,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,214,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,215,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,216,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,217,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,218,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,219,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,220,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,221,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,222,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,223,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,224,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,225,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,226,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,227,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,228,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,229,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,230,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,231,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,232,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,233,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,234,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,235,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,236,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,237,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,238,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,239,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,240,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,241,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,242,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,243,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,244,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,245,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,246,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,247,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,248,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,249,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,250,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,251,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,252,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,253,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,254,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,255,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,256,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,257,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,258,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,259,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,260,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,261,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,262,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,263,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,264,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,265,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,266,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,267,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,268,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,269,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,270,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,271,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,272,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,273,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,274,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,275,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,276,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,277,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,278,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,279,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,280,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,281,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,282,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,283,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,284,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,285,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,286,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,287,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,288,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,289,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,290,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,291,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,292,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,293,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,294,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,295,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,296,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,297,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,298,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,299,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,300,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,301,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,302,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,303,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,304,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,305,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,306,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,307,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,308,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,309,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,310,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,311,2,37,-,RT,20000
+DataForClassification_TimeDomain.mat,312,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,313,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,314,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,315,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,316,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,317,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,318,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,319,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,320,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,321,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,322,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,323,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,324,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,325,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,326,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,327,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,328,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,329,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,330,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,331,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,332,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,333,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,334,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,335,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,336,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,337,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,338,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,339,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,340,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,341,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,342,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,343,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,344,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,345,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,346,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,347,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,348,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,349,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,350,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,351,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,352,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,353,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,354,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,355,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,356,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,357,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,358,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,359,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,360,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,361,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,362,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,363,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,364,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,365,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,366,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,367,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,368,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,369,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,370,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,371,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,372,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,373,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,374,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,375,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,376,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,377,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,378,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,379,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,380,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,381,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,382,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,383,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,384,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,385,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,386,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,387,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,388,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,389,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,390,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,391,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,392,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,393,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,394,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,395,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,396,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,397,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,398,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,399,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,400,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,401,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,402,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,403,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,404,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,405,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,406,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,407,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,408,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,409,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,410,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,411,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,412,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,413,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,414,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,415,3,38,-,SP,20000
+DataForClassification_TimeDomain.mat,416,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,417,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,418,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,419,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,420,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,421,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,422,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,423,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,424,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,425,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,426,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,427,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,428,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,429,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,430,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,431,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,432,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,433,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,434,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,435,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,436,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,437,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,438,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,439,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,440,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,441,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,442,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,443,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,444,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,445,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,446,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,447,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,448,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,449,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,450,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,451,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,452,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,453,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,454,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,455,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,456,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,457,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,458,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,459,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,460,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,461,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,462,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,463,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,464,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,465,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,466,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,467,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,468,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,469,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,470,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,471,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,472,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,473,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,474,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,475,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,476,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,477,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,478,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,479,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,480,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,481,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,482,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,483,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,484,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,485,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,486,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,487,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,488,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,489,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,490,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,491,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,492,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,493,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,494,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,495,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,496,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,497,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,498,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,499,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,500,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,501,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,502,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,503,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,504,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,505,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,506,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,507,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,508,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,509,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,510,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,511,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,512,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,513,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,514,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,515,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,516,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,517,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,518,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,519,4,39,1,CT1,20000
+DataForClassification_TimeDomain.mat,520,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,521,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,522,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,523,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,524,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,525,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,526,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,527,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,528,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,529,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,530,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,531,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,532,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,533,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,534,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,535,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,536,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,537,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,538,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,539,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,540,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,541,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,542,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,543,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,544,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,545,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,546,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,547,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,548,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,549,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,550,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,551,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,552,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,553,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,554,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,555,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,556,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,557,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,558,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,559,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,560,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,561,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,562,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,563,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,564,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,565,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,566,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,567,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,568,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,569,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,570,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,571,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,572,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,573,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,574,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,575,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,576,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,577,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,578,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,579,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,580,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,581,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,582,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,583,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,584,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,585,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,586,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,587,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,588,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,589,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,590,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,591,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,592,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,593,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,594,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,595,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,596,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,597,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,598,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,599,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,600,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,601,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,602,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,603,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,604,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,605,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,606,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,607,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,608,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,609,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,610,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,611,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,612,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,613,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,614,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,615,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,616,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,617,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,618,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,619,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,620,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,621,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,622,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,623,5,39,2,CT2,20000
+DataForClassification_TimeDomain.mat,624,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,625,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,626,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,627,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,628,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,629,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,630,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,631,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,632,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,633,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,634,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,635,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,636,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,637,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,638,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,639,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,640,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,641,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,642,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,643,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,644,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,645,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,646,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,647,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,648,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,649,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,650,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,651,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,652,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,653,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,654,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,655,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,656,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,657,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,658,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,659,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,660,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,661,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,662,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,663,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,664,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,665,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,666,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,667,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,668,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,669,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,670,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,671,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,672,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,673,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,674,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,675,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,676,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,677,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,678,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,679,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,680,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,681,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,682,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,683,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,684,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,685,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,686,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,687,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,688,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,689,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,690,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,691,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,692,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,693,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,694,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,695,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,696,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,697,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,698,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,699,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,700,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,701,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,702,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,703,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,704,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,705,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,706,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,707,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,708,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,709,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,710,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,711,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,712,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,713,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,714,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,715,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,716,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,717,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,718,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,719,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,720,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,721,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,722,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,723,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,724,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,725,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,726,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,727,6,39,3,CT3,20000
+DataForClassification_TimeDomain.mat,728,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,729,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,730,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,731,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,732,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,733,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,734,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,735,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,736,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,737,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,738,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,739,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,740,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,741,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,742,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,743,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,744,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,745,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,746,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,747,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,748,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,749,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,750,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,751,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,752,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,753,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,754,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,755,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,756,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,757,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,758,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,759,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,760,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,761,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,762,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,763,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,764,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,765,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,766,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,767,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,768,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,769,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,770,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,771,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,772,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,773,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,774,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,775,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,776,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,777,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,778,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,779,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,780,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,781,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,782,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,783,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,784,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,785,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,786,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,787,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,788,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,789,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,790,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,791,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,792,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,793,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,794,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,795,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,796,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,797,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,798,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,799,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,800,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,801,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,802,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,803,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,804,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,805,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,806,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,807,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,808,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,809,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,810,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,811,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,812,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,813,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,814,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,815,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,816,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,817,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,818,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,819,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,820,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,821,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,822,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,823,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,824,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,825,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,826,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,827,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,828,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,829,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,830,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,831,7,39,4,CT4,20000
+DataForClassification_TimeDomain.mat,832,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,833,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,834,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,835,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,836,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,837,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,838,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,839,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,840,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,841,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,842,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,843,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,844,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,845,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,846,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,847,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,848,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,849,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,850,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,851,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,852,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,853,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,854,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,855,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,856,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,857,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,858,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,859,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,860,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,861,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,862,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,863,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,864,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,865,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,866,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,867,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,868,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,869,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,870,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,871,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,872,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,873,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,874,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,875,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,876,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,877,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,878,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,879,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,880,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,881,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,882,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,883,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,884,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,885,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,886,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,887,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,888,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,889,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,890,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,891,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,892,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,893,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,894,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,895,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,896,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,897,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,898,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,899,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,900,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,901,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,902,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,903,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,904,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,905,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,906,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,907,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,908,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,909,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,910,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,911,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,912,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,913,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,914,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,915,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,916,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,917,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,918,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,919,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,920,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,921,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,922,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,923,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,924,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,925,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,926,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,927,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,928,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,929,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,930,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,931,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,932,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,933,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,934,8,39,5,CT5,20000
+DataForClassification_TimeDomain.mat,935,8,39,5,CT5,20000

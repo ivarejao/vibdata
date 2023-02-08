@@ -47,8 +47,5 @@ class MFPT_raw(RawVibrationDataset, DownloadableDataset):
         df = _get_package_resource_dataframe(__package__, "MFPT.csv")
         return df
 
-    def getLabelsNames(self):
-        return ['Normal', 'Outer Race', 'Inner Race']
-
     def name(self):
         return "MFPT"
