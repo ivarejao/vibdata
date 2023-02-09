@@ -1,6 +1,8 @@
 import argparse
 import random
 
+import numpy as np
+import pandas as pd
 from termcolor import colored, cprint
 import vibdata.datahandler as datahandler
 from vibdata.datahandler.base import RawVibrationDataset
@@ -8,17 +10,34 @@ from argparse import ArgumentParser
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+datasets = {
+    "CWRU" : datahandler.CWRU_raw,
+    "EAS" : datahandler.EAS_raw,
+    "IMS" : datahandler.IMS_raw,
+    "MAFAULDA" : datahandler.MAFAULDA_raw,
+    "MFPT" : datahandler.MFPT_raw,
+    "PU" : datahandler.MFPT_raw,
+    "RPDBCS" : datahandler.RPDBCS_raw,
+    "UOC" : datahandler.UOC_raw,
+    "XJTU" : datahandler.XJTU_raw
+}
+
 def parse_args() -> argparse.Namespace:
     """
     Parse args
 
     Returns:
-        Argument parsed into kind of dict
+        Argument parsed into kind of dict where it should have two keys:
+            dataset(str) : The name of the dataset to be tested
+            root_dir(str) : The path where the data from dataset must be saved
     """
     parser = ArgumentParser()
     parser.add_argument("--root-dir", help="The directory where data will be stored", required=True)
+    parser.add_argument("--dataset", help="The dataset to be tested", required=True)
 
     args = parser.parse_args()
+    if args.dataset not in datasets.keys():
+        raise ValueError("This is an invalid dataset")
     return args
 
 def test_dataset(dataset_name: str, dataset_class : RawVibrationDataset) -> None:
@@ -54,8 +73,9 @@ def test_dataset(dataset_name: str, dataset_class : RawVibrationDataset) -> None
     idx = random.randint(0, n_samples-1)
     sample = dataset_class[idx]
     # Check the __getitem__ from an integer
-    assert len(sample['signal']) == sample['metainfo'].shape[0]
-    assert len(sample['signal']) == 1
+    assert isinstance(sample['metainfo'], pd.Series) or \
+           (isinstance(sample['metainfo'], pd.DataFrame) and len(sample['metainfo']) == 1)  # Meant to be only one signal metainfo
+    assert isinstance(sample['signal'], np.ndarray)
     print("Raw(%d):" % len(sample['signal']))
     print(f"{sample['signal']}", end="\n\n")
     print(f"Meta({sample['metainfo'].iloc[0].shape}):")
@@ -64,14 +84,15 @@ def test_dataset(dataset_name: str, dataset_class : RawVibrationDataset) -> None
 
     # Check the __getitem__  from a slice
     cprint("< Slice item >", color='blue')
-    idx = random.randint(0, n_samples-1)
-    multi_samples = dataset_class[(idx-8):idx:2]
+    idx = random.choices(range(0, n_samples), k=4)
+    multi_samples = dataset_class[idx]  # Selects 4 samples
     assert len(multi_samples['signal']) == multi_samples['metainfo'].shape[0]
     assert len(multi_samples['signal']) == 4
+    assert len(multi_samples['metainfo']) == 4
     print("Raw(%d):" % len(multi_samples['signal']))
-    print(f"{sample['signal']}", end="\n\n")
-    print(f"Meta({sample['metainfo'].shape}):")
-    print(f"{sample['metainfo']}")
+    print(f"{multi_samples['signal']}", end="\n\n")
+    print(f"Meta({multi_samples['metainfo'].shape}):")
+    print(f"{multi_samples['metainfo']}")
     print()
 
     # Test each label
@@ -94,8 +115,9 @@ if __name__ == "__main__":
     # Define the arguments
     args = parse_args()
     root_dir = args.root_dir
+    dataset_name = args.dataset
 
-    modules = [datahandler.CWRU_raw]
+    modules = [datasets[dataset_name]]
     for dataset in modules:
         D = dataset(root_dir, download=True)
         test_dataset(D.name(), D)
