@@ -11,15 +11,17 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 datasets = {
-    "CWRU" : datahandler.CWRU_raw,
-    "EAS" : datahandler.EAS_raw,
-    "IMS" : datahandler.IMS_raw,
-    "MAFAULDA" : datahandler.MAFAULDA_raw,
-    "MFPT" : datahandler.MFPT_raw,
-    "PU" : datahandler.MFPT_raw,
-    "RPDBCS" : datahandler.RPDBCS_raw,
-    "UOC" : datahandler.UOC_raw,
-    "XJTU" : datahandler.XJTU_raw
+    "CWRU": datahandler.CWRU_raw,
+    "EAS": datahandler.EAS_raw,
+    "IMS": datahandler.IMS_raw,
+    "MAFAULDA": datahandler.MAFAULDA_raw,
+    "MFPT": datahandler.MFPT_raw,
+    "PU": datahandler.PU_raw,
+    "RPDBCS": datahandler.RPDBCS_raw,
+    "UOC": datahandler.UOC_raw,
+    "XJTU": datahandler.XJTU_raw,
+    "SEU": datahandler.SEU_raw,
+    "FEMFTO": datahandler.FEMFTO_raw
 }
 
 def parse_args() -> argparse.Namespace:
@@ -57,10 +59,10 @@ def test_dataset(dataset_name: str, dataset_class : RawVibrationDataset) -> None
     # Imprime os nomes dos labels
     cprint("Labels:", color="red")
     meta = dataset_class.getMetaInfo()
-    labels_name =  dataset_class.getLabels(as_str=True)
+    labels_name = dataset_class.getLabels(as_str=True)
     labels_id = dataset_class.getLabels()
     for i, label in zip(labels_id, labels_name):
-        print(str(i) + ". " + label)
+        print(str(i) + ". " + str(label))
     # Print some general info
     n_samples, n_features = meta.shape
     print(f"Signals amount: {n_samples}")
