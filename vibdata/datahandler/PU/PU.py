@@ -21,13 +21,13 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
     #              ('KB23.rar', None), ('KI03.rar', None), ('KI08.rar', None), ('KI18.rar', None),
     #              ('K004.rar', None), ('KA03.rar', None), ('KA07.rar', None), ('KA16.rar', None),
     #              ('KB24.rar', None), ('KI04.rar', None), ('KI14.rar', None), ('KI21.rar', None)]
-    
-    #https://drive.google.com/file/d/1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii/view?usp=sharing
+
+    # https://drive.google.com/file/d/1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii/view?usp=sharing
     urls = ["1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii"]
     resources = [('PU.zip', '1beb53c6fb79436895787e094a22302f')]
 
     def __init__(self, root_dir: str, download=False):
-        if(download):
+        if download:
             super().__init__(root_dir=root_dir, download_resources=PU_raw.resources, download_urls=PU_raw.urls,
                              extract_files=True)
         else:
@@ -39,16 +39,11 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
         return self._metainfo
 
     def __getitem__(self, i) -> dict:
-        if(isinstance(i, int)):
-            data_i = self._metainfo.iloc[i]
-            fname, bearing_code = data_i['file_name'], data_i['bearing_code']
-            full_fname = os.path.join(self.raw_folder, bearing_code, fname)
-            data = loadmat(full_fname, simplify_cells=True)[fname.split('.')[0]]
-            sig = PU_raw._getVibration_1(data)
-            return {'signal': sig, 'metainfo': data_i}
-        elif(isinstance(i, slice)):
-            range_idx = list(range(i.start, i.stop, i.step))
+        if not hasattr(i, '__len__') and not isinstance(i, slice):
+            return self.__getitem__([i])
 
+        if isinstance(i, slice):
+            range_idx = list(range(i.start, i.stop, i.step))
             data_i = self._metainfo.iloc[i]
             fname, bearing_code = data_i['file_name'], data_i['bearing_code']
             signal_datas = np.empty(len(range_idx), dtype=object)
@@ -60,13 +55,19 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
                 signal_datas[j] = PU_raw._getVibration_1(data)
 
             return {'signal': signal_datas, 'metainfo': data_i}
-        return super().__getitem__(i)
+
+        data_i = self.getMetaInfo().iloc[i]
+        fname, bearing_code = data_i['file_name'][0], data_i['bearing_code'][0]
+        full_fname = os.path.join(self.raw_folder, bearing_code, fname)
+        data = loadmat(full_fname, simplify_cells=True)[fname.split('.')[0]]
+        sig = PU_raw._getVibration_1(data)
+        return {'signal': sig, 'metainfo': data_i}
 
     @staticmethod
     def _getVibration_1(data):
         Ys = data['Y']
         for y in Ys:
-            if(y['Name'] == 'vibration_1'):
+            if y['Name'] == 'vibration_1':
                 return y['Data']
         raise ValueError
 

@@ -63,6 +63,9 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
             yield self[i]
 
     def __getitem__(self, i) -> Dict:
+        if not hasattr(i, '__len__') and not isinstance(i, slice):
+            return self.__getitem__([i])
+
         dataset = self._getDataset()
         df = self.getMetaInfo().iloc[i]
 

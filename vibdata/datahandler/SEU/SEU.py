@@ -32,13 +32,13 @@ class SEU_raw(RawVibrationDataset, DownloadableDataset):
         return metainfo
 
     def __getitem__(self, i):
-        if(not isinstance(i, int)):
-            return super().__getitem__(i)
+        if not hasattr(i, '__len__') and not isinstance(i, slice):
+            return self.__getitem__([i])
 
         mi_i = self.getMetaInfo().iloc[i]
-        f = mi_i['file_name']
+        f = mi_i['file_name'][0]
         full_fname = os.path.join(self.raw_folder, SEU_raw.root_dir, f)
-        if('ball_20_0' in f):
+        if 'ball_20_0' in f:
             sep = ','
         else:
             sep = '\t'

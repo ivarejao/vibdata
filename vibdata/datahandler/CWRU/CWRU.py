@@ -113,7 +113,7 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
 
     def __init__(self, root_dir: str, download=False):
         if (download):
-            print(f"Downloading {self.name()}")
+            # print(f"Downloading {self.name()}")
             super().__init__(root_dir=root_dir, download_resources=CWRU_raw.resources, download_urls=CWRU_raw.mirrors,
                              extract_files=True)
         else:
