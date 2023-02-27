@@ -56,8 +56,17 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
 
             return {'signal': signal_datas, 'metainfo': data_i}
 
-        data_i = self.getMetaInfo().iloc[i]
-        fname, bearing_code = data_i['file_name'][0], data_i['bearing_code'][0]
+        data_i = self._metainfo.iloc[i]
+        fname, bearing_code = data_i['file_name'], data_i['bearing_code']
+
+        if isinstance(i, list):
+            signal_datas = np.empty(len(i), dtype=object)
+            for j in range(len(i)):
+                full_fname = os.path.join(self.raw_folder, bearing_code.iloc[j], fname.iloc[j])
+                data = loadmat(full_fname, simplify_cells=True)[fname.iloc[j].split('.')[0]]
+                signal_datas[j] = PU_raw._getVibration_1(data)
+            return {'signal': signal_datas, 'metainfo': data_i}
+
         full_fname = os.path.join(self.raw_folder, bearing_code, fname)
         data = loadmat(full_fname, simplify_cells=True)[fname.split('.')[0]]
         sig = PU_raw._getVibration_1(data)
