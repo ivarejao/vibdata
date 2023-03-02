@@ -14,7 +14,7 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 
 - Rotation Frequency: 35 ~ 40 Hz
 
-- Classes: Inner Race, Outer Race and Cage
+- Classes: Inner Race, Outer Race, Cage and NaN
 
 - Domain: Time
 
@@ -25,11 +25,11 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 #### Label distribution
 |   Label    | Number samples |
 |:----------:|:--------------:|
-| Inner Race |       2377     |
-| Outer Race |       3636     |
-|    Cage    |       655      |
-|    NaN     |       2548     |
-| **Total**  |       9216     |
+| Inner Race |      2377      |
+| Outer Race |      3636      |
+|    Cage    |      655       |
+|    NaN     |      2548      |
+| **Total**  |      9216      |
 
 ![image](../../images/XJTU/label_dist.png)
 

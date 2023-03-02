@@ -16,14 +16,14 @@ Time domain gear fault vibration data and gear fault data after angle-frequency 
 ## Summary
 
 #### Label distribution
-|       Label          | Number samples |
-|:--------------------:|:--------------:|
-|   Healthy            |      104       |
-|   Missing Tooth      |      104       |
-|   Root Crack         |      104       |
-|   Spalling           |      104       |
-|   Chipping Tip       |      520       |
-|      **Total**       |      936       |
+|     Label     | Number samples |
+|:-------------:|:--------------:|
+|    Healthy    |      104       |
+| Missing Tooth |      104       |
+|  Root Crack   |      104       |
+|   Spalling    |      104       |
+| Chipping Tip  |      520       |
+|   **Total**   |      936       |
 
 ![image](../../images/UOC/label_dist.png)
 

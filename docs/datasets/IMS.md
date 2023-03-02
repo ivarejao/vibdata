@@ -18,16 +18,16 @@ Four bearings were installed on a shaft. The rotation speed was kept constant at
 ## Summary
 
 #### Label distribution
-|   Label              | Number samples |
+|        Label         | Number samples |
 |:--------------------:|:--------------:|
-| Normal               |       18392    |
-| Degraded Outer Race  |       500      |
-| Outer Race           |       68       |
-| Degraded Inner Race  |       600      |
-| Inner Race           |       112      |
-| Degraded Roller Race |       900      |
-| Roller Race          |       612      |
-| **Total**            |       21184    |
+|        Normal        |     18392      |
+| Degraded Outer Race  |      500       |
+|      Outer Race      |       68       |
+| Degraded Inner Race  |      600       |
+|      Inner Race      |      112       |
+| Degraded Roller Race |      900       |
+|     Roller Race      |      612       |
+|      **Total**       |     21184      |
 
 ![image](../../images/IMS/label_dist.png)
 
@@ -35,7 +35,7 @@ Four bearings were installed on a shaft. The rotation speed was kept constant at
 #### Signal size distribution
 |   Size    | Number samples |
 |:---------:|:--------------:|
-|   20480   |      21184     |
-| **Total** |      21184     |
+|   20480   |     21184      |
+| **Total** |     21184      |
 
 ![image](../../images/IMS/signal_size_dist.png)

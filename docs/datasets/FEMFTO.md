@@ -22,19 +22,19 @@ Cite this dataset whenever you use it with below citation though:
 ## Summary
 
 #### Label distribution
-|       Label               | Number samples |
+|           Label           | Number samples |
 |:-------------------------:|:--------------:|
-|  Normal                   |                |
+|          Normal           |                |
 |  Horizontal Misalignment  |                |
-|  Vertical Misalignment    |                |
-|  Imbalance                |                |
-|  Underhang Cage           |                |
-|  Underhang Outer Race     |                |
-|  Underhang Ball           |                |
-|  Overhang Cage            |                |
-|  Overhang Outer Race      |                |
-|  Overhang Ball            |                |
-|      **Total**            |                |
+|   Vertical Misalignment   |                |
+|         Imbalance         |                |
+|      Underhang Cage       |                |
+|   Underhang Outer Race    |                |
+|      Underhang Ball       |                |
+|       Overhang Cage       |                |
+|    Overhang Outer Race    |                |
+|       Overhang Ball       |                |
+|         **Total**         |                |
 
 <!-- ![image](../../images/FEMFTO/label_dist.png) -->
 

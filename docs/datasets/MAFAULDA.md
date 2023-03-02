@@ -17,7 +17,7 @@ This database is composed of 1951 multivariate time-series acquired by sensors o
 
 - Rotation Speed: 700 ~ 3600 RPM
 
-- Rotation Frequency: Hz
+- Rotation Frequency: 12.08 ~ 62.26 Hz
 
 - Classes: Normal, Horizontal Misalignment, Vertical Misalignment, Imbalance, Underhang Cage Fault, Underhang Outer Race, Underhang Ball Fault, Overhang Cage Fault, Overhang Outer Race and Overhang Ball Fault.
 
@@ -28,38 +28,36 @@ This database is composed of 1951 multivariate time-series acquired by sensors o
 ## Summary
 
 #### Label distribution
-|       Label               | Number samples |
+|           Label           | Number samples |
 |:-------------------------:|:--------------:|
-|  Normal                   |      49        |
-|  Horizontal Misalignment  |      197       |
-|  Vertical Misalignment    |      301       |
-|  Imbalance                |      333       |
-|  Underhang Cage           |      188       |
-|  Underhang Outer Race     |      184       |
-|  Underhang Ball           |      186       |
-|  Overhang Cage            |      188       |
-|  Overhang Outer Race      |      188       |
-|  Overhang Ball            |      137       |
-|      **Total**            |      1951      |
+|          Normal           |      294       |
+|  Horizontal Misalignment  |      1182      |
+|   Vertical Misalignment   |      1806      |
+|         Imbalance         |      1998      |
+|      Underhang Cage       |      1128      |
+|   Underhang Outer Race    |      1104      |
+|      Underhang Ball       |      1116      |
+|       Overhang Cage       |      1128      |
+|    Overhang Outer Race    |      1128      |
+|       Overhang Ball       |      822       |
+|         **Total**         |     11706      |
 
-<!-- ![image](../../images/MAFAULDA/label_dist.png) -->
+![image](../../images/MAFAULDA/label_dist.png)
 
 
 #### Signal size distribution
 |   Size    | Number samples |
 |:---------:|:--------------:|
-|           |                |
-| **Total** |     1951       |
+|  250000   |     11706      |
+| **Total** |     11706      |
 
-<!-- ![image](../../images/MAFAULDA/signal_size_dist.png) -->
+![image](../../images/MAFAULDA/signal_size_dist.png)
 
 
 #### Rotatory frequency distribution
-| Frequency (Hz) | Number samples |
-|:--------------:|:--------------:|
-|                |                |
-|                |                |
-|                |                |
-|   **Total**    |     1951       |
+| Frequency (Hz)  | Number samples |
+|:---------------:|:--------------:|
+|  12.08 ~ 62.26  |     11706      |
+|    **Total**    |     11706      |
 
-<!-- ![image](../../images/MAFAULDA/frequency_dist.png) -->
+![image](../../images/MAFAULDA/frequency_dist.png)

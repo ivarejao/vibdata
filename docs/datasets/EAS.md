@@ -20,11 +20,11 @@ Datasets for 4 differently sized unbalances and for the unbalance-free case were
 ## Summary
 
 #### Label distribution
-|       Label          | Number samples |
+|        Label         | Number samples |
 |:--------------------:|:--------------:|
-|      Balanced        |                |
+|       Balanced       |                |
 |      Unbalanced      |                |
-|      **Total**       |                |
+|      **Total**       |      2026      |
 
 <!-- ![image](../../images/EAS/label_dist.png) -->
 
@@ -33,6 +33,6 @@ Datasets for 4 differently sized unbalances and for the unbalance-free case were
 |   Size    | Number samples |
 |:---------:|:--------------:|
 |           |                |
-| **Total** |                |
+| **Total** |      2026      |
 
 <!-- ![image](../../images/EAS/signal_size_dist.png) -->

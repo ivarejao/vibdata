@@ -28,13 +28,13 @@
 ## Summary
 
 #### Label distribution
-|       Label             | Number samples |
+|          Label          | Number samples |
 |:-----------------------:|:--------------:|
-|     Normal              |    480         |
-|    Outer Ring Fault     |    959         |
-|    Inner Ring Fault     |    880         |
-| Outer Ring + Inner Ring |    240         |
-|      **Total**          |    2559        |
+|         Normal          |      480       |
+|    Outer Ring Fault     |      959       |
+|    Inner Ring Fault     |      880       |
+| Outer Ring + Inner Ring |      240       |
+|        **Total**        |      2559      |
 
 ![image](../../images/PU/label_dist.png)
 
@@ -42,8 +42,8 @@
 #### Signal size distribution
 |      Size       | Number samples |
 |:---------------:|:--------------:|
-| 249940 ~ 299038 |    2559        |
-|    **Total**    |    2559        |
+| 249940 ~ 299038 |      2559      |
+|    **Total**    |      2559      |
 
 ![image](../../images/PU/signal_size_dist.png)
 
@@ -51,8 +51,8 @@
 #### Rotatory frequency distribution
 | Frequency (Hz) | Number samples |
 |:--------------:|:--------------:|
-|     15         |       640      |
-|     25         |       1919     |
-|   **Total**    |       2559     |
+|       15       |      640       |
+|       25       |      1919      |
+|   **Total**    |      2559      |
 
 ![image](../../images/PU/frequency_dist.png)
