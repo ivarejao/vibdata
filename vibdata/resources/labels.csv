@@ -43,3 +43,12 @@ id,label,dataset
 41,Outer Race,XJTU
 42,Cage,XJTU
 43,NaN,XJTU
+44,Normal,SEU
+45,Ball,SEU
+46,Inner Ring,SEU
+47,Outer Ring,SEU
+48,Inner Ring and Outer Ring,SEU
+49,Chipped Tooth,SEU
+50,Missing Tooth,SEU
+51,Root Fault,SEU
+52,Surface Fault,SEU
