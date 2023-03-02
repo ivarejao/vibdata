@@ -78,15 +78,25 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
         for i, (f, b, t, l) in enumerate(zip(file_name, bear_name, test_measure, labels)):
             # print(f"ROW: {rows.iloc[i]}")
             # There's a subtype
-            if "." in l:
-                sub_labels = l.split(".")
-            else:
-                sub_labels = l
+            # if "." in l:
+            #     sub_labels = l.split(".")
+            # else:
+            #     sub_labels = l
             # If there isn't a test measurement
+            label_folder = {13: 'normal',
+                            14: 'horizontal-misalignment',
+                            15: 'vertical-misalignment',
+                            16: 'imbalance',
+                            17: 'underhang/cage_fault',
+                            18: 'underhang/outer_race',
+                            19: 'underhang/ball_fault',
+                            20: 'overhang/cage_fault',
+                            21: 'overhang/outer_race',
+                            22: 'overhang/ball_fault'}
             if t == "":
-                raw_path = os.path.join(self.raw_folder, sub_labels, f)
+                raw_path = os.path.join(self.raw_folder, label_folder[l], f)
             else:
-                raw_path = os.path.join(self.raw_folder, *sub_labels, t, f)
+                raw_path = os.path.join(self.raw_folder, label_folder[l], t, f)
 
             vib_data = np.loadtxt(raw_path, delimiter=',')
             signal_datas[i] = vib_data[:, b]
