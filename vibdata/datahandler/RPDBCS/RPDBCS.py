@@ -3,6 +3,7 @@ from typing import Dict, Optional
 from ..base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
+from vibdata.definitions import LABELS_PATH
 
 
 _labelNameToInt = {
@@ -12,6 +13,10 @@ _labelNameToInt = {
     'Misalignment': 3,
     'Unbalance': 4,
 }
+
+def _convert_label_standard(label : str, centralized_labels : pd.DataFrame) -> int:
+    fixed_name = 'Faulty Sensor' if label == 'Faulty sensor' else label
+    return centralized_labels.loc[centralized_labels['label'] == fixed_name]['label'].values[0]
 
 
 class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
@@ -38,6 +43,10 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
                                                     'RPDBCS-20221101',
                                                     'features.csv')
         self._metainfo = pd.read_csv(features_dir, sep=';')
+
+        # Convert the label column of metainfo to a centralized label standard
+        centralized_labels = pd.read_csv(LABELS_PATH)
+        self._metainfo['label'] = self._metainfo['label'].apply(_convert_label_standard, std_labels=centralized_labels)
 
     def _getDataset(self) -> np.ndarray:
         if self.dataset is None:
