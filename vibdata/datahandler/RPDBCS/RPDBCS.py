@@ -6,17 +6,17 @@ import numpy as np
 from vibdata.definitions import LABELS_PATH
 
 
-_labelNameToInt = {
-    'Normal': 0,
-    'Rubbing': 1,
-    'Faulty sensor': 2,
-    'Misalignment': 3,
-    'Unbalance': 4,
-}
+# _labelNameToInt = {
+#     'Normal': 0,
+#     'Rubbing': 1,
+#     'Faulty sensor': 2,
+#     'Misalignment': 3,
+#     'Unbalance': 4,
+# }
 
-def _convert_label_standard(label : str, centralized_labels : pd.DataFrame) -> int:
+def _convert_label_standard(label : str, standard_labels : pd.DataFrame) -> int:
     fixed_name = 'Faulty Sensor' if label == 'Faulty sensor' else label
-    return centralized_labels.loc[centralized_labels['label'] == fixed_name]['label'].values[0]
+    return standard_labels.loc[standard_labels['label'] == fixed_name]['id'].values[0]
 
 
 class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
@@ -45,8 +45,10 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
         self._metainfo = pd.read_csv(features_dir, sep=';')
 
         # Convert the label column of metainfo to a centralized label standard
+        # where label is column with an int id
         centralized_labels = pd.read_csv(LABELS_PATH)
-        self._metainfo['label'] = self._metainfo['label'].apply(_convert_label_standard, std_labels=centralized_labels)
+        dataset_centralized_labels = centralized_labels.loc[centralized_labels['dataset'] == self.name()]
+        self._metainfo['label'] = self._metainfo['label'].apply(_convert_label_standard, standard_labels=dataset_centralized_labels)
 
     def _getDataset(self) -> np.ndarray:
         if self.dataset is None:
@@ -63,8 +65,12 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         df = self._metainfo.copy(False)
-        if not labels_as_str:
-            df['label'] = df['label'].map(lambda x: _labelNameToInt[x])
+        if labels_as_str:
+            # Create a dict with the relation between the centralized label with the actually label name
+            all_labels = pd.read_csv(LABELS_PATH)
+            dataset_labels : pd.DataFrame = all_labels.loc[all_labels['dataset'] == self.name()]
+            dict_labels = {id_label : labels_name for id_label, labels_name, _ in dataset_labels.itertuples()}
+            df['label'] = df['label'].apply(lambda id_label : dict_labels[id_label])
         return df
 
     def __iter__(self):
@@ -87,10 +93,6 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
 
     def asSimpleForm(self):
         return self[:]
-
-    def getLabelsNames(self):
-        return ['Normal', 'Rubbing', 'Faulty sensor', 'Misalignment',
-                'Unbalance']
 
     def name(self):
         return "RPDBCS"
