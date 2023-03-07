@@ -31,11 +31,15 @@ This is a real-world dataset for vibration-based fault diagnosis of electric sub
 
         - rms(F-1,F+1): Root mean square of the amplitudes in the interval (F-1, F+1).
 
+- Rotation Speed: 2400 ~ 3720 RPM
+
 - Rotation Frequency: 37.29 ~ 61.61 Hz
 
 - Classes: Normal, Rubbing, Faulty Sensor, Misalignment and Unbalance
 
 - Domain: Frequency
+
+- Sample Rate: 4096 samples per second
 
 ## Summary
 

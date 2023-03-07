@@ -28,6 +28,8 @@ This dataset contains mechanical data used in the paper "Highly-Accurate Machine
     
       - Signals of rows 2,3,4 are all effective.
 
+- Rotation Speed: 1200 ~ 1800 RPM
+
 - Rotation Frequency: 20 ~ 30 Hz
 
 - Classes: Ball, Inner Ring, Outer Ring, Inner Ring + Outer Ring, Chipped Tooth, Missing Tooth, Root Fault and Surface Fault

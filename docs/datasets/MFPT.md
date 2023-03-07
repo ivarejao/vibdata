@@ -7,6 +7,8 @@ This dataset provides access to bearing fault test to facilitate research into b
 
 - All data files are in Matlab double-precision (*.mat) format. The data structure holds the load, shaft rate, sample rate and a vector data.
 
+- Rotation Speed: 1500 RPM
+
 - Rotation Frequency: 25 Hz
 
 - Classes: Normal, Inner Race and Outer Race

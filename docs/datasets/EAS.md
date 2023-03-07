@@ -22,17 +22,17 @@ Datasets for 4 differently sized unbalances and for the unbalance-free case were
 #### Label distribution
 |        Label         | Number samples |
 |:--------------------:|:--------------:|
-|       Balanced       |                |
-|      Unbalanced      |                |
+|       Balanced       |      405       |
+|      Unbalanced      |      1621      |
 |      **Total**       |      2026      |
 
-<!-- ![image](../../images/EAS/label_dist.png) -->
+![image](../../images/EAS/label_dist.png)
 
 
 #### Signal size distribution
 |   Size    | Number samples |
 |:---------:|:--------------:|
-|           |                |
+|   81920   |      2026      |
 | **Total** |      2026      |
 
-<!-- ![image](../../images/EAS/signal_size_dist.png) -->
+![image](../../images/EAS/signal_size_dist.png)

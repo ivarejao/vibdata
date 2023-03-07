@@ -11,30 +11,23 @@ Cite this dataset whenever you use it with below citation though:
 
 - All data files are in Comma-separated values (*.csv) format.
 
-- Rotation Frequency: Hz
+- Rotation Speed: 1500 ~ 1800 RPM
 
-- Classes: Normal, Horizontal Misalignment, Vertical Misalignment, Imbalance, Underhang Cage Fault, Underhang Outer Race, Underhang Ball Fault, Overhang Cage Fault, Overhang Outer Race and Overhang Ball Fault.
+- Rotation Frequency: ? Hz
+
+- Classes: ?
 
 - Domain: Time
 
-- Sample Rate:  samples per second
+- Sample Rate: 25600 samples per second
 
 ## Summary
 
 #### Label distribution
-|           Label           | Number samples |
-|:-------------------------:|:--------------:|
-|          Normal           |                |
-|  Horizontal Misalignment  |                |
-|   Vertical Misalignment   |                |
-|         Imbalance         |                |
-|      Underhang Cage       |                |
-|   Underhang Outer Race    |                |
-|      Underhang Ball       |                |
-|       Overhang Cage       |                |
-|    Overhang Outer Race    |                |
-|       Overhang Ball       |                |
-|         **Total**         |                |
+|   Label   | Number samples |
+|:---------:|:--------------:|
+|           |                |
+| **Total** |                |
 
 <!-- ![image](../../images/FEMFTO/label_dist.png) -->
 
@@ -51,8 +44,6 @@ Cite this dataset whenever you use it with below citation though:
 #### Rotatory frequency distribution
 | Frequency (Hz) | Number samples |
 |:--------------:|:--------------:|
-|                |                |
-|                |                |
 |                |                |
 |   **Total**    |                |
 
