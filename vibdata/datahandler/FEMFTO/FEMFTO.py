@@ -7,6 +7,7 @@ import pandas as pd
 
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 
+
 class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):
     source = "https://github.com/Lucky-Loek/ieee-phm-2012-data-challenge-dataset"
     """
@@ -19,7 +20,7 @@ class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):
         "vertical-misalignment" : FileNames.vertical_misalignment
     }
     """
-    # https://drive.google.com/file/d/1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY/view?usp=sharing
+    # https://drive.google.com/file/d/1svpZIZAKVvDwo0F4kx_fj7LVEPczq-Bt/view?usp=sharing
     urls = mirrors = ["1svpZIZAKVvDwo0F4kx_fj7LVEPczq-Bt"]
     resources = [('FEMFTO.zip', 'd3ca5a418c2ed0887d68bc3f91991f12')]
 
@@ -92,7 +93,7 @@ class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):
         return {'signal': signal_datas, 'metainfo': rows}
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        df = _get_package_resource_dataframe(__package__, "MAFAULDA.csv",
+        df = _get_package_resource_dataframe(__package__, "FEMFTO.csv",
                                              na_filter=False)
         return df
 
