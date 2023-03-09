@@ -14,34 +14,47 @@ from vibdata.definitions import LABELS_PATH
 #     'Unbalance': 4,
 # }
 
+_urls_resources = {
+    '2022-11-01': (
+        ["1ATw19DjzDWbQKOqVKXPOIdOj7v2Vg61V"], [('RPDBCS-20221101.zip', '820dd009d911a7929eb769b53ba19b1d')]
+    ),
+    '2023-01-16': (
+        ["1Hz4RXp7Ls669b1xkificvoFCYjOwpT3E"], [('RPDBCS-20230116.zip', 'e966f975945344a1a0f4eb09d0affeee')]
+    ),
+}
+
+_versions = []
+
 def _convert_label_standard(label : str, standard_labels : pd.DataFrame) -> int:
     fixed_name = 'Faulty Sensor' if label == 'Faulty sensor' else label
     return standard_labels.loc[standard_labels['label'] == fixed_name]['id'].values[0]
 
 
 class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
-    urls = ["1ATw19DjzDWbQKOqVKXPOIdOj7v2Vg61V"]
-    resources = [('RPDBCS-20221101.zip', '820dd009d911a7929eb769b53ba19b1d')]
 
     def __init__(self, root_dir: str, frequency_domain=False, download=False,
-                 n_points=6100, **kwargs):
+                 n_points=6100, version='2023-01-16', **kwargs):
         self.root_dir = root_dir
         self.frequency_domain = True
         self.dataset: Optional[np.ndarray] = None
         self.n_points = n_points
 
+        urls, resources = _urls_resources[version]
+
         if download:
             super().__init__(root_dir=root_dir,
-                             download_resources=RPDBCS_raw.resources,
-                             download_urls=RPDBCS_raw.urls,
+                             download_resources=resources,
+                             download_urls=urls,
                              extract_files=True)
         else:
             super().__init__(root_dir=root_dir,
-                             download_resources=RPDBCS_raw.resources)
+                             download_resources=resources)
 
-        features_dir = Path(self.root_dir).joinpath('RPDBCS_raw',
-                                                    'RPDBCS-20221101',
-                                                    'features.csv')
+        version_without_dash = version.replace('-', '')
+        version_dir_str = f'RPDBCS-{version_without_dash}'
+        self.dataset_dir = Path(self.root_dir).joinpath('RPDBCS_raw', version_dir_str)
+
+        features_dir = self.dataset_dir / 'features.csv'
         self._metainfo = pd.read_csv(features_dir, sep=';')
 
         # Convert the label column of metainfo to a centralized label standard
@@ -52,9 +65,7 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
 
     def _getDataset(self) -> np.ndarray:
         if self.dataset is None:
-            dataset_dir = Path(self.root_dir).joinpath('RPDBCS_raw',
-                                                       'RPDBCS-20221101',
-                                                       'spectrum.npz')
+            dataset_dir = self.dataset_dir / 'spectrum.npz'
             dataset = []
             with np.load(dataset_dir) as data:
                 for signal_id in self._metainfo['id']:
