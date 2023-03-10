@@ -1,3 +1,5 @@
+from vibdata.definitions import LABELS_PATH
+
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
@@ -33,7 +35,15 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
                                                          "XJTU.csv")
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        return self._metainfo
+        df = self._metainfo
+        if labels_as_str:
+            # Create a dict with the relation between the centralized label with the actually label name
+            all_labels = pd.read_csv(LABELS_PATH)
+            dataset_labels: pd.DataFrame = all_labels.loc[all_labels['dataset'] == self.name()]
+            dict_labels = {id_label: labels_name for id_label, labels_name, _ in dataset_labels.itertuples(index=False)}
+            df['label'] = df['label'].apply(lambda id_label: dict_labels[id_label])
+        return df
+
 
     def __getitem__(self, i) -> pd.DataFrame:
         if(not hasattr(i, '__len__') and not isinstance(i, slice)):

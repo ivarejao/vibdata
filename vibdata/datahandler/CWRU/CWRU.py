@@ -1,3 +1,7 @@
+from typing import Union, Dict
+
+from vibdata.definitions import LABELS_PATH
+
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
@@ -122,8 +126,6 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
     def __getitem__(self, i) -> dict:
         if (not hasattr(i, '__len__') and not isinstance(i, slice)):
             ret = self.__getitem__([i])
-            # ret['signal'] = ret['signal'].iloc[i]
-            # ret['metainfo'] = ret['metainfo'].iloc[i]
             return ret
         df = self.getMetaInfo()
         if (isinstance(i, slice)):
@@ -145,6 +147,12 @@ class CWRU_raw(RawVibrationDataset, DownloadableDataset):
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         df = _get_package_resource_dataframe(__package__, "CWRU.csv")
+        if labels_as_str:
+            # Create a dict with the relation between the centralized label with the actually label name
+            all_labels = pd.read_csv(LABELS_PATH)
+            dataset_labels : pd.DataFrame = all_labels.loc[all_labels['dataset'] == self.name()]
+            dict_labels = {id_label : labels_name for id_label, labels_name, _ in dataset_labels.itertuples(index=False)}
+            df['label'] = df['label'].apply(lambda id_label : dict_labels[id_label])
         return df
 
     def name(self):

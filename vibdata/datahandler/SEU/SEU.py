@@ -1,4 +1,7 @@
 from typing import Dict
+
+from vibdata.definitions import LABELS_PATH
+
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
@@ -29,6 +32,13 @@ class SEU_raw(RawVibrationDataset, DownloadableDataset):
         metainfo['file_name'] = metainfo['file_name'].apply(lambda x: [x] * 8)
         metainfo = metainfo.explode('file_name', ignore_index=True)
         metainfo['channel'] = np.arange(len(metainfo)) % 8
+
+        if labels_as_str:
+            # Create a dict with the relation between the centralized label with the actually label name
+            all_labels = pd.read_csv(LABELS_PATH)
+            dataset_labels: pd.DataFrame = all_labels.loc[all_labels['dataset'] == self.name()]
+            dict_labels = {id_label: labels_name for id_label, labels_name, _ in dataset_labels.itertuples(index=False)}
+            metainfo['label'] = metainfo['label'].apply(lambda id_label: dict_labels[id_label])
         return metainfo
 
     def __getitem__(self, i):

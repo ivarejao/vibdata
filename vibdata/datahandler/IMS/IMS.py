@@ -1,5 +1,8 @@
 # Code made in Pycharm by Igor Varejao
 import os
+
+from vibdata.definitions import LABELS_PATH
+
 from vibdata.datahandler.utils import _get_package_resource_dataframe
 
 import numpy as np
@@ -96,10 +99,17 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         df = _get_package_resource_dataframe(__package__, "IMS.csv")
+        if labels_as_str:
+            # Create a dict with the relation between the centralized label with the actually label name
+            all_labels = pd.read_csv(LABELS_PATH)
+            dataset_labels : pd.DataFrame = all_labels.loc[all_labels['dataset'] == self.name()]
+            dict_labels = {id_label : labels_name for id_label, labels_name, _ in dataset_labels.itertuples(index=False)}
+            df['label'] = df['label'].apply(lambda id_label : dict_labels[id_label])
         if self.third_test:
             return df
         else:
             return df[:21184]
+
 
     def name(self):
         return "IMS"
