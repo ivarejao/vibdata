@@ -21,6 +21,9 @@ _urls_resources = {
     '2023-01-16': (
         ["1Hz4RXp7Ls669b1xkificvoFCYjOwpT3E"], [('RPDBCS-20230116.zip', 'e966f975945344a1a0f4eb09d0affeee')]
     ),
+    '2023-03-14': (
+        ["1kv9aAlRPRj2C4QWXn5sBU0Kx7B-iYfVK"], [('RPDBCS-20230314.zip', '1d7274c8a1b3a63b39b9b6c4911580ab')]
+    ),
 }
 
 _versions = []
@@ -33,7 +36,7 @@ def _convert_label_standard(label : str, standard_labels : pd.DataFrame) -> int:
 class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
 
     def __init__(self, root_dir: str, frequency_domain=False, download=False,
-                 n_points=6100, version='2023-01-16', **kwargs):
+                 n_points=6100, version='2023-03-14', **kwargs):
         self.root_dir = root_dir
         self.frequency_domain = True
         self.dataset: Optional[np.ndarray] = None
