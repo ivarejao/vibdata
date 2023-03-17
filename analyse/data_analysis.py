@@ -100,14 +100,15 @@ def worker_plot(dataset : RawVibrationDataset, samples_plot : ListConcurrency,
             )
         )
 
-    sample_rate_plot.add(
-        go.Histogram(
-            x=metainfo['sample_rate'],
-            y=metainfo['samples'],
-            histfunc="sum",
-            name=dataset.name()
+    if 'sample_rate' in metainfo.columns:
+        sample_rate_plot.add(
+            go.Histogram(
+                x=metainfo['sample_rate'],
+                y=metainfo['samples'],
+                histfunc="sum",
+                name=dataset.name()
+            )
         )
-    )
 
 
     print(f"End thread {threading.current_thread().name}")
