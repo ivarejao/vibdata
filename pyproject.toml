@@ -24,6 +24,9 @@ toml = "^0.10.2"
 ipython = "^7.0.0"
 jedi = "<0.18.0"
 seaborn = ">=0.11.0"
+pyls-isort = ">=0.2.2"
+yapf = "*"
+isort = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
