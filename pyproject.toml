@@ -30,9 +30,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.yapf]
-column_limit = 79
-join_multiple_lines = true
-coalesce_brackets = true
-dedent_closing_brackets = true
-align_closing_bracket_with_visual_indent = true
-split_before_first_argument = true
+based_on_style = "google"
