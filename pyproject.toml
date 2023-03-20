@@ -7,7 +7,7 @@ authors = ["Igor Varejão <imsvarejao@gmail.com>",
            "Lucas Henrique Sousa Mello <lucashsmello@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.6.2"
+python = ">=3.10, <3.11"
 numpy = "^1.17.2"
 torch = "^1.7"
 tqdm = "^4.0.0"
