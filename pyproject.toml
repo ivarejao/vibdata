@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vibdata"
-version = "0.6.0"
+version = "0.6.1"
 description = "A library for loading vibration signals datasets"
 authors = ["Igor Varejão <imsvarejao@gmail.com>",
            "Joluan Zucateli <joluan.zuca@gmail.com>",
