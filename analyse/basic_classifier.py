@@ -1,12 +1,13 @@
 import argparse
 import vibdata.datahandler as dh
 import numpy as np
-from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold, cross_val_predict
 from sklearn.metrics import classification_report
 from scipy.stats import kurtosis
 import matplotlib.pyplot as plt
 from vibdata.datahandler.base import RawVibrationDataset
+from numpy import nan
 
 datasets = {
     "CWRU": dh.CWRU_raw,
@@ -28,7 +29,7 @@ def basic_classifier(dataset: RawVibrationDataset):
     labels = np.empty([len(dataset)])
 
     for i, sample in enumerate(dataset):
-        # print(f'Iteration {i}')
+        print(f'Iteration {i}')
 
         # Kurtosis
         # Root Mean Square (RMS)
@@ -42,18 +43,29 @@ def basic_classifier(dataset: RawVibrationDataset):
         labels[i] = (sample['metainfo']['label'].iloc[0])
 
     X_train, X_test, y_train, y_test = train_test_split(inputs, labels, test_size=0.3)
+    X = inputs
+    y = labels
+
+    model = DecisionTreeClassifier()
 
     parameters = {'criterion': ['entropy', 'gini', 'log_loss'],
-                  'max_depth': [2, 5, 7, 10, 15]}
+                  'max_depth': [3, 5, 7, 10, 15]}
 
-    clf = GridSearchCV(estimator=DecisionTreeClassifier(), param_grid=parameters, cv=5, refit=True)
-    clf.fit(X_train, y_train)
-    y_pred = clf.predict(X_test)
+    target_names = dataset.getLabels(as_str=True)
 
-    print('\n', classification_report(y_test, y_pred))
+    # Numpy NaN to String (XJTU)
+    if nan in target_names:
+        idx = target_names.index(nan)
+        target_names[idx] = 'NaN'
 
-    # plot_tree(clf)
-    # plt.show()
+    cv_outer = StratifiedKFold(n_splits=5)
+    cv_inner = StratifiedKFold(n_splits=3)
+
+    clf = GridSearchCV(estimator=model, param_grid=parameters, cv=cv_inner)
+    y_pred = cross_val_predict(clf, X, y, cv=cv_outer)
+
+    print('\nDataset:', dataset.name())
+    print('\n', classification_report(y, y_pred, target_names=target_names))
 
 
 def parse_args() -> argparse.Namespace:
