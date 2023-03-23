@@ -46,11 +46,11 @@ This is a real-world dataset for vibration-based fault diagnosis of electric sub
 #### Label distribution
 |     Label     | Number samples |
 |:-------------:|:--------------:|
-|    Normal     |      4801      |
-|    Rubbing    |      290       |
-| Faulty Sensor |      295       |
-| Misalignment  |       70       |
-|   Unbalance   |      576       |
+|    Normal     |      4819      |
+|    Rubbing    |      151       |
+| Faulty Sensor |      297       |
+| Misalignment  |       81       |
+|   Unbalance   |      684       |
 |   **Total**   |      6032      |
 
 ![image](../../images/RPDBCS/label_dist.png)

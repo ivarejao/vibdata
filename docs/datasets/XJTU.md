@@ -14,7 +14,7 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 
 - Rotation Frequency: 35 ~ 40 Hz
 
-- Classes: Inner Race, Outer Race, Cage and NaN
+- Classes: Normal, Inner Race, Outer Race, Cage and NaN
 
 - Domain: Time
 
@@ -25,11 +25,12 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 #### Label distribution
 |   Label    | Number samples |
 |:----------:|:--------------:|
-| Inner Race |      2377      |
-| Outer Race |      3636      |
-|    Cage    |      655       |
-|    NaN     |      2548      |
-| **Total**  |      9216      |
+|   Normal   |     14564      |
+| Inner Race |      368       |
+| Outer Race |      1996      |
+|    Cage    |      876       |
+|    NaN     |      628       |
+| **Total**  |     18432      |
 
 ![image](../../images/XJTU/label_dist.png)
 
@@ -37,8 +38,8 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 #### Signal size distribution
 |   Size    | Number samples |
 |:---------:|:--------------:|
-|   32768   |      9216      |
-| **Total** |      9216      |
+|   32768   |     18432      |
+| **Total** |     18432      |
 
 ![image](../../images/XJTU/signal_size_dist.png)
 
@@ -46,9 +47,9 @@ Publications making use of the XJTU-SY bearing datasets are requested to cite th
 #### Rotatory frequency distribution
 | Frequency (Hz) | Number samples |
 |:--------------:|:--------------:|
-|       35       |      616       |
-|      37.5      |      1566      |
-|       40       |      7034      |
-|   **Total**    |      9216      |
+|       35       |      1232      |
+|      37.5      |      3132      |
+|       40       |     14068      |
+|   **Total**    |     18432      |
 
 ![image](../../images/XJTU/frequency_dist.png)
