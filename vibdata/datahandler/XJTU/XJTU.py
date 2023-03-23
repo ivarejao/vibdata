@@ -57,14 +57,12 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
         else:
             rows = df.iloc[i]
 
-        file_name = rows['file_name']
-
-        signal_datas = np.empty(len(file_name), dtype=object)
-        for i, f in enumerate(file_name):
-            full_fname = os.path.join(self.raw_folder, f)
+        signal_datas = np.empty(rows.shape[0], dtype=object)
+        for i, row in enumerate(rows.itertuples()):
+            full_fname = os.path.join(self.raw_folder, row.file_name)
+            column = "Horizontal_vibration_signals" if row.axis == "horizontal" else "Vertical_vibration_signals"
             data = pd.read_csv(full_fname)
-
-            signal_datas[i] = data
+            signal_datas[i] = data[column].values
         signal_datas = signal_datas
 
         return {'signal': signal_datas, 'metainfo': rows}
