@@ -65,6 +65,8 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
         centralized_labels = pd.read_csv(LABELS_PATH)
         dataset_centralized_labels = centralized_labels.loc[centralized_labels['dataset'] == self.name()]
         self._metainfo['label'] = self._metainfo['label'].apply(_convert_label_standard, standard_labels=dataset_centralized_labels)
+        # Duplicate the rotation column but with the standard name used in vibdata
+        self._metainfo['rotation_hz'] = self._metainfo['real_rotation_hz']
 
     def _getDataset(self) -> np.ndarray:
         if self.dataset is None:
