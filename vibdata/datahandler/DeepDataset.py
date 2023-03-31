@@ -112,11 +112,13 @@ def convertDataset(dataset: Iterable, transforms, dir_path: Union[Path, str], ba
         if(isinstance(v, pd.DataFrame)):
             metainfo[k] = pd.concat([m[k] for m in metainfo_list])
         else:
+            # Where is the case?
+            print("PASSOU <ACONTECEU O CASO> !!!!")
             metainfo[k] = np.hstack([m[k] for m in metainfo_list])
 
     fpath = os.path.join(dir_path, 'metainfo.pkl')
     with open(fpath, 'wb') as f:
-        pickle.dump(metainfo, f)
+        pickle.dump(metainfo['metainfo'], f)
 
     with open(hashfile, 'w') as f:
         f.write(hash_code)
