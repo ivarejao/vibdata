@@ -1,11 +1,14 @@
 from abc import abstractmethod
-from typing import Dict, List
+from typing import Dict, List, TypedDict
 from sklearn import preprocessing
 from sklearn.base import TransformerMixin, BaseEstimator
 import numpy as np
 import pandas as pd
 from scipy import interpolate
 
+class SignalSample(TypedDict):
+    signal : np.array
+    metainfo : pd.DataFrame | pd.Series
 
 class Transform(BaseEstimator, TransformerMixin):
     @abstractmethod
@@ -173,7 +176,6 @@ class Split(Transform):
 
         return data
 
-
 class FFT(TransformOnFieldClass):
     def __init__(self, on_field='signal', discard_first_points=0) -> None:
         super().__init__(on_field=on_field)
@@ -221,33 +223,6 @@ class SklearnFitTransform(TransformOnFieldClass):
         if(self.on_row):
             return self.transformer.fit_transform(data.T).T
         return self.transformer.fit_transform(data)
-
-
-class NormalizeSampleRate(Transform):
-    def __init__(self, sample_rate) -> None:
-        super().__init__()
-        self.sample_rate = sample_rate
-
-    def transform(self, data):
-        data = data.copy()
-        metainfo = data['metainfo'].copy(deep=True)
-        sr = metainfo['sample_rate']
-        sigs = data['signal']
-        new_sigs_list = []
-        for i, sig in enumerate(sigs):
-            n = len(sig)
-            ratio = self.sample_rate/sr.iloc[i]
-            X = np.arange(len(sig))
-            f_interpolate = interpolate.interp1d(X, sig, kind='linear')
-            Xt = np.linspace(0, n-1, int(np.round(ratio*(n-1)+1)))
-            new_sig = f_interpolate(Xt)
-            new_sigs_list.append(new_sig)
-        metainfo['sample_rate'] = self.sample_rate
-        metainfo['old_sample_rate'] = sr
-        data['signal'] = new_sigs_list
-
-        return data
-
 
 class StandardScaler(TransformOnFieldClass):
     def __init__(self, on_field=None, type='all') -> None:
@@ -301,3 +276,83 @@ class toBinaryClassification(Transform):
         metainfo.loc[~mask, 'label'] = 1
         data['metainfo'] = metainfo
         return data
+
+#
+# Temporal transforms
+#
+
+
+class SplitSampleRate(Transform):
+
+    def __init__(self, on_field='signal') -> None:
+        self.on_field = on_field
+
+    def transform(self, data: SignalSample) -> SignalSample:
+        # data = data.copy()
+        sigs = data[self.on_field]
+        metainfo = data['metainfo'].copy(deep=False)
+        window_size = metainfo['sample_rate']
+        splitted_signals = []
+
+        for s in sigs:
+            if(len(s) < window_size):
+                snew = np.zeros(window_size, dtype=s.dtype)
+                snew[:len(s)] = s
+                s = snew
+            k = len(s) % window_size
+            if(k > 0):
+                s = s[:-k]
+            assert(len(s) > 2)
+            # Do the actual split
+            s = s.reshape(-1, window_size)
+            # Store the new signals
+            splitted_signals.extend(s)
+
+        metainfo[self.on_field] = splitted_signals
+        if isinstance(metainfo, pd.Series):
+            metainfo = metainfo.to_frame().transpose().reset_index(drop=True)
+        metainfo = metainfo.explode(self.on_field)
+
+        data['metainfo'] = metainfo.drop(self.on_field, axis=1)
+        data[self.on_field] = np.stack(metainfo[self.on_field].values)
+
+        return data
+
+# class AugmentSignal(Transform):
+# 
+#     def __init__(self, target_size=1024) -> None:
+#         self.target_size = target_size
+# 
+#     def transform(self, data : SignalSample) -> SignalSample:
+#         sigs = data['signal']
+#         # Augment each signal based on the target_size
+#         for s in sigs:
+#             pass
+
+class NormalizeSampleRate(Transform):
+    def __init__(self, sample_rate) -> None:
+        super().__init__()
+        self.sample_rate = sample_rate
+
+    def transform(self, data):
+        data = data.copy()
+        metainfo = data['metainfo'].copy(deep=True)
+        sr = metainfo['sample_rate']
+        sigs = data['signal']
+        new_sigs_list = []
+        for i, sig in enumerate(sigs):
+            n = len(sig)
+            ratio = self.sample_rate/sr.iloc[i]
+            X = np.arange(len(sig))
+            f_interpolate = interpolate.interp1d(X, sig, kind='linear')
+            # Xt = np.linspace(0, n-1, int(np.round(ratio*(n-1)+1)))
+            Xt = np.linspace(0, n-1, self.sample_rate)
+            new_sig = f_interpolate(Xt)
+            new_sigs_list.append(new_sig)
+        metainfo['sample_rate'] = self.sample_rate
+        metainfo['old_sample_rate'] = sr
+        data['signal'] = np.array(new_sigs_list)
+
+        return data
+
+
