@@ -5,30 +5,32 @@ import time
 from pathlib import Path
 from typing import List, Dict, Union
 
-import torch
+from torch.utils.data import DataLoader
 from vibdata.datahandler.DeepDataset import convertDataset, DeepDataset
 import vibdata.datahandler as datahandler
 from vibdata.datahandler.base import RawVibrationDataset
-from vibdata.datahandler.transforms.signal import Sequential, SplitSampleRate, Split
+from vibdata.datahandler.transforms.signal import Sequential, SplitSampleRate, Split, NormalizeSampleRate
 
+import warnings
+warnings.filterwarnings('ignore')
 
-class ListConcurrency():
+class DictConcurrency():
 
     def __init__(self):
         self.lock = threading.Lock()
-        self.list = []
+        self.dict = {}
 
-    def add(self, element):
+    def add(self, key, element):
         self.lock.acquire()
         try:
-            self.list.append(element)
+            self.dict[key] = element
         finally:
             self.lock.release()
 
 
-def worker(datasets: ListConcurrency, dataset_class, name):
+def worker(datasets: DictConcurrency, dataset_class, name):
     dt = dataset_class('/tmp/', download=True)  # Instantiate
-    datasets.add(dt)
+    datasets.add(name, dt)
 
 
 def load_datasets(names: List[str]) -> Dict[str, RawVibrationDataset]:
@@ -54,7 +56,7 @@ def load_datasets(names: List[str]) -> Dict[str, RawVibrationDataset]:
     starttime = time.time()
     print("Loading datasets")
     threads = []
-    result = ListConcurrency()
+    result = DictConcurrency()
     for name, dt in selected_datasets.items():
         t = threading.Thread(target=worker, args=(result, dt, name), name=name)
         threads.append(t)
@@ -65,9 +67,7 @@ def load_datasets(names: List[str]) -> Dict[str, RawVibrationDataset]:
         t.join()
     print('That took {} seconds'.format(time.time() - starttime))
 
-    # Create the dict with all datasets already instantiated
-    final_datasets = {dt_name: dataset_instance for dt_name, dataset_instance in zip(names, result.list)}
-    return final_datasets
+    return result.dict
 
 def deep_worker(raw_dataset : RawVibrationDataset, root_path : Path):
     """
@@ -113,16 +113,30 @@ def instantiate_deep_datasets(root_dir : Path, transforms : Union[Sequential, No
 
 def main():
     # Datasets used
-    datasets_names = ['CWRU', 'IMS', 'MFPT', 'RPDBCS', 'UOC', 'XJTU', 'SEU']
-    # datasets_names = ['MFPT']
+    # datasets_names = ['CWRU', 'IMS', 'MAFAULDA', 'MFPT', 'UOC', 'XJTU']
+    datasets_names = ['CWRU']
     raw_datasets = load_datasets(datasets_names)
 
 
-    root_dir = Path('/tmp/')
-    transforms = None
+    root_dir = Path('/home/igor/Desktop/NINFA/datasets/')
+    biggest_sample_rate = 97656  # MFPT
+    transforms = Sequential([SplitSampleRate(), NormalizeSampleRate(biggest_sample_rate)])
     convert_datasets(raw_datasets, root_dir)
     deep_datasets = instantiate_deep_datasets(root_dir, transforms, datasets_names)
-
+    sizes = set()
+    for name, dataset in zip(datasets_names, deep_datasets):
+        loader = DataLoader(dataset, batch_size=16, shuffle=True, collate_fn=lambda x:x)
+        total = 0
+        from functools import reduce
+        for ret in loader:
+            desencapsulate = lambda x : x if isinstance(x, int) else x['metainfo'].shape[0]
+            get_total = lambda x, y : desencapsulate(x) + desencapsulate(y)
+            total += reduce(get_total, ret)
+            # Add sample_size
+            for sig in ret:
+                sizes.add(sig['signal'].shape[1])
+        print(f"[{name}] Total samples : {total}")
+        print(f"Num: {sizes}")
 
 if __name__ == "__main__":
     main()
