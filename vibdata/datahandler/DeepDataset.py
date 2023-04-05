@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Iterable, Union
+from typing import Iterable, Union, TypedDict
 from torch.utils.data import BatchSampler, SequentialSampler, DataLoader, Dataset
 import pandas as pd
 from vibdata.datahandler.base import RawVibrationDataset
@@ -11,29 +11,51 @@ import numpy as np
 from vibdata.datahandler.transforms.signal import Sequential, Transform
 from typing import Sequence, List
 
+class SignalSample(TypedDict):
+    """
+    (signal) : is a np.array that store one or more signals
+    (metainfo) : if is an individual sample, metainfo is a pd.Series, otherwise, its a pd.Dataframe
+    """
+    signal : np.ndarray[np.ndarray]
+    metainfo : pd.DataFrame | pd.Series
+
 class DeepDataset(Dataset):
     """
-    This dataset loads a dataset saved by function `transform_and_saveDataset`.
+    This dataset implements the methods to be used in torch framework. The data directory must be an output
+    from an execution of the `convertDataset` function
     """
 
     def __init__(self, root_dir, transforms=None) -> None:
         super().__init__()
         self.root_dir = root_dir
-        # Laad files
+        # Load files names
         self.file_names = [f for f in os.listdir(self.root_dir) if f[-4:] == '.pkl' and f != 'metainfo.pkl']
         self.file_names = sorted(self.file_names, key=lambda k: int(k[:-4]))
         with open(os.path.join(root_dir, 'metainfo.pkl'), 'rb') as f:
-            self.metainfo = pickle.load(f)
+            self.metainfo : pd.DataFrame = pickle.load(f)
         self.transforms = transforms
-        assert(len(self.file_names) == len(self.metainfo['label'])), "%d %d" % (
-            len(self.file_names), len(self.metainfo['label']))
+        # Confirm if there's no missing data
+        assert \
+            len(self.file_names) == len(self.metainfo['label']), \
+            "Number of files: %d != Labels: %d" % (len(self.file_names), len(self.metainfo['label']))
 
-    def __getitem__(self, i):
-        ret = {k: v.iloc[i] if isinstance(v, pd.DataFrame) else v[i]
-               for k, v in self.metainfo.items()}
+
+    def __getitem__(self, i : int) -> SignalSample:
+        """
+        Get an individual signal sample based on an integer index. If the dataset was instantiate with
+        some transform, it applies these transformations into the returned signal
+        Args:
+            i (int): the index of the sample requeired
+
+        Returns:
+            (SignalSample) : The signals raw data (ret['signal']) and the info about it (ret['metainfo'])
+        """
+        ret = {'metainfo': self.metainfo.iloc[i]}
+
         fpath = os.path.join(self.root_dir, self.file_names[i])
         with open(fpath, 'rb') as f:
-            ret['signal'] = pickle.load(f)
+            # Encapsulate the signal into an array of two dimensions
+            ret['signal'] = pickle.load(f).reshape(1, -1)
 
         if(self.transforms is not None):
             if(hasattr(self.transforms, 'transform')):
@@ -41,11 +63,11 @@ class DeepDataset(Dataset):
             return self.transforms(ret)
         return ret
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.file_names)
 
 
-def convertDataset(dataset: Iterable, transforms, dir_path: Union[Path, str], batch_size=1024):
+def convertDataset(dataset: Iterable, transforms, dir_path: Path | str, batch_size=1024):
     """
     This function applies `transforms` to `dataset` and caches each transformed sample in a separated file in `dir_path`,
     and finally returns a Dataset object implementing `__getitem__`.
@@ -89,15 +111,17 @@ def convertDataset(dataset: Iterable, transforms, dir_path: Union[Path, str], ba
 
     dataloader = DataLoader(dataset, batch_size=None, collate_fn=lambda x: x,  # do not convert to Tensor
                             sampler=BatchSampler(SequentialSampler(dataset), batch_size, False))
-    # Improve metainfo storage?
+
     metainfo_list = []
     fid = 0
-    for data in tqdm(dataloader):
+    for data in tqdm(dataloader,desc=f"Converting {dataset.name()}"):
+        # Tranform data
         if(hasattr(transforms, 'transform')):
             data_transf = transforms.transform(data)
         else:
             data_transf = transforms(data)
 
+        # Save the signal into a pickle file
         for i in range(len(data_transf['signal'])):
             fpath = os.path.join(dir_path, "{}.pkl".format(fid))
             with open(fpath, 'wb') as f:
@@ -105,20 +129,15 @@ def convertDataset(dataset: Iterable, transforms, dir_path: Union[Path, str], ba
             fid += 1
 
         del data_transf['signal']
-        metainfo_list.append(data_transf)
+        # Store the metainfo
+        metainfo_list.append(data_transf['metainfo'])
 
-    metainfo = {}
-    for k, v in metainfo_list[0].items():
-        if(isinstance(v, pd.DataFrame)):
-            metainfo[k] = pd.concat([m[k] for m in metainfo_list])
-        else:
-            # Where is the case?
-            print("PASSOU <ACONTECEU O CASO> !!!!")
-            metainfo[k] = np.hstack([m[k] for m in metainfo_list])
+    # Concatanate the metainfo
+    metainfo = pd.concat(metainfo_list)
 
     fpath = os.path.join(dir_path, 'metainfo.pkl')
     with open(fpath, 'wb') as f:
-        pickle.dump(metainfo['metainfo'], f)
+        pickle.dump(metainfo, f)
 
     with open(hashfile, 'w') as f:
         f.write(hash_code)
