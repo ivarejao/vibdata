@@ -1,11 +1,12 @@
 import argparse
 import vibdata.datahandler as dh
 import numpy as np
+import essentia.standard
+import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold, cross_val_predict
 from sklearn.metrics import classification_report
 from scipy.stats import kurtosis
-import matplotlib.pyplot as plt
 from vibdata.datahandler.base import RawVibrationDataset
 from numpy import nan
 
@@ -25,21 +26,51 @@ datasets = {
 
 
 def basic_classifier(dataset: RawVibrationDataset):
-    inputs = np.empty([len(dataset), 4])
+    inputs = np.empty([len(dataset), 9])
     labels = np.empty([len(dataset)])
 
     for i, sample in enumerate(dataset):
         print(f'Iteration {i}')
 
-        # Kurtosis
-        # Root Mean Square (RMS)
-        # Standard Deviation
-        # Mean
-        inputs[i][0] = kurtosis(sample['signal'][0])
-        inputs[i][1] = np.sqrt(sum(np.square(sample['signal'][0])) / len(sample['signal'][0]))
-        inputs[i][2] = np.std(sample['signal'][0])
-        inputs[i][3] = np.mean(sample['signal'][0])
+        sampleRate = sample['metainfo']['sample_rate'].iloc[0].astype('float32')
+        signal = sample['signal'][0]
+        signal32 = sample['signal'][0].astype('float32')
+        envelope = essentia.standard.Envelope(sampleRate=sampleRate, applyRectification=False)
+        signal_envelope = envelope(signal32)
 
+        # Kurtosis
+        inputs[i][0] = kurtosis(signal)
+
+        # Root Mean Square (RMS)
+        inputs[i][1] = np.sqrt(sum(np.square(signal)) / len(signal))
+
+        # Standard Deviation
+        inputs[i][2] = np.std(signal)
+
+        # Mean
+        inputs[i][3] = np.mean(signal)
+
+        # Log Attack Time
+        logAttackTime = essentia.standard.LogAttackTime(sampleRate=sampleRate)
+        inputs[i][4] = logAttackTime(signal_envelope)[0]
+
+        # Temporal Decrease
+        decrease = essentia.standard.Decrease(range=((len(signal32)-1)/sampleRate))
+        inputs[i][5] = decrease(signal32)
+
+        # Temporal Centroid
+        centroid = essentia.standard.Centroid(range=((len(signal32)-1)/sampleRate))
+        inputs[i][6] = centroid(signal_envelope)
+
+        # Effective Duration
+        effective = essentia.standard.EffectiveDuration(sampleRate=sampleRate)
+        inputs[i][7] = effective(signal_envelope)
+
+        # Zero Crossing Rate
+        zeroCrossingRate = essentia.standard.ZeroCrossingRate()
+        inputs[i][8] = zeroCrossingRate(signal32)
+
+        # Labels (Targets)
         labels[i] = (sample['metainfo']['label'].iloc[0])
 
     X_train, X_test, y_train, y_test = train_test_split(inputs, labels, test_size=0.3)
