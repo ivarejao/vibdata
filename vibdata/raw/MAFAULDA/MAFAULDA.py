@@ -2,13 +2,13 @@ import os
 
 from vibdata.definitions import LABELS_PATH
 
-from vibdata.datahandler.utils import _get_package_resource_dataframe
+from vibdata.raw.utils import _get_package_resource_dataframe
 # from FilesNames import FileNames
 
 import numpy as np
 import pandas as pd
 
-from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
+from vibdata.raw.base import RawVibrationDataset, DownloadableDataset
 
 
 class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):

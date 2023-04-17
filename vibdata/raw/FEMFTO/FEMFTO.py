@@ -1,11 +1,11 @@
 # Code made in Pycharm by Igor Varejao
 import os
-from vibdata.datahandler.utils import _get_package_resource_dataframe
+from vibdata.raw.utils import _get_package_resource_dataframe
 
 import numpy as np
 import pandas as pd
 
-from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
+from vibdata.raw.base import RawVibrationDataset, DownloadableDataset
 
 
 class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):

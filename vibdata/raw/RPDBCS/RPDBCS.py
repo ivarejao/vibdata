@@ -1,6 +1,6 @@
 from pathlib import Path
 from typing import Dict, Optional
-from ..base import RawVibrationDataset, DownloadableDataset
+from vibdata.raw.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
 from vibdata.definitions import LABELS_PATH

@@ -1,10 +1,10 @@
 # Code made in Pycharm by Igor Varejao
 import os
 from vibdata.definitions import LABELS_PATH
-from vibdata.datahandler.utils import _get_package_resource_dataframe
+from vibdata.raw.utils import _get_package_resource_dataframe
 import numpy as np
 import pandas as pd
-from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
+from vibdata.raw.base import RawVibrationDataset, DownloadableDataset
 
 # This dataset are composed by three tests each one describing a test-to-failure experiment.
 # Each test is made by several files, representing a ~1 second record with 20Hz sample rate.
