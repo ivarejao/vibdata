@@ -79,6 +79,9 @@ def convertDataset(dataset: RawVibrationDataset, transforms : Transform | Sequen
 
     # Obscure, need to understand
     m = hashlib.md5()
+    # This args must be identically to the previous execution if theres already a DeepDataset class
+    # saved in the `dir_path`, therefore, must be the same transforms applied, the same version of the dataset class 
+    # (Any new attribute will change the md5sum and cause an error)
     to_encode = [dataset.__class__.__name__, len(dataset), dir(dataset), transforms.__class__.__name__]
     if(hasattr(transforms, 'get_params')):
         to_encode.append(transforms.get_params())
@@ -92,7 +95,8 @@ def convertDataset(dataset: RawVibrationDataset, transforms : Transform | Sequen
     hash_code = m.hexdigest()
     hashfile = os.path.join(dir_path, 'hash_code')
 
-    # Check if file 
+    # Check if an DeepDataset data is already stored in `dir_path` and, if it is, check if matches with
+    # data passed, otherwise, will create the path where data will be stored  
     if(os.path.isdir(dir_path)):
         if(len(os.listdir(dir_path)) > 0):
             if(os.path.isfile(hashfile)):
