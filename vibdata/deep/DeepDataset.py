@@ -96,10 +96,11 @@ def convertDataset(dataset: RawVibrationDataset, transforms : Transform | Sequen
     if(os.path.isdir(dir_path)):
         if(len(os.listdir(dir_path)) > 0):
             if(os.path.isfile(hashfile)):
-                return
-                # with open(hashfile, 'r') as f:
-                #     if(f.read().strip('\n') == hash_code):
-                #         return DeepDataset(dir_path)
+                with open(hashfile, 'r') as f:
+                    if(f.read().strip('\n') == hash_code):
+                        return DeepDataset(dir_path)
+                    else:
+                        raise ValueError("Dataset corrupted! Please erase the old version.")
             raise ValueError("Directory exists and it is not empty.")
     else:
         os.makedirs(dir_path)
