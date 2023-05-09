@@ -42,13 +42,13 @@ class DeepDataset(Dataset):
             (SignalSample) : The signals raw data (ret['signal']) and the info about it (ret['metainfo'])
         """
         ret = {'metainfo': self.metainfo.iloc[i]}
-
+        
         fpath = os.path.join(self.root_dir, self.file_names[i])
         with open(fpath, 'rb') as f:
             # Encapsulate the signal into an array of two dimensions
             # - It needs to ensure that signal are 2d even if is a single signal
             ret['signal'] = pickle.load(f).reshape(1, -1)
-
+        
         # Transform data if it is necessary
         if(self.transforms is not None):
             if(hasattr(self.transforms, 'transform')):
@@ -109,29 +109,34 @@ def convertDataset(dataset: RawVibrationDataset, transforms : Transform | Sequen
     else:
         os.makedirs(dir_path)
 
-    dataloader = DataLoader(dataset, batch_size=None, collate_fn=lambda x: x,  # do not convert to Tensor
-                            sampler=BatchSampler(SequentialSampler(dataset), batch_size, False))
+    dataloader = DataLoader(dataset, batch_size=batch_size, collate_fn=lambda x: x, # do not convert to Tensor
+                            shuffle=True)
+                            # sampler=BatchSampler(SequentialSampler(dataset), batch_size, False))
 
     metainfo_list = []
     fid = 0
+    print("Transformando")
     for data in tqdm(dataloader,desc=f"Converting {dataset.name()}"):
-        # Tranform data
-        if(hasattr(transforms, 'transform')):
-            data_transf = transforms.transform(data)
-        else:
-            data_transf = transforms(data)
+        # Transform data
+        print(len(data))
+        # Iter over the batch
+        for d in data:
+            if(hasattr(transforms, 'transform')):
+                data_transf = transforms.transform(d)
+            else:
+                data_transf = transforms(d)
 
-        # Save the signal into a pickle file
-        for i in range(len(data_transf['signal'])):
-            fpath = os.path.join(dir_path, "{}.pkl".format(fid))
-            with open(fpath, 'wb') as f:
-                pickle.dump(data_transf['signal'][i], f)
-            fid += 1
+            # Save the signal into a pickle file
+            for i in range(len(data_transf['signal'])):
+                fpath = os.path.join(dir_path, "{}.pkl".format(fid))
+                with open(fpath, 'wb') as f:
+                    pickle.dump(data_transf['signal'][i], f)
+                fid += 1
 
-        # Free memory
-        del data_transf['signal']
-        # Store the metainfo
-        metainfo_list.append(data_transf['metainfo'])
+            # Free memory
+            del data_transf['signal']
+            # Store the metainfo
+            metainfo_list.append(data_transf['metainfo'])
 
     # Concatanate the metainfo
     metainfo = pd.concat(metainfo_list)

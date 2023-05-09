@@ -285,15 +285,19 @@ class SplitSampleRate(Transform):
         self.on_field = on_field
 
     def transform(self, data: SignalSample) -> SignalSample:
-        # data = data.copy()
         sigs = data[self.on_field]
         metainfo = data['metainfo'].copy(deep=False)
-        window_size = metainfo['sample_rate']
+        # Trick in order to admit metainfo as a pd.Series or pd.DataFrame
+        iter_meta = [(None, metainfo)] if isinstance(metainfo, pd.Series) else metainfo.iterrows()
+        # Accumulators variables
         splitted_signals = []
-    
-        old_data = data.copy()
-
-        for s in sigs:
+        splitted_metainfo = []
+        
+        # Iterate over the signals
+        # TODO: Vectorize this process
+        for s, (_, sig_metainfo) in zip(sigs, iter_meta):
+            # breakpoint()
+            window_size = sig_metainfo['sample_rate']
             if(len(s) < window_size):
                 snew = np.zeros(window_size, dtype=s.dtype)
                 snew[:len(s)] = s
@@ -305,18 +309,17 @@ class SplitSampleRate(Transform):
             # Do the actual split
             s = s.reshape(-1, window_size)
             # Store the new signals
-            splitted_signals.extend(s)
+            splitted_signals.append(s)
+            # Clone the metainfo
+            splitted_metainfo.append(
+                pd.DataFrame([sig_metainfo,] * len(s))
+            )
+        # Just integrate into one object
+        splitted_metainfo = pd.concat(splitted_metainfo)
+        splitted_signals = np.concatenate(splitted_signals)
 
-        metainfo[self.on_field] = splitted_signals
-        if isinstance(metainfo, pd.Series):
-            metainfo = metainfo.to_frame().transpose().reset_index(drop=True)
-        metainfo = metainfo.explode(self.on_field)
-
-        old_size = old_data['metainfo'].shape[0]
-        new_size = metainfo.shape[0]
-
-        data['metainfo'] = metainfo.drop(self.on_field, axis=1)
-        data[self.on_field] = np.stack(metainfo[self.on_field].values)
+        data['metainfo'] = splitted_metainfo
+        data[self.on_field] = splitted_signals
 
         return data
 
@@ -327,21 +330,28 @@ class NormalizeSampleRate(Transform):
 
     def transform(self, data):
         data = data.copy()
-        metainfo = data['metainfo'].copy(deep=True)
-        sr = metainfo['sample_rate']
+        metainfo = data['metainfo'].copy(deep=False)
+        # Trick in order to admit metainfo as a pd.Series or pd.DataFrame
+        iter_meta = [(None, metainfo)] if isinstance(metainfo, pd.Series) else metainfo.iterrows()
+        
         sigs = data['signal']
         new_sigs_list = []
-        for i, sig in enumerate(sigs):
+        for sig, (_, metasig) in zip(sigs, iter_meta):
             n = len(sig)
-            ratio = self.sample_rate/sr.iloc[i]
+            ratio = self.sample_rate/metasig['sample_rate']
             X = np.arange(len(sig))
             f_interpolate = interpolate.interp1d(X, sig, kind='linear')
             # Xt = np.linspace(0, n-1, int(np.round(ratio*(n-1)+1)))
             Xt = np.linspace(0, n-1, self.sample_rate)
             new_sig = f_interpolate(Xt)
             new_sigs_list.append(new_sig)
+        
+        
+        metainfo['original_sample_rate'] = metainfo['sample_rate']
         metainfo['sample_rate'] = self.sample_rate
-        metainfo['old_sample_rate'] = sr
+        
+        # Redefine
+        data['metainfo'] = metainfo
         data['signal'] = np.array(new_sigs_list)
 
         return data
