@@ -60,7 +60,7 @@ class DeepDataset(Dataset):
         return len(self.file_names)
 
 
-def convertDataset(dataset: RawVibrationDataset, transforms : Transform | Sequential, dir_path: Path | str, batch_size=1024):
+def convertDataset(dataset: RawVibrationDataset, transforms : Transform | Sequential, dir_path: Path | str, batch_size=32):
     """
     This function applies `transforms` to `dataset` and caches each transformed sample in a separated file in `dir_path`,
     and finally returns a Dataset object implementing `__getitem__`.
@@ -118,7 +118,6 @@ def convertDataset(dataset: RawVibrationDataset, transforms : Transform | Sequen
     print("Transformando")
     for data in tqdm(dataloader,desc=f"Converting {dataset.name()}"):
         # Transform data
-        print(len(data))
         # Iter over the batch
         for d in data:
             if(hasattr(transforms, 'transform')):
