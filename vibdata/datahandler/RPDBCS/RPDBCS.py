@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 from ..base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
@@ -45,6 +45,8 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
         self.dataset: Optional[np.ndarray] = None
         self.n_points = n_points
 
+        if version not in RPDBCS_raw.versions():
+            raise ValueError(f"Invalid version '{version}'. View available versions with `RPDBCS_raw.versions()`.")
         urls, resources = _urls_resources[version]
 
         if download:
@@ -113,3 +115,7 @@ class RPDBCS_raw(RawVibrationDataset, DownloadableDataset):
 
     def name(self):
         return "RPDBCS"
+
+    @staticmethod
+    def versions() -> List[str]:
+        return list(_urls_resources.keys())
