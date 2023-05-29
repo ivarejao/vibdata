@@ -24,6 +24,9 @@ _urls_resources = {
     '2023-03-14': (
         ["1kv9aAlRPRj2C4QWXn5sBU0Kx7B-iYfVK"], [('RPDBCS-20230314.zip', '1d7274c8a1b3a63b39b9b6c4911580ab')]
     ),
+    '2023-04-27': (
+        ["1PY_lBNl2HQitV6gyEKRt2SuBy0FSifdn"], [('RPDBCS-20230427.zip', 'adb5769791e4660f0aa135350170349e')]
+    )
 }
 
 _versions = []
