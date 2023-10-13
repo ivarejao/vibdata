@@ -10,6 +10,8 @@ from tqdm import tqdm
 import numpy as np
 from vibdata.deep.signal.transforms import Sequential, Transform, SignalSample
 from typing import Sequence, List
+from vibdata.definitions import LABELS_PATH
+import numpy.typing as npt
 
 class DeepDataset(Dataset):
     """
@@ -30,6 +32,23 @@ class DeepDataset(Dataset):
         assert len(self.file_names) == len(self.metainfo['label']), \
                "Number of files: %d != Labels: %d" % (len(self.file_names), len(self.metainfo['label']))
 
+        # Store the labels and labels_name 
+        self._compute_labels()
+
+    def _compute_labels(self) -> None:
+        labels = self.metainfo["label"].unique()
+        labels.sort()
+        self.labels = labels
+
+        relation_labels_name = pd.read_csv(LABELS_PATH)
+        dataset_labels_mask = relation_labels_name["id"].isin(self.labels)
+        self.labels_name = relation_labels_name[dataset_labels_mask]["label"].unique()
+
+    def get_labels(self) -> npt.NDArray[np.int_]:
+        return self.labels
+    
+    def get_labels_name(self) -> npt.NDArray[np.str_]:
+        return self.labels_name
 
     def __getitem__(self, i : int) -> SignalSample:
         """
