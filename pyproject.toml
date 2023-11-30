@@ -1,20 +1,20 @@
 [tool.poetry]
 name = "vibdata"
-version = "0.6.0"
+version = "0.6.3"
 description = "A library for loading vibration signals datasets"
 authors = ["Igor Varejão <imsvarejao@gmail.com>",
            "Joluan Zucateli <joluan.zuca@gmail.com>",
            "Lucas Henrique Sousa Mello <lucashsmello@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.6.2"
+python = ">=3.10, <3.12"
 numpy = "^1.17.2"
 torch = "^1.7"
-torchvision = "^0.8.0"
 tqdm = "^4.0.0"
 requests = "^2.0.0"
-pandas = "~1.1.0"
-scikit-learn = ">=0.23.2"
+pandas = "^1.1.0"
+scikit-learn = ">=0.19.1"
+rarfile = "^4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -24,15 +24,13 @@ toml = "^0.10.2"
 ipython = "^7.0.0"
 jedi = "<0.18.0"
 seaborn = ">=0.11.0"
+pyls-isort = ">=0.2.2"
+yapf = "*"
+isort = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.yapf]
-column_limit = 79
-join_multiple_lines = true
-coalesce_brackets = true
-dedent_closing_brackets = true
-align_closing_bracket_with_visual_indent = true
-split_before_first_argument = true
+based_on_style = "google"

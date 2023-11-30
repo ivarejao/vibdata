@@ -1,3 +1,5 @@
+from vibdata.definitions import LABELS_PATH
+
 from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
@@ -33,13 +35,21 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
                                                          "XJTU.csv")
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        return self._metainfo
+        df = self._metainfo
+        if labels_as_str:
+            # Create a dict with the relation between the centralized label with the actually label name
+            all_labels = pd.read_csv(LABELS_PATH)
+            dataset_labels: pd.DataFrame = all_labels.loc[all_labels['dataset'] == self.name()]
+            dict_labels = {id_label: labels_name for id_label, labels_name, _ in dataset_labels.itertuples(index=False)}
+            df['label'] = df['label'].apply(lambda id_label: dict_labels[id_label])
+        return df
+
 
     def __getitem__(self, i) -> pd.DataFrame:
         if(not hasattr(i, '__len__') and not isinstance(i, slice)):
             ret = self.__getitem__([i])
-            ret['signal'] = ret['signal'][i]
-            ret['metainfo'] = ret['metainfo'].iloc[i]
+            # ret['signal'] = ret['signal'][i]
+            # ret['metainfo'] = ret['metainfo'].iloc[i]
             return ret
         df = self.getMetaInfo()
         if(isinstance(i, slice)):
@@ -47,14 +57,12 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
         else:
             rows = df.iloc[i]
 
-        file_name = rows['file_name']
-
-        signal_datas = np.empty(len(file_name), dtype=object)
-        for i, f in enumerate(file_name):
-            full_fname = os.path.join(self.raw_folder, f)
+        signal_datas = np.empty(rows.shape[0], dtype=object)
+        for i, row in enumerate(rows.itertuples()):
+            full_fname = os.path.join(self.raw_folder, row.file_name)
+            column = "Horizontal_vibration_signals" if row.axis == "horizontal" else "Vertical_vibration_signals"
             data = pd.read_csv(full_fname)
-
-            signal_datas[i] = data
+            signal_datas[i] = data[column].values
         signal_datas = signal_datas
 
         return {'signal': signal_datas, 'metainfo': rows}
@@ -82,5 +90,5 @@ class XJTU_raw(RawVibrationDataset, DownloadableDataset):
             sigs.append(data)
         return {'signal': sigs, 'metainfo': metainfo}
 
-    def getLabelsNames(self):
-        return ['Normal', 'Outer Race', 'Cage', 'Inner Race', 'NaN']  
+    def name(self):
+        return "XJTU"

@@ -1,0 +1,55 @@
+id,label,dataset
+0,Normal,CWRU
+1,Inner Race,CWRU
+2,Outer Race,CWRU
+3,Ball,CWRU
+4,Balanced,EAS
+5,Unbalanced,EAS
+6,Normal,IMS
+7,Degraded Outer Race,IMS
+8,Outer Race,IMS
+9,Degraded Inner Race,IMS
+10,Inner Race,IMS
+11,Degraded Roller Race,IMS
+12,Roller Race,IMS
+13,Normal,MAFAULDA
+14,Horizontal Misalignment,MAFAULDA
+15,Vertical Misalignment,MAFAULDA
+16,Imbalance,MAFAULDA
+17,Underhang Cage,MAFAULDA
+18,Underhang Outer Cage,MAFAULDA
+19,Underhang Ball,MAFAULDA
+20,Overhang Cage,MAFAULDA
+21,Overhang Outer Race,MAFAULDA
+22,Overhang Ball,MAFAULDA
+23,Normal,MFPT
+24,Inner Race,MFPT
+25,Outer Race,MFPT
+26,Normal,PU
+27,Outer Ring Fault,PU
+28,Inner Ring Fault,PU
+29,Outer And Inner Ring Fault,PU
+30,Normal,RPDBCS
+31,Rubbing,RPDBCS
+32,Faulty Sensor,RPDBCS
+33,Misalignment,RPDBCS
+34,Unbalance,RPDBCS
+35,Healthy,UOC
+36,Missing Tooth,UOC
+37,Root Crack,UOC
+38,Spalling,UOC
+39,Chipping Tip,UOC
+40,Normal,XJTU
+41,Inner Race,XJTU
+42,Outer Race,XJTU
+43,Cage,XJTU
+44,NaN,XJTU
+45,Normal,SEU
+46,Ball,SEU
+47,Inner Ring,SEU
+48,Outer Ring,SEU
+49,Inner Ring and Outer Ring,SEU
+50,Chipped Tooth,SEU
+51,Missing Tooth,SEU
+52,Root Fault,SEU
+53,Surface Fault,SEU

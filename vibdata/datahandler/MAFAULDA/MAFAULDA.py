@@ -1,4 +1,7 @@
 import os
+
+from vibdata.definitions import LABELS_PATH
+
 from vibdata.datahandler.utils import _get_package_resource_dataframe
 # from FilesNames import FileNames
 
@@ -78,15 +81,25 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
         for i, (f, b, t, l) in enumerate(zip(file_name, bear_name, test_measure, labels)):
             # print(f"ROW: {rows.iloc[i]}")
             # There's a subtype
-            if "." in l:
-                sub_labels = l.split(".")
-            else:
-                sub_labels = l
+            # if "." in l:
+            #     sub_labels = l.split(".")
+            # else:
+            #     sub_labels = l
             # If there isn't a test measurement
+            label_folder = {13: 'normal',
+                            14: 'horizontal-misalignment',
+                            15: 'vertical-misalignment',
+                            16: 'imbalance',
+                            17: 'underhang/cage_fault',
+                            18: 'underhang/outer_race',
+                            19: 'underhang/ball_fault',
+                            20: 'overhang/cage_fault',
+                            21: 'overhang/outer_race',
+                            22: 'overhang/ball_fault'}
             if t == "":
-                raw_path = os.path.join(self.raw_folder, sub_labels, f)
+                raw_path = os.path.join(self.raw_folder, label_folder[l], f)
             else:
-                raw_path = os.path.join(self.raw_folder, *sub_labels, t, f)
+                raw_path = os.path.join(self.raw_folder, label_folder[l], t, f)
 
             vib_data = np.loadtxt(raw_path, delimiter=',')
             signal_datas[i] = vib_data[:, b]
@@ -97,9 +110,13 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         df = _get_package_resource_dataframe(__package__, "MAFAULDA.csv",
                                              na_filter=False)
+        if labels_as_str:
+            # Create a dict with the relation between the centralized label with the actually label name
+            all_labels = pd.read_csv(LABELS_PATH)
+            dataset_labels : pd.DataFrame = all_labels.loc[all_labels['dataset'] == self.name()]
+            dict_labels = {id_label : labels_name for id_label, labels_name, _ in dataset_labels.itertuples(index=False)}
+            df['label'] = df['label'].apply(lambda id_label : dict_labels[id_label])
         return df
 
-    def getLabelsNames(self):
-        return ['normal', 'horizontal_misalignment', 'vertical_misalignment', 'imbalance',
-                'underhang.cage_fault', 'underhang.outer_race', 'underhang.ball_fault',
-                'overhang.cage_fault', 'overhang.outer_race', 'overhang.ball_fault']
+    def name(self):
+        return "MAFAULDA"

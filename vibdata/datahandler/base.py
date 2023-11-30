@@ -1,10 +1,12 @@
 from abc import abstractmethod
-from typing import Dict, List, Sequence, Tuple, Optional
+from typing import Dict, List, Sequence, Tuple, Optional, Union
 import pandas as pd
 import numpy as np
 import os
 from vibdata.datahandler.utils import download_file_from_google_drive, extract_archive_and_remove
+from vibdata.definitions import LABELS_PATH
 from urllib.error import URLError
+
 
 class DownloadableDataset:
     def __init__(self, root_dir: str, download_resources: List[Tuple[str, str]], download_mirrors: List = None,
@@ -44,24 +46,24 @@ class DownloadableDataset:
     def _check_exists(self) -> bool:
         for url, _ in self.download_resources:
             fpath = os.path.join(self.raw_folder, url[:-4])
-            if(not os.path.isdir(fpath)):
+            if (not os.path.isdir(fpath)):
                 return False
         return True
 
     def download(self) -> None:
         """Download the dataset, if it doesn't exist already."""
 
-        if(self._check_exists()):
+        if (self._check_exists()):
             return
 
         os.makedirs(self.raw_folder, exist_ok=True)
 
         # download files
-        if(self.download_urls is None):
+        if (self.download_urls is None):
             urls_list = [[f"{mirror}/{filename}" for filename, _ in self.download_resources]
                          for mirror in self.download_mirrors]
         else:
-            if(isinstance(self.download_urls[0], str)):
+            if (isinstance(self.download_urls[0], str)):
                 urls_list = [self.download_urls]
             else:
                 urls_list = self.download_urls
@@ -70,9 +72,10 @@ class DownloadableDataset:
             for url_mirror in urls_list:
                 url = url_mirror[i]
                 try:
-                    if(self.extract_files):
+                    if (self.extract_files):
                         download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
-                        extract_archive_and_remove(self.raw_folder + f'/{filename}', self.raw_folder + f'/{filename[:-4]}')
+                        extract_archive_and_remove(self.raw_folder + f'/{filename}',
+                                                   self.raw_folder + f'/{filename[:-4]}')
                     else:
                         download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
                 except URLError as error:
@@ -86,6 +89,7 @@ class DownloadableDataset:
 
 
 class RawVibrationDataset:
+
     def __iter__(self):
         for i in range(len(self)):
             yield self[i]
@@ -98,7 +102,7 @@ class RawVibrationDataset:
                 and 'metainfo', which returns the i-th row of the dataframe returned by `self.getMetaInfo`.
 
         """
-        if(hasattr(index, '__iter__')):
+        if (hasattr(index, '__iter__')):
             sigs = []
             metainfos = []
             for i in index:
@@ -114,6 +118,13 @@ class RawVibrationDataset:
         return len(self.getMetaInfo())
 
     @abstractmethod
+    def name(self) -> str:
+        """
+        This should return the name of the dataset
+        """
+        raise NotImplementedError
+
+    @abstractmethod
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         """
         This does not include the time-amplitude vectors.
@@ -124,13 +135,8 @@ class RawVibrationDataset:
         """
         raise NotImplementedError
 
-    def getLabels(self, as_str=False):
-        return self.getMetaInfo(labels_as_str=as_str)['label'].values
-
-    @abstractmethod
-    def getLabelsNames(self) -> Sequence[str]:
-        raise NotImplementedError
-
-    def getNumLabels(self) -> int:
-        return len(self.getLabelsNames())
-
+    def getLabels(self, as_str=False) -> Union[List[int], List[str]]:
+        df = pd.read_csv(LABELS_PATH)
+        meta_labels = df.loc[df['dataset'] == self.name()]
+        labels = meta_labels['label'] if as_str else meta_labels['id']
+        return labels.tolist()
