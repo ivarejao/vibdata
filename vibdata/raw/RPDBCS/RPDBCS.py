@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 from vibdata.raw.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
