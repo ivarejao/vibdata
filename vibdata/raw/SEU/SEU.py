@@ -2,10 +2,10 @@ from typing import Dict
 
 from vibdata.definitions import LABELS_PATH
 
-from vibdata.datahandler.base import RawVibrationDataset, DownloadableDataset
+from vibdata.raw.base import RawVibrationDataset, DownloadableDataset
 import pandas as pd
 import numpy as np
-from vibdata.datahandler.utils import _get_package_resource_dataframe
+from vibdata.raw.utils import _get_package_resource_dataframe
 import os
 
 

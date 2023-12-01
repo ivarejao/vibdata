@@ -60,7 +60,8 @@ def _save_response_content(
     destination: str,
     length: Optional[int] = None,
 ) -> None:
-    with open(destination, "wb") as fh, tqdm(total=length, unit='B', unit_scale=True, unit_divisor=1024) as pbar:
+    dataset_name = os.path.basename(destination).replace('.zip', '')
+    with open(destination, "wb") as fh, tqdm(desc=f'Downl. {dataset_name}: ', total=length, unit='B', unit_scale=True, unit_divisor=1024) as pbar:
         for chunk in content:
             # filter out keep-alive new chunks
             if not chunk:
@@ -225,8 +226,12 @@ def _extract_gdrive_api_response(response, chunk_size: int = 32 * 1024) -> Tuple
     content = response.iter_content(chunk_size)
     first_chunk = None
     # filter out keep-alive new chunks
-    while not first_chunk:
-        first_chunk = next(content)
+    try:
+        while not first_chunk:
+            first_chunk = next(content)
+    except StopIteration:
+        print("Deu o erro")
+        return None, content
     content = itertools.chain([first_chunk], content)
 
     try:
@@ -259,7 +264,7 @@ def download_file_from_google_drive(file_id: str, root: str, filename: Optional[
         return
 
     url = "https://drive.google.com/uc"
-    params = dict(id=file_id, export="download")
+    params = dict(file=filename, root=root, id=file_id, export="download")
     print(f"Debug: {params}")
     with requests.Session() as session:
         response = session.get(url, params=params, stream=True)

@@ -3,7 +3,7 @@ from typing import Dict, List, Sequence, Tuple, Optional, Union
 import pandas as pd
 import numpy as np
 import os
-from vibdata.datahandler.utils import download_file_from_google_drive, extract_archive_and_remove
+from vibdata.raw.utils import download_file_from_google_drive, extract_archive_and_remove
 from vibdata.definitions import LABELS_PATH
 from urllib.error import URLError
 
