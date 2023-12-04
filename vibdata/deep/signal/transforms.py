@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 from scipy import interpolate
 from vibdata.deep.signal.core import SignalSample
+from scipy.signal import resample_poly
 
 class Transform(BaseEstimator, TransformerMixin):
     @abstractmethod
@@ -356,4 +357,32 @@ class NormalizeSampleRate(Transform):
 
         return data
 
+class NormalizeSampleRatePoly(Transform):
+    """Normalize sample rate using polyphase filtering"""
+
+    def __init__(self, sample_rate) -> None:
+        super().__init__()
+        self.sample_rate = sample_rate
+
+    def transform(self, data):
+        data = data.copy()
+        metainfo = data['metainfo'].copy(deep=False)
+        # Trick in order to admit metainfo as a pd.Series or pd.DataFrame
+        iter_meta = [(None, metainfo)] if isinstance(metainfo, pd.Series) else metainfo.iterrows()
+        
+        sigs = data['signal']
+        new_sigs_list = []
+        for sig, (_, metasig) in zip(sigs, iter_meta):
+            sig_sample_rate = metasig['sample_rate']
+            new_sig = resample_poly(sig, up=self.sample_rate, down=sig_sample_rate)
+            new_sigs_list.append(new_sig)
+        
+        metainfo['original_sample_rate'] = metainfo['sample_rate']
+        metainfo['sample_rate'] = self.sample_rate
+        
+        # Redefine
+        data['metainfo'] = metainfo
+        data['signal'] = np.array(new_sigs_list)
+
+        return data
 
