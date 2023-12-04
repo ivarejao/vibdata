@@ -5,6 +5,7 @@ from sklearn.base import TransformerMixin, BaseEstimator
 import numpy as np
 import pandas as pd
 from scipy import interpolate
+from scipy.fft import rfft, rfftfreq
 from vibdata.deep.signal.core import SignalSample
 
 class Transform(BaseEstimator, TransformerMixin):
@@ -173,20 +174,33 @@ class Split(Transform):
 
         return data
 
-class FFT(TransformOnFieldClass):
-    def __init__(self, on_field='signal', discard_first_points=0) -> None:
-        super().__init__(on_field=on_field)
+class FFT(Transform):
+    def __init__(self, discard_first_points=0) -> None:
+        super().__init__()
         self.discard_first_points = discard_first_points
 
-    def transform_(self, X):
+    def transform(self, data):
+        data = data.copy()
+        metainfo = data['metainfo'].copy(deep=False)
+        signals = data['signal']
+
         ret = []
-        for x in X:
-            x = np.fft.fft(x)
-            x = 2 * np.abs(x) / len(x)
-            n = x.shape[0]
-            x = x[self.discard_first_points:n//2]
-            ret.append(x)
-        return ret
+        for (_, entry), sig in zip(metainfo.iterrows(), signals):
+            sig_rfft = np.abs(rfft(sig, norm='forward')) * 2  # Amplitudes
+
+            # Low-pass filter
+            if 'original_sample_rate' in entry:
+                sig_sample_rate = entry['sample_rate']
+                sig_freqs = rfftfreq(sig.size, d=1 / sig_sample_rate)
+
+                bandwidth = entry['original_sample_rate'] / 2
+                mask = sig_freqs >= bandwidth
+                sig_rfft[mask] = 0.0
+
+            ret.append(sig_rfft[self.discard_first_points:])
+
+        data['signal'] = ret
+        return data
 
 
 class SelectFields(Transform):
