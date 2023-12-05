@@ -5,7 +5,12 @@ default:
        - pip install poetry 
        - poetry install
 stages:
+    - formatting
     - test
+formatting:
+    script:
+        - poetry run isort vibdata/ tests/
+        - poetry run black --fast vibdata/ tests/
 test:
     script:
         - poetry run pytest
