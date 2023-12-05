@@ -9,8 +9,10 @@ stages:
     - test
 formatting:
     script:
-        - poetry run isort vibdata/ tests/
-        - poetry run black --fast vibdata/ tests/
+        - poetry run isort --check-only vibdata/ tests/
+        - poetry run black --check vibdata/ tests/
+    only:
+        - merge_requests
 test:
     script:
         - poetry run pytest
