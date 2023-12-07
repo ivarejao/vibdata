@@ -1,6 +1,7 @@
 from abc import abstractmethod
-from typing import Dict, List, TypedDict
+from typing import Dict, List, Literal, TypedDict
 
+import cv2 as cv
 import numpy as np
 import pandas as pd
 from scipy import interpolate
@@ -501,4 +502,49 @@ class NormalizeSampleRatePoly(Transform):
         data["metainfo"] = metainfo
         data["signal"] = np.array(new_sigs_list)
 
+        return data
+
+
+class Resize2D(Transform):
+    """Resize transform for image-like data
+
+    Args:
+        width: Output width
+        height: Output height
+        interpolation: interpolation method
+    """
+
+    def __init__(
+        self,
+        width: int,
+        height: int,
+        interpolation: Literal["nearest", "linear", "cubic", "area", "lanczos"],
+    ):
+        super().__init__()
+
+        interpolations: Dict[str, int] = {
+            "nearest": cv.INTER_NEAREST,
+            "linear": cv.INTER_LINEAR,
+            "cubic": cv.INTER_CUBIC,
+            "area": cv.INTER_AREA,
+            "lanczos": cv.INTER_LANCZOS4,
+        }
+
+        self.width = width
+        self.height = height
+        self.interpolation = interpolations[interpolation]
+
+    def transform(self, data):
+        dsize = (self.width, self.height)
+
+        data = data.copy()
+        metainfo = data["metainfo"].copy(deep=True)
+        signals = data["signal"]
+
+        ret = []
+        for (_, entry), img in zip(metainfo.iterrows(), signals):
+            resized_image = cv.resize(img, dsize, self.interpolation)
+            ret.append(resized_image)
+
+        data["signal"] = np.array(ret)
         return data
