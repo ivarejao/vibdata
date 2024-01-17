@@ -18,6 +18,7 @@ import zipfile
 from typing import Any, Callable, List, Iterable, Optional, TypeVar, Dict, IO, Tuple, Iterator
 from urllib.parse import urlparse
 
+import gdown
 import requests
 import torch
 from torch.utils.model_zoo import tqdm
@@ -250,10 +251,8 @@ def download_file_from_google_drive(file_id: str, root: str, filename: Optional[
         filename (str, optional): Name to save the file under. If None, use the id of the file.
         md5 (str, optional): MD5 checksum of the download. If None, do not check
     """
-    # Based on https://stackoverflow.com/questions/38511444/python-download-files-from-google-drive-using-url
-
     root = os.path.expanduser(root)
-    if not filename:
+    if filename is None:
         filename = file_id
     fpath = os.path.join(root, filename)
 
@@ -263,35 +262,8 @@ def download_file_from_google_drive(file_id: str, root: str, filename: Optional[
         print(f"Using downloaded {'and verified ' if md5 else ''}file: {fpath}")
         return
 
-    url = "https://drive.google.com/uc"
-    params = dict(file=filename, root=root, id=file_id, export="download")
-    print(f"Debug: {params}")
-    with requests.Session() as session:
-        response = session.get(url, params=params, stream=True)
-        other_response = session.get(url, params=params)
-        with open(root+"/thisout.html", "wb") as f:
-            f.write(other_response.content)
-
-        for key, value in response.cookies.items():
-            if key.startswith("download_warning"):
-                token = value
-                break
-        else:
-            api_response, content = _extract_gdrive_api_response(response)
-            token = "t" if api_response == "Virus scan warning" else None
-
-        if token is not None:
-            response = session.get(url, params=dict(params, confirm=token), stream=True)
-            api_response, content = _extract_gdrive_api_response(response)
-
-        if api_response == "Quota exceeded":
-            raise RuntimeError(
-                f"The daily quota of the file {filename} is exceeded and it "
-                f"can't be downloaded. This is a limitation of Google Drive "
-                f"and can only be overcome by trying again later."
-            )
-        file_size = int(response.headers['Content-Length'])
-        _save_response_content(content, fpath, length=file_size)
+    url_base = "https://drive.google.com/uc?id="
+    gdown.cached_download(url = url_base + file_id, path=fpath, md5=md5)
 
 
 def _extract_tar(from_path: str, to_path: str, compression: Optional[str]) -> None:
