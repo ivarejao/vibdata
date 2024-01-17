@@ -1,6 +1,8 @@
-*__pycache__/
+__pycache__/
 /poetry.lock
 /dist
 /cache
 /.coverage
 *.ipynb_checkpoints/
+.vscode/
+.virtual_documents/
