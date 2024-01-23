@@ -1,3 +1,4 @@
+import copy
 import hashlib
 import os
 import pickle
@@ -54,12 +55,6 @@ class DeepDataset(Dataset):
         dataset_labels_mask = relation_labels_name["id"].isin(self.labels)
         self.labels_name = relation_labels_name[dataset_labels_mask]["label"].unique()
 
-    def get_labels(self) -> npt.NDArray[np.int_]:
-        return self.labels
-
-    def get_labels_name(self) -> npt.NDArray[np.str_]:
-        return self.labels_name
-
     def __getitem__(self, i: int) -> SignalSample:
         """
         Get an individual signal sample based on an integer index. If the dataset was instantiate with
@@ -88,6 +83,66 @@ class DeepDataset(Dataset):
 
     def __len__(self) -> int:
         return len(self.file_names)
+
+    def get_labels(self) -> npt.NDArray[np.int_]:
+        return self.labels
+
+    def get_labels_name(self) -> npt.NDArray[np.str_]:
+        return self.labels_name
+
+    # Getters and setters
+    def get_metainfo(self) -> pd.DataFrame:
+        return self.metainfo
+
+    def set_metainfo(self, metainfo: pd.DataFrame) -> None:
+        self.metainfo = metainfo
+
+    def get_file_names(self) -> List[str]:
+        return self.file_names
+
+    def set_file_names(self, file_names: List[str]) -> None:
+        self.file_names = file_names
+
+    def __deepcopy__(self, memo) -> "DeepDataset":
+        """
+        Create a deep copy of the DeepDataset object.
+
+        Parameters:
+        - memo: A dictionary used by the deepcopy function to track already copied objects.
+
+        Returns:
+        A new instance of DeepDataset with the same root_dir, transforms, and copied attributes.
+        """
+        # Create a new instance of DeepDataset with the same root_dir and transforms
+        new_dataset = DeepDataset(self.root_dir, self.transforms)
+
+        # Create new copies of the mutable attributes
+        new_dataset.file_names = copy.deepcopy(self.file_names, memo)
+        new_dataset.metainfo = self.metainfo.copy(deep=True)
+        new_dataset.labels_name = copy.deepcopy(self.labels_name, memo)
+        new_dataset.labels = copy.deepcopy(self.labels, memo)
+
+        return new_dataset
+
+
+def resample_dataset(dataset: DeepDataset, indexes: np.ndarray) -> DeepDataset:
+    """
+    Resamples the given dataset by selecting the samples at the specified indexes.
+
+    Args:
+        dataset (DeepDataset): The dataset to be resampled.
+        indexes (np.ndarray): The indexes of the samples to be selected.
+
+    Returns:
+        DeepDataset: The resampled dataset.
+    """
+    new_dataset = copy.deepcopy(dataset)
+    # Get the file_names and convert to numpy array so it the indexing can be done
+    current_file_names = np.array(new_dataset.get_file_names())
+    new_dataset.set_file_names(current_file_names[indexes].tolist())
+    # Update the metainfo with only the indexes passed
+    new_dataset.set_metainfo(new_dataset.metainfo.iloc[indexes])
+    return new_dataset
 
 
 def convertDataset(
