@@ -1,12 +1,14 @@
 from abc import abstractmethod
-from typing import Dict, List, Literal, TypedDict
+from typing import Dict, List, Literal
 
 import cv2 as cv
 import numpy as np
 import pandas as pd
+import essentia.standard
 from scipy import interpolate
 from sklearn import preprocessing
 from scipy.fft import rfft, rfftfreq
+from scipy.stats import kurtosis
 from scipy.signal import spectrogram, resample_poly
 from sklearn.base import BaseEstimator, TransformerMixin
 
@@ -529,3 +531,131 @@ class Resize2D(Transform):
 
         data["signal"] = np.array(ret)
         return data
+
+
+class FeatureExtractor(Transform):
+    def __init__(self, features: List[Transform]) -> None:
+        super().__init__()
+        self.features = features
+
+    def transform(self, data):
+        new_data = data.copy()
+        new_signals = np.empty((len(data["metainfo"]), len(self.features)))
+        for i, feature in enumerate(self.features):
+            feat_data = np.array(
+                [
+                    feature.transform({"metainfo": metainfo, "signal": signal})
+                    for (_, metainfo), signal in zip(data["metainfo"].iterrows(), data["signal"])
+                ]
+            )
+            new_signals[:, i] = feat_data
+
+        new_data["signal"] = new_signals
+        return new_data
+
+
+class Kurtosis(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        return kurtosis(signal)
+
+
+class RootMeanSquare(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        return np.sqrt(sum(np.square(signal)) / len(signal))
+
+
+class StandardDeviation(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        return np.std(signal)
+
+
+class Mean(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        return np.mean(signal)
+
+
+class LogAttackTime(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        sample_rate = data["metainfo"]["sample_rate"]
+        signal = data["signal"]
+
+        sample_rate_float32 = np.float32(sample_rate)
+        envelope = essentia.standard.Envelope(sampleRate=sample_rate_float32, applyRectification=False)
+        signal_envelope = envelope(signal.astype("float32"))
+
+        logAttackTime = essentia.standard.LogAttackTime(sampleRate=sample_rate_float32)
+        return logAttackTime(signal_envelope)[0]
+
+
+class TemporalDecrease(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        sample_rate = data["metainfo"]["sample_rate"]
+        signal = data["signal"]
+
+        decrease = essentia.standard.Decrease(range=((len(signal.astype("float32")) - 1) / np.float32(sample_rate)))
+        return decrease(signal.astype("float32"))
+
+
+class TemporalCentroid(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        sample_rate = data["metainfo"]["sample_rate"]
+        signal = data["signal"]
+
+        sample_rate_float32 = np.float32(sample_rate)
+        envelope = essentia.standard.Envelope(sampleRate=sample_rate_float32, applyRectification=False)
+        signal_envelope = envelope(signal.astype("float32"))
+
+        centroid = essentia.standard.Centroid(range=((len(signal.astype("float32")) - 1) / sample_rate_float32))
+        return centroid(signal_envelope)
+
+
+class EffectiveDuration(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        sample_rate = data["metainfo"]["sample_rate"]
+        signal = data["signal"]
+
+        sample_rate_float32 = np.float32(sample_rate)
+        envelope = essentia.standard.Envelope(sampleRate=sample_rate_float32, applyRectification=False)
+        signal_envelope = envelope(signal.astype("float32"))
+
+        effective = essentia.standard.EffectiveDuration(sampleRate=sample_rate_float32)
+        return effective(signal_envelope)
+
+
+class ZeroCrossingRate(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+
+        zeroCrossingRate = essentia.standard.ZeroCrossingRate()
+        return zeroCrossingRate(signal.astype("float32"))
