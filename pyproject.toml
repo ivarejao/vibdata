@@ -41,3 +41,15 @@ select = ["E", "F", "I001"]
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+# Sort by the lenght
+length_sort=true
+profile="black"
+multi_line_output=5
+line_length=120
+use_parentheses=true
+
+[tool.black]
+line-length=120
+target-version=['py310']

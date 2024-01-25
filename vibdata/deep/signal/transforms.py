@@ -5,9 +5,9 @@ import cv2 as cv
 import numpy as np
 import pandas as pd
 from scipy import interpolate
-from scipy.fft import rfft, rfftfreq
-from scipy.signal import resample_poly, spectrogram
 from sklearn import preprocessing
+from scipy.fft import rfft, rfftfreq
+from scipy.signal import spectrogram, resample_poly
 from sklearn.base import BaseEstimator, TransformerMixin
 
 from vibdata.deep.signal.core import SignalSample
@@ -286,19 +286,12 @@ class SelectFields(Transform):
     def __init__(self, fields, metainfo_fields=[]):
         super().__init__()
         self.fields = [fields] if isinstance(fields, str) else fields
-        self.metainfo_fields = (
-            [metainfo_fields] if isinstance(metainfo_fields, str) else metainfo_fields
-        )
+        self.metainfo_fields = [metainfo_fields] if isinstance(metainfo_fields, str) else metainfo_fields
 
     def transform(self, data):
         ret = {f: data[f] for f in self.fields}
         metainfo = data["metainfo"]
-        ret.update(
-            {
-                f: metainfo[f].values if f != "index" else metainfo.index.values
-                for f in self.metainfo_fields
-            }
-        )
+        ret.update({f: metainfo[f].values if f != "index" else metainfo.index.values for f in self.metainfo_fields})
         return ret
 
 
@@ -389,11 +382,7 @@ class SplitSampleRate(Transform):
         sigs = data[self.on_field]
         metainfo = data["metainfo"].copy(deep=False)
         # Trick in order to admit metainfo as a pd.Series or pd.DataFrame
-        iter_meta = (
-            [(None, metainfo)]
-            if isinstance(metainfo, pd.Series)
-            else metainfo.iterrows()
-        )
+        iter_meta = [(None, metainfo)] if isinstance(metainfo, pd.Series) else metainfo.iterrows()
         # Accumulators variables
         splitted_signals = []
         splitted_metainfo = []
@@ -443,11 +432,7 @@ class NormalizeSampleRate(Transform):
         data = data.copy()
         metainfo = data["metainfo"].copy(deep=False)
         # Trick in order to admit metainfo as a pd.Series or pd.DataFrame
-        iter_meta = (
-            [(None, metainfo)]
-            if isinstance(metainfo, pd.Series)
-            else metainfo.iterrows()
-        )
+        iter_meta = [(None, metainfo)] if isinstance(metainfo, pd.Series) else metainfo.iterrows()
 
         sigs = data["signal"]
         new_sigs_list = []
@@ -482,11 +467,7 @@ class NormalizeSampleRatePoly(Transform):
         data = data.copy()
         metainfo = data["metainfo"].copy(deep=False)
         # Trick in order to admit metainfo as a pd.Series or pd.DataFrame
-        iter_meta = (
-            [(None, metainfo)]
-            if isinstance(metainfo, pd.Series)
-            else metainfo.iterrows()
-        )
+        iter_meta = [(None, metainfo)] if isinstance(metainfo, pd.Series) else metainfo.iterrows()
 
         sigs = data["signal"]
         new_sigs_list = []

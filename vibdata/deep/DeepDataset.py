@@ -1,19 +1,19 @@
-import copy
-import hashlib
 import os
+import copy
 import pickle
+import hashlib
+from typing import List, Union, Iterable, Sequence, TypedDict
 from pathlib import Path
-from typing import Iterable, List, Sequence, TypedDict, Union
 
 import numpy as np
-import numpy.typing as npt
 import pandas as pd
-from torch.utils.data import BatchSampler, DataLoader, Dataset, SequentialSampler
+import numpy.typing as npt
 from tqdm import tqdm
+from torch.utils.data import Dataset, DataLoader, BatchSampler, SequentialSampler
 
-from vibdata.deep.signal.transforms import Sequential, SignalSample, Transform
-from vibdata.definitions import LABELS_PATH
 from vibdata.raw.base import RawVibrationDataset
+from vibdata.definitions import LABELS_PATH
+from vibdata.deep.signal.transforms import Transform, Sequential, SignalSample
 
 
 class DeepDataset(Dataset):
@@ -26,19 +26,13 @@ class DeepDataset(Dataset):
         super().__init__()
         self.root_dir = root_dir
         # Load files names
-        self.file_names = [
-            f
-            for f in sorted(os.listdir(self.root_dir))
-            if f[-4:] == ".pkl" and f != "metainfo.pkl"
-        ]
+        self.file_names = [f for f in sorted(os.listdir(self.root_dir)) if f[-4:] == ".pkl" and f != "metainfo.pkl"]
         self.file_names = sorted(self.file_names, key=lambda k: int(k[:-4]))
         with open(os.path.join(root_dir, "metainfo.pkl"), "rb") as f:
             self.metainfo: pd.DataFrame = pickle.load(f)
         self.transforms = transforms
         # Confirm if there's no missing data
-        assert len(self.file_names) == len(
-            self.metainfo["label"]
-        ), "Number of files: %d != Labels: %d" % (
+        assert len(self.file_names) == len(self.metainfo["label"]), "Number of files: %d != Labels: %d" % (
             len(self.file_names),
             len(self.metainfo["label"]),
         )
@@ -199,9 +193,7 @@ def convertDataset(
                     if f.read().strip("\n") == hash_code:
                         return DeepDataset(dir_path)
                     else:
-                        raise ValueError(
-                            "Dataset corrupted! Please erase the old version."
-                        )
+                        raise ValueError("Dataset corrupted! Please erase the old version.")
             raise ValueError("Directory exists and it is not empty.")
     else:
         os.makedirs(dir_path)
