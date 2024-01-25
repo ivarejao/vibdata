@@ -1,10 +1,12 @@
 # Code made in Pycharm by Igor Varejao
 import os
-from vibdata.definitions import LABELS_PATH
-from vibdata.raw.utils import _get_package_resource_dataframe
+
 import numpy as np
 import pandas as pd
-from vibdata.raw.base import RawVibrationDataset, DownloadableDataset
+
+from vibdata.raw.base import DownloadableDataset, RawVibrationDataset
+from vibdata.raw.utils import _get_package_resource_dataframe
+from vibdata.definitions import LABELS_PATH
 
 # This dataset are composed by three tests each one describing a test-to-failure experiment.
 # Each test is made by several files, representing a ~1 second record with 20Hz sample rate.
@@ -62,11 +64,10 @@ from vibdata.raw.base import RawVibrationDataset, DownloadableDataset
 
 
 class IMS_raw(RawVibrationDataset, DownloadableDataset):
-
     source = "https://drive.google.com/file/d/1r9SadjRcUkvI1wJZvi-nu9VzPyQ8oOvE/view?usp=sharing"
 
     urls = mirrors = ["1r9SadjRcUkvI1wJZvi-nu9VzPyQ8oOvE"]  # Google drive id
-    resources = [('IMS.zip', '4d24ffef04f5869d68c0bc7cf65ebf77')]
+    resources = [("IMS.zip", "4d24ffef04f5869d68c0bc7cf65ebf77")]
 
     #
     # Data file organization
@@ -89,14 +90,22 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
     #              }
 
     def __init__(self, root_dir: str, download=False, with_thirdtest=False):
-        if (download):
-            super().__init__(root_dir=root_dir, download_resources=IMS_raw.resources, download_urls=IMS_raw.urls,
-                             extract_files=True)
+        if download:
+            super().__init__(
+                root_dir=root_dir,
+                download_resources=IMS_raw.resources,
+                download_urls=IMS_raw.urls,
+                extract_files=True,
+            )
         else:
-            super().__init__(root_dir=root_dir, download_resources=IMS_raw.resources, download_mirrors=None)
+            super().__init__(
+                root_dir=root_dir,
+                download_resources=IMS_raw.resources,
+                download_mirrors=None,
+            )
         self.third_test = with_thirdtest
 
-    def _get_test_folder(self, ntest : int) -> str:
+    def _get_test_folder(self, ntest: int) -> str:
         """
         Get the name of the folder where the files of the test will be stored
         Args:
@@ -106,22 +115,22 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
             The name of the folder containing the files of test in matter
         """
         if ntest == 1:
-            return '1st_test'
+            return "1st_test"
         elif ntest == 2:
-            return '2nd_test'
+            return "2nd_test"
         else:
-            return '3rd_test'
+            return "3rd_test"
 
     # Implement the abstract methods from RawVibrationalDataset
     # ---------------------------------------------------------
     def __getitem__(self, idx) -> dict:
         try:
-            if (not hasattr(idx, '__len__') and not isinstance(idx, slice)):
+            if not hasattr(idx, "__len__") and not isinstance(idx, slice):
                 # return self.__getitem__([idx]).iloc[0]
                 return self.__getitem__([idx])
             df = self.getMetaInfo()
-            if (isinstance(idx, slice)):
-                rows = df.iloc[idx.start: idx.stop: idx.step]
+            if isinstance(idx, slice):
+                rows = df.iloc[idx.start : idx.stop : idx.step]
                 range_idx = list(range(idx.start, idx.stop, idx.step))
             else:
                 rows = df.iloc[idx]
@@ -133,29 +142,25 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
         signal_datas = np.empty(rows.shape[0], dtype=object)
 
         for i, row in enumerate(rows.itertuples()):
-            path_file = os.path.join(self.raw_folder,
-                                     self._get_test_folder(row.test),
-                                     row.file_name)
-            file_data = np.loadtxt(path_file, delimiter='\t', unpack=True)
+            path_file = os.path.join(self.raw_folder, self._get_test_folder(row.test), row.file_name)
+            file_data = np.loadtxt(path_file, delimiter="\t", unpack=True)
             column = (row.bearing - 1) * 2 + (1 if row.axis == "vertical" else 0)
             signal_datas[i] = file_data[column, :]
 
-        return {'signal': signal_datas, 'metainfo': rows}
-
+        return {"signal": signal_datas, "metainfo": rows}
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
         df = _get_package_resource_dataframe(__package__, "IMS.csv")
         if labels_as_str:
             # Create a dict with the relation between the centralized label with the actually label name
             all_labels = pd.read_csv(LABELS_PATH)
-            dataset_labels : pd.DataFrame = all_labels.loc[all_labels['dataset'] == self.name()]
-            dict_labels = {id_label : labels_name for id_label, labels_name, _ in dataset_labels.itertuples(index=False)}
-            df['label'] = df['label'].apply(lambda id_label : dict_labels[id_label])
+            dataset_labels: pd.DataFrame = all_labels.loc[all_labels["dataset"] == self.name()]
+            dict_labels = {id_label: labels_name for id_label, labels_name, _ in dataset_labels.itertuples(index=False)}
+            df["label"] = df["label"].apply(lambda id_label: dict_labels[id_label])
         if self.third_test:
             return df
         else:
             return df[:21184]
-
 
     def name(self):
         return "IMS"

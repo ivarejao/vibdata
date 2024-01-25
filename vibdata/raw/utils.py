@@ -1,14 +1,14 @@
-import bz2
-import gzip
-import hashlib
-import lzma
 import os
+import bz2
+import sys
+import gzip
+import lzma
+import hashlib
 import os.path
 import pathlib
-import sys
 import tarfile
 import zipfile
-from typing import IO, Any, Callable, Dict, Optional, Tuple
+from typing import IO, Any, Dict, Tuple, Callable, Optional
 
 import gdown
 import pandas as pd
@@ -48,9 +48,7 @@ def calculate_md5(fpath: str, chunk_size: int = 1024 * 1024) -> str:
     # Setting the `usedforsecurity` flag does not change anything about the functionality, but indicates that we are
     # not using the MD5 checksum for cryptography. This enables its usage in restricted environments like FIPS. Without
     # it torchvision.datasets is unusable in these environments since we perform a MD5 check everywhere.
-    md5 = hashlib.md5(
-        **dict(usedforsecurity=False) if sys.version_info >= (3, 9) else dict()
-    )
+    md5 = hashlib.md5(**dict(usedforsecurity=False) if sys.version_info >= (3, 9) else dict())
     with open(fpath, "rb") as f:
         for chunk in iter(lambda: f.read(chunk_size), b""):
             md5.update(chunk)
@@ -69,9 +67,7 @@ def check_integrity(fpath: str, md5: Optional[str] = None) -> bool:
     return check_md5(fpath, md5)
 
 
-def download_file_from_google_drive(
-    file_id: str, root: str, filename: Optional[str] = None, md5: Optional[str] = None
-):
+def download_file_from_google_drive(file_id: str, root: str, filename: Optional[str] = None, md5: Optional[str] = None):
     """Download a Google Drive file from  and place it in root.
     Args:
         file_id (str): id of file to be downloaded
@@ -114,9 +110,7 @@ def _extract_zip(from_path: str, to_path: str, compression: Optional[str]) -> No
     with zipfile.ZipFile(
         from_path,
         "r",
-        compression=_ZIP_COMPRESSION_MAP[compression]
-        if compression
-        else zipfile.ZIP_STORED,
+        compression=_ZIP_COMPRESSION_MAP[compression] if compression else zipfile.ZIP_STORED,
     ) as zip:
         zip.extractall(to_path)
 
@@ -174,19 +168,11 @@ def _detect_file_type(file: str) -> Tuple[str, Optional[str], Optional[str]]:
 
         return suffix, None, suffix
 
-    valid_suffixes = sorted(
-        set(_FILE_TYPE_ALIASES)
-        | set(_ARCHIVE_EXTRACTORS)
-        | set(_COMPRESSED_FILE_OPENERS)
-    )
-    raise RuntimeError(
-        f"Unknown compression or archive type: '{suffix}'.\nKnown suffixes are: '{valid_suffixes}'."
-    )
+    valid_suffixes = sorted(set(_FILE_TYPE_ALIASES) | set(_ARCHIVE_EXTRACTORS) | set(_COMPRESSED_FILE_OPENERS))
+    raise RuntimeError(f"Unknown compression or archive type: '{suffix}'.\nKnown suffixes are: '{valid_suffixes}'.")
 
 
-def _decompress(
-    from_path: str, to_path: Optional[str] = None, remove_finished: bool = False
-) -> str:
+def _decompress(from_path: str, to_path: Optional[str] = None, remove_finished: bool = False) -> str:
     r"""Decompress a file.
     The compression is automatically detected from the file name.
     Args:
@@ -201,9 +187,7 @@ def _decompress(
         raise RuntimeError(f"Couldn't detect a compression from suffix {suffix}.")
 
     if to_path is None:
-        to_path = from_path.replace(
-            suffix, archive_type if archive_type is not None else ""
-        )
+        to_path = from_path.replace(suffix, archive_type if archive_type is not None else "")
 
     # We don't need to check for a missing key here, since this was already done in _detect_file_type()
     compressed_file_opener = _COMPRESSED_FILE_OPENERS[compression]
@@ -217,9 +201,7 @@ def _decompress(
     return to_path
 
 
-def extract_archive(
-    from_path: str, to_path: Optional[str] = None, remove_finished: bool = False
-) -> str:
+def extract_archive(from_path: str, to_path: Optional[str] = None, remove_finished: bool = False) -> str:
     """Extract an archive.
     The archive type and a possible compression is automatically detected from the file name. If the file is compressed
     but not an archive the call is dispatched to :func:`decompress`.
@@ -252,9 +234,7 @@ def extract_archive(
     return to_path
 
 
-def extract_archive_and_remove(
-    from_path: str, to_path: Optional[str] = None, remove_finished: bool = False
-) -> str:
+def extract_archive_and_remove(from_path: str, to_path: Optional[str] = None, remove_finished: bool = False) -> str:
     """Extract an archive.
 
     The archive type and a possible compression is automatically detected from the file name. If the file is compressed

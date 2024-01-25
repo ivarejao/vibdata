@@ -1,11 +1,11 @@
 # Code made in Pycharm by Igor Varejao
 import os
-from vibdata.raw.utils import _get_package_resource_dataframe
 
 import numpy as np
 import pandas as pd
 
-from vibdata.raw.base import RawVibrationDataset, DownloadableDataset
+from vibdata.raw.base import DownloadableDataset, RawVibrationDataset
+from vibdata.raw.utils import _get_package_resource_dataframe
 
 
 class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):
@@ -22,7 +22,7 @@ class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):
     """
     # https://drive.google.com/file/d/1svpZIZAKVvDwo0F4kx_fj7LVEPczq-Bt/view?usp=sharing
     urls = mirrors = ["1svpZIZAKVvDwo0F4kx_fj7LVEPczq-Bt"]
-    resources = [('FEMFTO.zip', 'd3ca5a418c2ed0887d68bc3f91991f12')]
+    resources = [("FEMFTO.zip", "d3ca5a418c2ed0887d68bc3f91991f12")]
 
     # Data file organization
     #                        FEMFTO.zip
@@ -39,10 +39,13 @@ class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):
     # For organization purpose we created a class that stores the file names in a different file
 
     def __init__(self, root_dir: str, download=False):
-        if (download):
-            super().__init__(root_dir=root_dir, download_resources=FEMFTO_raw.resources,
-                             download_urls=FEMFTO_raw.urls,
-                             extract_files=True)
+        if download:
+            super().__init__(
+                root_dir=root_dir,
+                download_resources=FEMFTO_raw.resources,
+                download_urls=FEMFTO_raw.urls,
+                extract_files=True,
+            )
         else:
             super().__init__(root_dir=root_dir, download_resources=FEMFTO_raw.resources)
 
@@ -50,13 +53,13 @@ class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):
     # ---------------------------------------------------------
 
     def __getitem__(self, idx) -> dict:
-        if (not hasattr(idx, '__len__') and not isinstance(idx, slice)):
+        if not hasattr(idx, "__len__") and not isinstance(idx, slice):
             return self.__getitem__([idx])
 
         try:
             df = self.getMetaInfo()
-            if (isinstance(idx, slice)):
-                rows = df.iloc[idx.start: idx.stop: idx.step]
+            if isinstance(idx, slice):
+                rows = df.iloc[idx.start : idx.stop : idx.step]
             else:
                 rows = df.iloc[idx]
         except IndexError as error:
@@ -64,10 +67,10 @@ class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):
             exit(1)
 
         # Get the metadata that are important to us
-        file_name = rows['file_name']
-        bear_name = rows['col']
-        labels = rows['label']
-        test_measure = rows['test_measure']
+        file_name = rows["file_name"]
+        bear_name = rows["col"]
+        labels = rows["label"]
+        test_measure = rows["test_measure"]
 
         # Create object that will store the vibedata
         signal_datas = np.empty(len(bear_name), dtype=object)
@@ -86,21 +89,29 @@ class FEMFTO_raw(RawVibrationDataset, DownloadableDataset):
             else:
                 raw_path = os.path.join(self.raw_folder, *sub_labels, t, f)
 
-            vib_data = np.loadtxt(raw_path, delimiter=',')
+            vib_data = np.loadtxt(raw_path, delimiter=",")
             signal_datas[i] = vib_data[:, b]
         signal_datas = signal_datas
 
-        return {'signal': signal_datas, 'metainfo': rows}
+        return {"signal": signal_datas, "metainfo": rows}
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        df = _get_package_resource_dataframe(__package__, "FEMFTO.csv",
-                                             na_filter=False)
+        df = _get_package_resource_dataframe(__package__, "FEMFTO.csv", na_filter=False)
         return df
 
     def getLabelsNames(self):
-        return ['normal', 'horizontal_misalignment', 'vertical_misalignment', 'imbalance',
-                'underhang.cage_fault', 'underhang.outer_race', 'underhang.ball_fault',
-                'overhang.cage_fault', 'overhang.outer_race', 'overhang.ball_fault']
+        return [
+            "normal",
+            "horizontal_misalignment",
+            "vertical_misalignment",
+            "imbalance",
+            "underhang.cage_fault",
+            "underhang.outer_race",
+            "underhang.ball_fault",
+            "overhang.cage_fault",
+            "overhang.outer_race",
+            "overhang.ball_fault",
+        ]
 
     def name(self):
         return "FEMFTO"
