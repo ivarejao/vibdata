@@ -2,14 +2,14 @@ from abc import abstractmethod
 from typing import Dict, List, Literal
 
 import cv2 as cv
+import essentia.standard
 import numpy as np
 import pandas as pd
-import essentia.standard
 from scipy import interpolate
-from sklearn import preprocessing
 from scipy.fft import rfft, rfftfreq
+from scipy.signal import resample_poly, spectrogram
 from scipy.stats import kurtosis
-from scipy.signal import spectrogram, resample_poly
+from sklearn import preprocessing
 from sklearn.base import BaseEstimator, TransformerMixin
 
 from vibdata.deep.signal.core import SignalSample
@@ -534,9 +534,15 @@ class Resize2D(Transform):
 
 
 class FeatureExtractor(Transform):
-    def __init__(self, features: List[Transform]) -> None:
+    def __init__(self, features: list[Transform] | list[str]) -> None:
         super().__init__()
-        self.features = features
+        if all(isinstance(t, Transform) for t in features):
+            self.features = features
+        elif all(isinstance(t, str) for t in features):
+            gdict = globals()
+            self.features = [gdict[t]() for t in features]
+        else:
+            raise ValueError("features must be a list of transforms or list of valid strings")
 
     def transform(self, data):
         new_data = data.copy()
