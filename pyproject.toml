@@ -18,6 +18,7 @@ rarfile = "^4.0"
 scipy = "^1.11.4"
 opencv-python = "^4.8.1.78"
 gdown = "^4.7.3"
+essentia = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0.0"
