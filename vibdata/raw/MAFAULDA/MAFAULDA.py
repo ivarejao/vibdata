@@ -24,7 +24,7 @@ class MAFAULDA_raw(RawVibrationDataset, DownloadableDataset):
     """
     # https://drive.google.com/file/d/1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY/view?usp=sharing
     urls = mirrors = ["1ZhIPKIn_1SrOZHnFOK69nsESFsBsEpXY"]
-    resources = [("MAFAULDA.zip", "d3ca5a418c2ed0887d68bc3f91991f12")]
+    resources = [("MAFAULDA.zip", "fac5ef19486a32d9ed6ab2344403a10a")]
 
     # Data file organization
     #                  MAFAULDA.zip
