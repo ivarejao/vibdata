@@ -2,14 +2,14 @@ from abc import abstractmethod
 from typing import Dict, List, Literal
 
 import cv2 as cv
-import essentia.standard
 import numpy as np
 import pandas as pd
+import essentia.standard
 from scipy import interpolate
-from scipy.fft import rfft, rfftfreq
-from scipy.signal import resample_poly, spectrogram
-from scipy.stats import kurtosis
 from sklearn import preprocessing
+from scipy.fft import rfft, rfftfreq
+from scipy.stats import kurtosis
+from scipy.signal import spectrogram, resample_poly
 from sklearn.base import BaseEstimator, TransformerMixin
 
 from vibdata.deep.signal.core import SignalSample
