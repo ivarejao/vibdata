@@ -317,45 +317,6 @@ class SklearnFitTransform(TransformOnFieldClass):
         return self.transformer.fit_transform(data)
 
 
-class StandardScaler(TransformOnFieldClass):
-    def __init__(self, on_field=None, type="all") -> None:
-        super().__init__(on_field=on_field)
-        self.type = type
-
-    def transform_(self, data):
-        ret = []
-        if self.type == "row":
-            for row in data:
-                ret.append((row - row.mean()) / row.std())
-        elif self.type == "all":
-            data_flatten = np.hstack(data)
-            m, s = data_flatten.mean(), data_flatten.std()
-            ret = [(row - m) / s for row in data]
-        else:
-            raise NotImplemented
-        return ret
-
-
-class MinMaxScaler(TransformOnFieldClass):
-    def __init__(self, on_field=None, type="all") -> None:
-        super().__init__(on_field=on_field)
-        self.type = type
-
-    def transform_(self, data):
-        ret = []
-        if self.type == "row":
-            for row in data:
-                r = row - row.min()
-                ret.append(r / r.max())
-        elif self.type == "all":
-            data_flatten = np.hstack(data)
-            mn, mx = data_flatten.min(), data_flatten.max()
-            ret = [(row - mn) / (mx - mn) for row in data]
-        else:
-            raise NotImplemented
-        return ret
-
-
 class toBinaryClassification(Transform):
     def __init__(self, negative_label=0) -> None:
         super().__init__()
