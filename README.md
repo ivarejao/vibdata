@@ -75,7 +75,7 @@ print(D_transformed[3]['signal'].shape)
 ## Authors
 
 - Igor Mattos dos Santos Varejão
-- Luciano Henrique Peixoto
+- Luciano Henrique Silva Peixoto
 - Lucas Gabriel de Oliveira Costa
 - Joluan Zucateli 
 - Lucas Henrique Sousa Mello
