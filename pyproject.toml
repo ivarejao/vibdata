@@ -5,7 +5,6 @@ description = "A library for loading vibration signals datasets"
 authors = ["Igor Mattos dos Santos Varejão <imsvarejao@gmail.com>",
            "Luciano Henrique Peixoto Silva <henriqueps2@hotmail.com>",
            "Lucas Gabriel de Oliveira Costa <lucasgabriiel.oliveira@gmail.com>",
-           "Joluan Zucateli <joluan.zuca@gmail.com>",
            "Lucas Henrique Sousa Mello <lucashsmello@gmail.com>"]
 
 [tool.poetry.dependencies]
