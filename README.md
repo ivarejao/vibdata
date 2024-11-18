@@ -56,11 +56,11 @@ Example of using transformations:
 ```python
 from sklearn.pipeline import make_pipeline
 from vibdata.raw import MFPT_raw
-from vibdata.deep.signal.transforms import Split, FFT, FilterByValue
-from vibdata.datahandler.transforms.TransformDataset import transform_and_saveDataset
+from vibdata.deep.signal.transforms import Split, FFT, FilterByValue, asType
+from vibdata.deep.DeepDataset import convertDataset
 
 transforms = make_pipeline(
-    FilterByValue(on_field='sample_rate', values=48828)
+    FilterByValue(on_field='sample_rate', values=48828),
     Split(1024),
     FFT(),
     asType(np.float32, on_field='signal'),
@@ -68,7 +68,7 @@ transforms = make_pipeline(
 
 root_dir = "MY_DATASET_DIR"
 D = MFPT_raw(root_dir, download=True)
-D_transformed = transform_and_saveDataset(D, transforms, root_dir)
+D_transformed = convertDataset(dataset=D, transforms=transforms, dir_path=root_dir)
 print(D_transformed[3]['signal'].shape)
 ```
 
@@ -77,7 +77,6 @@ print(D_transformed[3]['signal'].shape)
 - Igor Mattos dos Santos Varejão
 - Luciano Henrique Silva Peixoto
 - Lucas Gabriel de Oliveira Costa
-- Joluan Zucateli 
 - Lucas Henrique Sousa Mello
 
 
