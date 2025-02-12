@@ -22,3 +22,10 @@ id,label,dataset
 37,Root Crack,UOC
 38,Spalling,UOC
 39,Chipping Tip,UOC
+40,Normal,HUST
+41,Inner Race,HUST
+42,Outer Race,HUST
+43,Ball,HUST
+44,Inner Race and Ball,HUST
+45,Inner Race and Outer Race,HUST
+46,Outer Race and Ball,HUST
