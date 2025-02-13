@@ -29,3 +29,8 @@ id,label,dataset
 44,Inner Race and Ball,HUST
 45,Inner Race and Outer Race,HUST
 46,Outer Race and Ball,HUST
+47,Normal,UORED
+48,Inner Race,UORED
+49,Outer Race,UORED
+50,Ball,UORED
+51,Cage,UORED
