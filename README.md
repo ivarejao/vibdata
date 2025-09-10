@@ -1,6 +1,21 @@
+<div align="center">
+
 # Vibdata
+[![MSSP](https://img.shields.io/badge/DOI-10.1016/j.ymssp.2025.112822-ff6C00?logo=elsevier&logoColor=white)](https://doi.org/10.1016/j.ymssp.2025.112822)
+[![IJPHM](https://img.shields.io/badge/DOI-10.36001/ijphm.2025.v16i3.4239-707c5c)](https://doi.org/10.36001/ijphm.2025.v16i3.4239)
+<a href="https://github.com/ivarejao/vibdata/stargazers"><img src="https://img.shields.io/github/stars/ivarejao/vibdata" alt="Stars Badge"/></a>
+
+</div>
 
 Vibdata is an open-source repository that provides a common interface for developers to manipulate vibrational data . It uses a Python package to store and manipulate data, aiming to facilitate the development of machine learning techniques in the context of intelligent fault diagnosis for rotating machinery.
+
+## Paper Versions
+
+For reproducibility purposes, specific versions of this repository were used in published papers:
+
+- For the exact code used in **Mechanical Systems and Signal Processing** paper, see tag `mssp-similarity-bias-v1` ([GitHub Release](https://github.com/ivarejao/vibdata/releases/tag/mssp-similarity-bias-v1))
+- For the exact code used in **International Journal of Prognostics and Health Management** paper, see tag `ijphm-towards-vibnet-v1` ([GitHub Release](https://github.com/ivarejao/vibdata/releases/tag/ijphm-towards-vibnet-v1))
+
 
 ## Features
 
@@ -10,7 +25,9 @@ Vibdata is an open-source repository that provides a common interface for develo
     - IMS - Intelligent Maintenance System Bearing Dataset;
     - UOC - University of Connecticut Gearbox Dataset;
     - PU - Padeborn University Bearing Dataset ;
-    - MFPT - Machinery Failure Prevention Technology Bearing Dataset.
+    - MFPT - Machinery Failure Prevention Technology Bearing Dataset;
+    - HUST - Huazhong University of Science and Technology Bearing Dataset;
+    - UORED - University of Ottawa Rolling-element Bearing Dataset.
 - Divided into two main modules:
   - `raw`: Structures datasets into classes for easy and practical data manipulation
   - `deep`: Offers a lazy implementation compatible with deep learning frameworks, especially PyTorch
@@ -50,6 +67,7 @@ print("Signal sample rate:", signal_metainfo["sample_rate"])
 ## Transformations
 
 Vibdata provides common transformations used in machinery signal processing. You can implement new transformations using the `Transformer` interface, which is compatible with scikit-learn pipelines.
+
 
 Example of using transformations:
 
