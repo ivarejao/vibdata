@@ -7,8 +7,12 @@ import hashlib
 import os.path
 import pathlib
 import tarfile
+import urllib
 import zipfile
 from typing import IO, Any, Dict, Tuple, Callable, Optional
+import requests
+from tqdm import tqdm
+import time
 
 import gdown
 import pandas as pd
@@ -19,6 +23,32 @@ try:
 except ImportError:
     from pkg_resources import resource_stream as resources_path
 
+
+def retry(func, tries=3, delay=2, backoff=1, **kwargs):
+    for attempt in range(tries):
+        try:
+            return func(**kwargs)
+        except Exception as e:
+            if attempt < tries - 1:
+                time.sleep(delay)
+                delay *= backoff
+            else:
+                print(f"Max retries ({tries}) exceeded of the func {func.__name__} with args {str(kwargs)}")                
+                raise e
+
+def _compute_md5_dir(dir_path : str):
+    # this is a fast way to check wheter there are changes in the data directory, but does not guarantee if the 
+    # files content or structure has been modified
+    files = sorted(os.listdir(dir_path))
+    dir_desc = \
+    '''
+    {}
+    {}
+    '''.format(len(files), files)
+    md5_hash = hashlib.md5()
+    md5_hash.update(dir_desc.encode('utf-8'))
+    md5_digest = md5_hash.hexdigest()
+    return md5_digest
 
 def _get_package_resource_dataframe(
     package: str,
@@ -67,7 +97,7 @@ def check_integrity(fpath: str, md5: Optional[str] = None) -> bool:
     return check_md5(fpath, md5)
 
 
-def download_file_from_google_drive(file_id: str, root: str, filename: Optional[str] = None, md5: Optional[str] = None):
+def download_file_from_google_drive(file_id: str, output: str, md5: Optional[str] = None):
     """Download a Google Drive file from  and place it in root.
     Args:
         file_id (str): id of file to be downloaded
@@ -75,12 +105,8 @@ def download_file_from_google_drive(file_id: str, root: str, filename: Optional[
         filename (str, optional): Name to save the file under. If None, use the id of the file.
         md5 (str, optional): MD5 checksum of the download. If None, do not check
     """
-    root = os.path.expanduser(root)
-    if filename is None:
-        filename = file_id
-    fpath = os.path.join(root, filename)
-
-    os.makedirs(root, exist_ok=True)
+    #TODO: Update docs
+    fpath = os.path.expanduser(output)
 
     if check_integrity(fpath, md5):
         print(f"Using downloaded {'and verified ' if md5 else ''}file: {fpath}")
@@ -89,6 +115,32 @@ def download_file_from_google_drive(file_id: str, root: str, filename: Optional[
     url_base = "https://drive.google.com/uc?id="
     gdown.cached_download(url=url_base + file_id, path=fpath, md5=md5)
 
+def download_usual_file(url: str, output_path: str, session, chunk_size=512 * 1024): # chunck size of 512kB
+    # TODO: Create docs
+    # based on https://gist.github.com/yanqd0/c13ed29e29432e3cf3e7c38467f42f51
+    resp = session.get(url, stream=True)
+    total = int(resp.headers.get('content-length', 0))
+    with open(output_path, 'wb') as file, tqdm(
+        desc=f"From: {url}\tTo: {output_path}\t",
+        total=total,
+        unit='iB',
+        unit_scale=True,
+        unit_divisor=1024,
+    ) as bar:
+        for data in resp.iter_content(chunk_size=chunk_size):
+            size = file.write(data)
+            bar.update(size)
+
+def download(url: str, output_path: str, session: requests.Session = None, **kwargs):
+    # TODO: Create docs
+    sess = session if session is not None else requests.Session()
+    gdrive_file_id, _ = gdown.parse_url.parse_url(url)
+
+    if isinstance(gdrive_file_id, bool) and not gdrive_file_id:
+        retry(download_usual_file, tries=10, url=url, output_path=output_path, session=sess, **kwargs)
+    else:
+        # retry and session policy is already native to gdown
+        download_file_from_google_drive(file_id=gdrive_file_id, output=output_path, **kwargs)
 
 def _extract_tar(from_path: str, to_path: str, compression: Optional[str]) -> None:
     with tarfile.open(from_path, f"r:{compression[1:]}" if compression else "r") as tar:

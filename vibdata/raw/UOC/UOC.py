@@ -16,24 +16,19 @@ class UOC_raw(RawVibrationDataset, DownloadableDataset):
     LICENSE: Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) [https://creativecommons.org/licenses/by-nc/4.0/]
     """
 
-    urls = ["1oJHir0Faq_kgFnPPMaLSVyBJb6szjEOL"]
-    resources = [("UOC.zip", "c33f1f6117ee4913257086007790df35")]
+    gdrive_counterpart = {
+        "filename": "UOC.zip",
+        "md5": "c33f1f6117ee4913257086007790df35",
+        "id": "1oJHir0Faq_kgFnPPMaLSVyBJb6szjEOL",
+    }
+    source = ["https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/11053469/DataForClassification_TimeDomain.mat"]
+    dir_md5 = "1f1db45f476512c2c17eb60586d71ea6"
 
-    def __init__(self, root_dir: str, download=False):
-        if download:
-            super().__init__(
-                root_dir=root_dir,
-                download_resources=UOC_raw.resources,
-                download_urls=UOC_raw.urls,
-                extract_files=True,
-            )
-        else:
-            super().__init__(root_dir=root_dir, download_resources=UOC_raw.resources)
-
-        self._metainfo = _get_package_resource_dataframe(__package__, "UOC.csv")
+    def __init__(self, root_dir: str, download_from_source=False):
+        super().__init__(root_dir=root_dir, download_gdrive=self.gdrive_counterpart, download_from_source=download_from_source)
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        df = self._metainfo
+        df = _get_package_resource_dataframe(__package__, "UOC.csv")
         if labels_as_str:
             # Create a dict with the relation between the centralized label with the actually label name
             all_labels = pd.read_csv(LABELS_PATH)
