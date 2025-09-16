@@ -3,6 +3,7 @@ from typing import List, Tuple
 from urllib.error import URLError
 
 from gdown import download
+import shutil
 
 import numpy as np
 import pandas as pd
@@ -14,20 +15,17 @@ import scipy
 
 class HUST_raw(RawVibrationDataset, DownloadableDataset):
 
-    mirrors = [""]
-    resources = [("HUST.zip", "47441ac9bf782c592d63a6174d3d7d7e")]
-    source = "https://prod-dcd-datasets-cache-zipfiles.s3.eu-west-1.amazonaws.com/cbv7jyx4p9-2.zip"
+    gdrive_counterpart = {
+        "filename": "HUST.zip",
+        "md5": "51414ffba877ce602147e09e21b38a51",
+        "id": "1G7Z7SIIvQungvvrVup7r1wy_7s5rv5Y5",
+    }
+    source = ["https://prod-dcd-datasets-cache-zipfiles.s3.eu-west-1.amazonaws.com/cbv7jyx4p9-2.zip"]
+    dir_md5 = "53cb1dfa329a493dcd357eb7f9c8be32"
 
-    def __init__(self, root_dir: str, download : bool = False) -> None:
-        if download:
-            super().__init__(
-                root_dir=root_dir,
-                download_resources=HUST_raw.resources,
-                download_urls=HUST_raw.mirrors,
-                extract_files=True,
-            )
-        else:
-            super().__init__(root_dir=root_dir, download_resources=HUST_raw.resources)
+    def __init__(self, root_dir: str, download_from_source=False):
+        super().__init__(root_dir=root_dir, download_gdrive=self.gdrive_counterpart, download_from_source=download_from_source)
+
 
     def __getitem__(self, index : slice | int ) -> dict:
         # TODO: Pensar se vai realmenter manter o retorno como uma lista
@@ -71,25 +69,15 @@ class HUST_raw(RawVibrationDataset, DownloadableDataset):
     def name(self):
         return "HUST"
     
+    def download(self)-> None:
+        super().download()
+        # post-processing
+        # organizing structure to follow standard
+        inter_dir = "cbv7jyx4p9-2" if self.download_from_source else ""
+        source_dir = os.path.join(self.raw_folder, inter_dir, "HUST bearing")
+        aux_dir = os.path.join(os.path.dirname(self.raw_folder), "HUST_aux")
 
-    def download(self) -> None:
-        """
-        Override the download method, applying the download directly from the source instead of the google drive
-        """
-        if self._check_exists():
-            return
-
-        os.makedirs(self.raw_folder, exist_ok=True)
-        try:
-            zip_path = os.path.join(self.raw_folder, self.name() + ".zip")
-            download(self.source, output=zip_path)
-            extract_archive_and_remove(zip_path, self.raw_folder)
-            # Rename directory to match the default pattern
-            os.rename(
-                os.path.join(self.raw_folder, "HUST bearing"), 
-                os.path.join(self.raw_folder, self.name())
-            )
-        except URLError as error:
-            print("Failed to download:\n{}".format(error))
-        finally:
-            print()
+        shutil.move(source_dir, aux_dir)
+        shutil.rmtree(self.raw_folder)
+        os.rename(aux_dir, self.raw_folder)
+            
