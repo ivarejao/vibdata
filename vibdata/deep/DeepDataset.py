@@ -199,8 +199,6 @@ def convertDataset(
     else:
         os.makedirs(dir_path)
 
-    dataset = filter.filter(dataset)
-
     dataloader = DataLoader(
         dataset,
         batch_size=batch_size,
@@ -216,6 +214,12 @@ def convertDataset(
         # Transform data
         # Iter over the batch
         for d in data:  # 'd' is a batch of one sample
+            # Apply filter
+            if filter:
+                d = filter.filter(d)
+                if d is None:
+                    continue
+
             if hasattr(transforms, "transform"):
                 data_transf = transforms.transform(d)
             else:

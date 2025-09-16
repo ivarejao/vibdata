@@ -16,13 +16,13 @@ from vibdata.deep.signal.core import SignalSample
 
 class Filter(BaseEstimator, TransformerMixin):
     @abstractmethod
-    def filter(self, data: SignalSample) -> np.ndarray:
+    def filter(self, data):
         pass
 
     def fit(self, *args, **kwargs):
         return self
 
-    def __call__(self, data: SignalSample) -> np.ndarray:
+    def __call__(self, data):
         return self.filter(data)
 
 class Transform(BaseEstimator, TransformerMixin):
@@ -94,7 +94,7 @@ class TransformOnFieldClass(Transform):
 
 
 class FilterByValue(Filter):
-    def __init__(self, on_field, values, remove=False) -> None:
+    def __init__(self, on_field, values) -> None:
         super().__init__()
         self.on_field = on_field
         if isinstance(values, str):
@@ -103,17 +103,13 @@ class FilterByValue(Filter):
             self.values = values
         else:
             self.values = [values]
-        self.remove = remove
 
     def filter(self, data):
         D = data["metainfo"][self.on_field]
-        valid_values = D.isin(self.values)
-        if self.remove:
-            valid_values = ~valid_values
-        data = data.copy()
-        data["metainfo"] = data["metainfo"][valid_values]
-        data["signal"] = np.array(data["signal"], dtype=object)[valid_values]
-        return data
+        D = D.isin(self.values)
+        if D.any():
+            return data
+        return None
 
 
 class toNumpy(TransformOnFieldClass):
@@ -168,6 +164,8 @@ class SequentialFilter(Filter):
                 data = f.filter(data)
             else:
                 data = f(data)
+            if data is None:
+                return None
         return data
 
     def append(self, other: Filter) -> None:
