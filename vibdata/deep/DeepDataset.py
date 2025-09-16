@@ -13,7 +13,7 @@ from torch.utils.data import Dataset, DataLoader, BatchSampler, SequentialSample
 
 from vibdata.raw.base import RawVibrationDataset
 from vibdata.definitions import LABELS_PATH
-from vibdata.deep.signal.transforms import Transform, Sequential, SignalSample
+from vibdata.deep.signal.transforms import Transform, Sequential, SignalSample, Filter, SequentialFilter
 
 
 class DeepDataset(Dataset):
@@ -142,6 +142,7 @@ def resample_dataset(dataset: DeepDataset, indexes: np.ndarray) -> DeepDataset:
 def convertDataset(
     dataset: RawVibrationDataset,
     transforms: Transform | Sequential,
+    filter: Filter | SequentialFilter,
     dir_path: Path | str,
     batch_size=32,
 ):
@@ -198,6 +199,8 @@ def convertDataset(
     else:
         os.makedirs(dir_path)
 
+    dataset = filter.filter(dataset)
+
     dataloader = DataLoader(
         dataset,
         batch_size=batch_size,
@@ -240,3 +243,5 @@ def convertDataset(
 
     with open(hashfile, "w") as f:
         f.write(hash_code)
+
+    return DeepDataset(dir_path)

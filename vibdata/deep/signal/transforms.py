@@ -14,6 +14,16 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 from vibdata.deep.signal.core import SignalSample
 
+class Filter(BaseEstimator, TransformerMixin):
+    @abstractmethod
+    def filter(self, data: SignalSample) -> np.ndarray:
+        pass
+
+    def fit(self, *args, **kwargs):
+        return self
+
+    def __call__(self, data: SignalSample) -> np.ndarray:
+        return self.filter(data)
 
 class Transform(BaseEstimator, TransformerMixin):
     @abstractmethod
@@ -83,7 +93,7 @@ class TransformOnFieldClass(Transform):
         return data
 
 
-class FilterByValue(Transform):
+class FilterByValue(Filter):
     def __init__(self, on_field, values, remove=False) -> None:
         super().__init__()
         self.on_field = on_field
@@ -95,7 +105,7 @@ class FilterByValue(Transform):
             self.values = [values]
         self.remove = remove
 
-    def transform(self, data):
+    def filter(self, data):
         D = data["metainfo"][self.on_field]
         valid_values = D.isin(self.values)
         if self.remove:
@@ -145,6 +155,23 @@ class Sequential(Transform):
     def append(self, other: Transform) -> None:
         self.transforms.append(other)
 
+class SequentialFilter(Filter):
+    def __init__(self, filters: List[Filter]):
+        super().__init__()
+        self.filters = filters
+
+    def filter(self, data):
+        for f in self.filters:
+            if f is None:
+                continue
+            if hasattr(f, "filter"):
+                data = f.filter(data)
+            else:
+                data = f(data)
+        return data
+
+    def append(self, other: Filter) -> None:
+        self.filters.append(other)
 
 class Split(Transform):
     """
