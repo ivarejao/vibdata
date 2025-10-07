@@ -142,8 +142,8 @@ def resample_dataset(dataset: DeepDataset, indexes: np.ndarray) -> DeepDataset:
 def convertDataset(
     dataset: RawVibrationDataset,
     transforms: Transform | Sequential,
-    filter: Filter | SequentialFilter,
     dir_path: Path | str,
+    filter: Filter | SequentialFilter = None,
     batch_size=32,
 ):
     """
@@ -239,7 +239,11 @@ def convertDataset(
             metainfo_list.append(data_transf["metainfo"])
 
     # Concatanate the metainfo
-    metainfo = pd.concat(metainfo_list)
+    if len(metainfo_list) > 0:
+        metainfo = pd.concat(metainfo_list)
+    else:
+        print("No samples were saved, please check filters, returning None")
+        return None
     # Save the metainfo
     fpath = os.path.join(dir_path, "metainfo.pkl")
     with open(fpath, "wb") as f:
