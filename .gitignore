@@ -6,3 +6,5 @@ __pycache__/
 *.ipynb_checkpoints/
 .vscode/
 .virtual_documents/
+/build
+/vibdata.egg-info/
