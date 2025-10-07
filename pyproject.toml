@@ -8,8 +8,8 @@ authors = ["Igor Mattos dos Santos Varejão <imsvarejao@gmail.com>",
            "Lucas Henrique Sousa Mello <lucashsmello@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.10, <3.12"
-numpy = "^1.17.2"
+python = ">=3.10,<3.11"
+numpy = "^1.21.6"
 torch = "^2.0"
 tqdm = "^4.0.0"
 requests = "^2.0.0"
