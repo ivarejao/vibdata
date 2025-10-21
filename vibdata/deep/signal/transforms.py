@@ -8,7 +8,7 @@ import essentia.standard
 from scipy import interpolate
 from sklearn import preprocessing
 from scipy.fft import rfft, rfftfreq
-from scipy.stats import kurtosis
+from scipy.stats import kurtosis, skew
 from scipy.signal import spectrogram, resample_poly
 from sklearn.base import BaseEstimator, TransformerMixin
 
@@ -651,3 +651,101 @@ class ZeroCrossingRate(Transform):
 
         zeroCrossingRate = essentia.standard.ZeroCrossingRate()
         return zeroCrossingRate(signal.astype("float32"))
+
+class PeakValue(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        return np.max(np.abs(data["signal"]))
+    
+class CrestFactor(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        rms = np.sqrt(sum(np.square(signal)) / len(signal))
+        if rms == 0:
+            return 0
+        return np.max(np.abs(signal)) / rms
+    
+class Skewness(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        return skew(signal)
+
+class ClearanceFactor(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        peak_value = np.max(np.abs(signal))
+        base = sum(np.sqrt(np.square(signal))) / len(signal)
+        return peak_value / base
+    
+class ImpulseFactor(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        peak_value = np.max(np.abs(signal))
+        mean_value = np.mean(np.abs(signal))
+        if mean_value == 0:
+            return 0
+        return peak_value / mean_value
+
+class ShapeFactor(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        rms = np.sqrt(sum(np.square(signal)) / len(signal))
+        mean_value = np.mean(np.abs(signal))
+        if mean_value == 0:
+            return 0
+        return rms / mean_value
+
+class UpperBoundValueHistogram(Transform):
+    def __init__(self, bins=10):
+        super().__init__()
+        self.bins = bins
+
+    def transform(self, data):
+        signal = data["signal"]
+        max = np.max(signal)
+        min = np.min(signal)
+        return max + ( (0.5 * (max - min) ) / (len(signal) - 1) )
+    
+class LowerBoundValueHistogram(Transform):
+    def __init__(self, bins=10):
+        super().__init__()
+        self.bins = bins
+
+    def transform(self, data):
+        signal = data["signal"]
+        max = np.max(signal)
+        min = np.min(signal)
+        return min + ( (0.5 * (max - min) ) / (len(signal) - 1) )
+
+class Variance(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        return np.var(signal)
+    
+class PeakToPeak(Transform):
+    def __init__(self):
+        super().__init__()
+
+    def transform(self, data):
+        signal = data["signal"]
+        return np.ptp(signal)  # Peak to peak value
