@@ -11,6 +11,7 @@ from scipy.fft import rfft, rfftfreq
 from scipy.stats import kurtosis, skew
 from scipy.signal import spectrogram, resample_poly
 from sklearn.base import BaseEstimator, TransformerMixin
+import copy
 
 from vibdata.deep.signal.core import SignalSample
 
@@ -545,6 +546,70 @@ class FeatureExtractor(Transform):
         new_data["signal"] = new_signals
         return new_data
 
+class Aggregator(Transform):
+    """
+    Aggregate features from multiple transform pipelines into a single 1D feature vector per sample.
+
+    Each transform in `pipelines` must be a Transform (e.g., Sequential) that outputs a dict with:
+        - "signal": np.ndarray of shape (n_samples, n_features_i)
+        - "metainfo": pd.DataFrame with metadata for each sample.
+
+    The Aggregator concatenates all resulting "signal" arrays along the feature axis (axis=1),
+    assuming they have the same number of rows (samples).
+
+    Example:
+    --------
+    features_funcs = [Kurtosis(), Skewness(), RootMeanSquare()]
+    transforms = Aggregator(
+        Sequential([
+            SplitSampleRate(),
+            FeatureExtractor(features=features_funcs),
+        ]),
+        Sequential([
+            SplitSampleRate(),
+            FFT(),
+            FeatureExtractor(features=features_funcs),
+        ]),
+    )
+    """
+
+    def __init__(self, pipelines: List[Transform]):
+        super().__init__()
+        self.pipelines = pipelines
+
+    def transform(self, data):
+        # Apply each pipeline to a *copy* of the input data
+        all_features = []
+        metainfo_ref = None
+
+        for pipeline in self.pipelines:
+            out = pipeline.transform(copy.deepcopy(data))
+
+            if not isinstance(out, dict) or "signal" not in out or "metainfo" not in out:
+                raise ValueError(f"Pipeline {pipeline} must return a dict with 'signal' and 'metainfo'.")
+
+            signal = np.asarray(out["signal"])
+
+            # Initialize metainfo reference
+            if metainfo_ref is None:
+                metainfo_ref = out["metainfo"].reset_index(drop=True)
+                n_samples = len(signal)
+            else:
+                # Ensure same number of samples
+                if len(signal) != n_samples:
+                    raise ValueError(
+                        f"All pipelines must produce the same number of samples. "
+                        f"Got {len(signal)} and expected {n_samples}."
+                    )
+
+            all_features.append(signal)
+
+        # Concatenate along feature axis
+        aggregated_features = np.concatenate(all_features, axis=1)
+
+        return {"signal": aggregated_features, "metainfo": metainfo_ref}
+
+
 
 class Kurtosis(Transform):
     def __init__(self):
@@ -685,8 +750,8 @@ class ClearanceFactor(Transform):
     def transform(self, data):
         signal = data["signal"]
         peak_value = np.max(np.abs(signal))
-        base = sum(np.sqrt(np.square(signal))) / len(signal)
-        return peak_value / base
+        base = sum(np.sqrt(np.abs(signal))) / len(signal)
+        return peak_value / (base**2)
     
 class ImpulseFactor(Transform):
     def __init__(self):

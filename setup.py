@@ -8,7 +8,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='vibdata',
-    version='1.1.2',
+    version='1.1.3',
     description='A package for vibration signal datasets',
     long_description=long_description,
     long_description_content_type='text/markdown',
