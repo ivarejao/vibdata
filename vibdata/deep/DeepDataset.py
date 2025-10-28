@@ -28,8 +28,7 @@ class DeepDataset(Dataset):
         # Load files names
         self.file_names = [f for f in sorted(os.listdir(self.root_dir)) if f[-4:] == ".pkl" and f != "metainfo.pkl"]
         self.file_names = sorted(self.file_names, key=lambda k: int(k[:-4]))
-        with open(os.path.join(root_dir, "metainfo.pkl"), "rb") as f:
-            self.metainfo: pd.DataFrame = pickle.load(f)
+        self.metainfo: pd.DataFrame = pd.read_pickle(os.path.join(root_dir, "metainfo.pkl"))
         self.transforms = transforms
         # Confirm if there's no missing data
         assert len(self.file_names) == len(self.metainfo["label"]), "Number of files: %d != Labels: %d" % (
