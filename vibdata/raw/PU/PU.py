@@ -4,6 +4,9 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from scipy.io import loadmat
+import requests
+from bs4 import BeautifulSoup
+import re
 
 from vibdata.raw.base import DownloadableDataset, RawVibrationDataset
 from vibdata.raw.utils import _get_package_resource_dataframe
@@ -17,34 +20,19 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
     """
 
     # mirrors = ["http://groups.uni-paderborn.de/kat/BearingDataCenter"]
-    # resources = [('K001.rar', None), ('K005.rar', None), ('KA04.rar', None), ('KA08.rar', None),
-    #              ('KA22.rar', None), ('KB27.rar', None), ('KI05.rar', None), ('KI16.rar', None),
-    #              ('K002.rar', None), ('K006.rar', None), ('KA05.rar', None), ('KA09.rar', None),
-    #              ('KA30.rar', None), ('KI01.rar', None), ('KI07.rar', None), ('KI17.rar', None),
-    #              ('K003.rar', None), ('KA01.rar', None), ('KA06.rar', None), ('KA15.rar', None),
-    #              ('KB23.rar', None), ('KI03.rar', None), ('KI08.rar', None), ('KI18.rar', None),
-    #              ('K004.rar', None), ('KA03.rar', None), ('KA07.rar', None), ('KA16.rar', None),
-    #              ('KB24.rar', None), ('KI04.rar', None), ('KI14.rar', None), ('KI21.rar', None)]
+    gdrive_counterpart = {
+        "filename": "PU.zip",
+        "md5": "1beb53c6fb79436895787e094a22302f",
+        "id": "1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii"
+    }
+    source = ['https://groups.uni-paderborn.de/kat/BearingDataCenter/']
+    dir_md5 = "2ae4fbc4c9cc3601b5ffc30b31364309"
 
-    # https://drive.google.com/file/d/1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii/view?usp=sharing
-    urls = ["1PZLt3h1x_rjY6EfWV3yNl3FSDWH4o-Ii"]
-    resources = [("PU.zip", "1beb53c6fb79436895787e094a22302f")]
-
-    def __init__(self, root_dir: str, download=False):
-        if download:
-            super().__init__(
-                root_dir=root_dir,
-                download_resources=PU_raw.resources,
-                download_urls=PU_raw.urls,
-                extract_files=True,
-            )
-        else:
-            super().__init__(root_dir=root_dir, download_resources=PU_raw.resources)
-
-        self._metainfo = _get_package_resource_dataframe(__package__, "PU.csv")
+    def __init__(self, root_dir: str, download_from_source=False):
+        super().__init__(root_dir=root_dir, download_gdrive=self.gdrive_counterpart, download_from_source=download_from_source)
 
     def getMetaInfo(self, labels_as_str=False) -> pd.DataFrame:
-        df = self._metainfo
+        df = _get_package_resource_dataframe(__package__, "PU.csv")
         if labels_as_str:
             # Create a dict with the relation between the centralized label with the actually label name
             all_labels = pd.read_csv(LABELS_PATH)
@@ -59,7 +47,7 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
 
         if isinstance(i, slice):
             range_idx = list(range(i.start, i.stop, i.step))
-            data_i = self._metainfo.iloc[i]
+            data_i = self.getMetaInfo().iloc[i]
             fname, bearing_code = data_i["file_name"], data_i["bearing_code"]
             signal_datas = np.empty(len(range_idx), dtype=object)
             for j in range(len(range_idx)):
@@ -69,7 +57,7 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
 
             return {"signal": signal_datas, "metainfo": data_i}
 
-        data_i = self._metainfo.iloc[i]
+        data_i = self.getMetaInfo().iloc[i]
         fname, bearing_code = data_i["file_name"], data_i["bearing_code"]
 
         if isinstance(i, list):
@@ -105,3 +93,31 @@ class PU_raw(RawVibrationDataset, DownloadableDataset):
 
     def name(self):
         return "PU"
+
+    def download(self):
+        # pre-process
+        if self.download_from_source:
+            # fetch all urls from the files stored at the index source site
+            files_endpoints = []
+            source_url = self.source[0]
+            try:
+                response = requests.get(source_url)
+                response.raise_for_status()
+
+                soup = BeautifulSoup(response.content, 'html.parser')
+                table = soup.find('table')
+                # extract all href attributes from anchor tags in the table
+                hrefs = [link['href'] for link in table.find_all('a', href=True)]
+                r = re.compile("K.*rar")
+                matches = list(filter(r.match, hrefs))
+                matches = list(map(lambda f: os.path.join(source_url, f), matches))
+                files_endpoints.extend(matches)
+                
+            except requests.HTTPError as e:
+                print(f"Failed to download the {self.name} Dataset from the source. Please ensure the endpoint is working.\n{str(e)}")
+                raise e
+
+            # update the self.source with the actually files urls
+            self.source = files_endpoints
+
+        super().download()

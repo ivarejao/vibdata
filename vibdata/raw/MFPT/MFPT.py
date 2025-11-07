@@ -9,6 +9,7 @@ from scipy.io import loadmat
 from vibdata.raw.base import DownloadableDataset, RawVibrationDataset
 from vibdata.raw.utils import extract_archive_and_remove, _get_package_resource_dataframe
 from vibdata.definitions import LABELS_PATH
+import shutil
 
 
 class MFPT_raw(RawVibrationDataset, DownloadableDataset):
@@ -17,24 +18,16 @@ class MFPT_raw(RawVibrationDataset, DownloadableDataset):
     """
 
     # mirrors = ["https://www.mfpt.org/wp-content/uploads/2020/02/"]
-    urls = ["1VxGlOMCEED7jy2qAoE9nKYAK8h5i6TIb"]
-    resources = [("MFPT.zip", "4631f552c6a0769996ee1d09e5feb209")]
-    root_dir = "MFPT Fault Data Sets"
+    gdrive_counterpart = {
+        "filename": "MFPT.zip",
+        "md5": "4631f552c6a0769996ee1d09e5feb209",
+        "id": "1VxGlOMCEED7jy2qAoE9nKYAK8h5i6TIb",
+    }
+    source = ["https://www.mfpt.org/wp-content/uploads/2020/02/MFPT-Fault-Data-Sets-20200227T131140Z-001.zip"]
+    dir_md5 = "5ca1781103c2c7e892556d3611193d1c"
 
-    def __init__(self, root_dir: str, download=False):
-        if download:
-            super().__init__(
-                root_dir=root_dir,
-                download_resources=MFPT_raw.resources,
-                download_urls=MFPT_raw.urls,
-                extract_files=True,
-            )
-        else:
-            super().__init__(
-                root_dir=root_dir,
-                download_resources=MFPT_raw.resources,
-                download_urls=None,
-            )
+    def __init__(self, root_dir: str, download_from_source=False):
+        super().__init__(root_dir=root_dir, download_gdrive=self.gdrive_counterpart, download_from_source=download_from_source)
 
     def __getitem__(self, i) -> dict:
         if not hasattr(i, "__len__") and not isinstance(i, slice):
@@ -72,3 +65,15 @@ class MFPT_raw(RawVibrationDataset, DownloadableDataset):
 
     def name(self):
         return "MFPT"
+
+    def download(self) -> None:
+        super().download()
+        # post processing when downloading from source
+        if self.download_from_source:
+            # organizing directory in the correct structure
+            source_dir = os.path.join(self.raw_folder, "MFPT-Fault-Data-Sets-20200227T131140Z-001/MFPT Fault Data Sets")
+            aux_dir = os.path.join(os.path.dirname(self.raw_folder), "MFPT_aux")
+            
+            shutil.move(source_dir, aux_dir)
+            shutil.rmtree(self.raw_folder)
+            os.rename(aux_dir, self.raw_folder)

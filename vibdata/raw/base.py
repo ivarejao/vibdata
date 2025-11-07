@@ -5,8 +5,10 @@ from urllib.error import URLError
 
 import numpy as np
 import pandas as pd
+import requests
 
-from vibdata.raw.utils import extract_archive_and_remove, download_file_from_google_drive
+
+from vibdata.raw.utils import extract_archive_and_remove, download, _ARCHIVE_EXTRACTORS, _compute_md5_dir
 from vibdata.definitions import LABELS_PATH
 
 
@@ -14,10 +16,8 @@ class DownloadableDataset:
     def __init__(
         self,
         root_dir: str,
-        download_resources: List[Tuple[str, str]],
-        download_mirrors: List = None,
-        download_urls: List = None,
-        extract_files=False,
+        download_gdrive: Dict[str, str],
+        download_from_source : bool,
     ) -> None:
         """
         This class does not download the dataset if files are already present and their md5 hash (if available) are correct.
@@ -32,34 +32,29 @@ class DownloadableDataset:
         """
 
         self.root_dir = root_dir
-        self.download_resources = download_resources
-        self.download_mirrors = download_mirrors
-        self.download_urls = download_urls
-        self.extract_files = extract_files
+        self.download_gdrive = download_gdrive
+        self.download_from_source = download_from_source
         self.download_done = False
         if not self._check_exists():
             self.download()
             if not self._check_exists():
+                # TODO: Update this error message
                 raise RuntimeError("Dataset not found. You can use download=True to download it.")
         self.download_done = True
 
     @property
     def raw_folder(self) -> str:
-        if self.download_done:
-            return os.path.join(
-                self.root_dir,
-                self.__class__.__name__,
-                self.download_resources[0][0][:-4],
-            )
-        else:
-            return os.path.join(self.root_dir, self.__class__.__name__)
+        return os.path.join(
+            self.root_dir,
+            self.__class__.__name__,
+            self.name(),
+        )
 
     def _check_exists(self) -> bool:
-        for url, _ in self.download_resources:
-            fpath = os.path.join(self.raw_folder, url[:-4])
-            if not os.path.isdir(fpath):
-                return False
-        return True
+        if os.path.isdir(self.raw_folder):
+            # compute md5sum
+            return self.dir_md5 == _compute_md5_dir(self.raw_folder)
+        return False
 
     def download(self) -> None:
         """Download the dataset, if it doesn't exist already."""
@@ -67,40 +62,39 @@ class DownloadableDataset:
         if self._check_exists():
             return
 
-        os.makedirs(self.raw_folder, exist_ok=True)
-
-        # download files
-        if self.download_urls is None:
-            urls_list = [
-                [f"{mirror}/{filename}" for filename, _ in self.download_resources] for mirror in self.download_mirrors
-            ]
-        else:
-            if isinstance(self.download_urls[0], str):
-                urls_list = [self.download_urls]
-            else:
-                urls_list = self.download_urls
-
-        for i, (filename, md5) in enumerate(self.download_resources):
-            for url_mirror in urls_list:
-                url = url_mirror[i]
+        if self.download_from_source:
+            # download all files in self.source
+            # use same session to avoid overhead
+            session = requests.Session()
+            os.makedirs(self.raw_folder, exist_ok=True)
+            for url in self.source:
                 try:
-                    if self.extract_files:
-                        download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
-                        extract_archive_and_remove(
-                            self.raw_folder + f"/{filename}",
-                            self.raw_folder + f"/{filename[:-4]}",
-                        )
-                    else:
-                        download_file_from_google_drive(url, root=self.raw_folder, filename=filename, md5=md5)
-                except URLError as error:
-                    print("Failed to download:\n{}".format(error))
-                    continue
-                finally:
-                    print()
-                break
-            else:
-                raise RuntimeError("Error downloading {}".format(filename))
-
+                    output_path = os.path.join(self.raw_folder, os.path.basename(url))
+                    download(url, output_path, session=session, chunk_size=1024)
+                    ext = os.path.basename(url)[-4:]
+                    # in case is a compressed file and exist an extractor for it
+                    if ext in _ARCHIVE_EXTRACTORS.keys():
+                        extract_archive_and_remove(output_path, output_path[:-4])
+                    print(f"Download of {url} done")
+                except Exception as error:
+                    print("Error downloading {}".format(url))      
+                    raise error         
+        else:
+            # download from the google drive
+            url_base = "https://drive.google.com/uc?id="
+            full_url = url_base + self.download_gdrive["id"]
+            
+            # create all directories before `{dataset_name}` as it will be created when 
+            # file is extracted
+            root = os.path.dirname(self.raw_folder)
+            os.makedirs(root, exist_ok=True)
+            output_path = os.path.join(root, self.download_gdrive["filename"])
+            try:
+                download(full_url, output_path, md5=self.download_gdrive["md5"])
+                extract_archive_and_remove(output_path, output_path[:-4])
+            except URLError as error:
+                raise RuntimeError("Error downloading {}".format(full_url))
+        
 
 class RawVibrationDataset:
     def __iter__(self):
