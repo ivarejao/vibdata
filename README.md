@@ -20,7 +20,7 @@ For reproducibility purposes, specific versions of this repository were used in 
 ## Features
 
 - Provides a unified interface for handling vibrational data
-- Includes five public datasets: 
+- Includes five seven datasets: 
     - CWRU - Case Western Reserve University Bearing Dataset;
     - IMS - Intelligent Maintenance System Bearing Dataset;
     - UOC - University of Connecticut Gearbox Dataset;
