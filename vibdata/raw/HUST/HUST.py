@@ -72,7 +72,7 @@ class HUST_raw(RawVibrationDataset, DownloadableDataset):
     def download(self)-> None:
         super().download()
         # post-processing
-        # organizing structure to follow standard
+        # organize structure to follow standard
         inter_dir = "cbv7jyx4p9-2" if self.download_from_source else ""
         source_dir = os.path.join(self.raw_folder, inter_dir, "HUST bearing")
         aux_dir = os.path.join(os.path.dirname(self.raw_folder), "HUST_aux")

@@ -3,9 +3,10 @@ import os
 
 import numpy as np
 import pandas as pd
+import shutil
 
 from vibdata.raw.base import DownloadableDataset, RawVibrationDataset
-from vibdata.raw.utils import _get_package_resource_dataframe
+from vibdata.raw.utils import _get_package_resource_dataframe, extract_archive_and_remove
 from vibdata.definitions import LABELS_PATH
 
 # This dataset are composed by three tests each one describing a test-to-failure experiment.
@@ -64,10 +65,14 @@ from vibdata.definitions import LABELS_PATH
 
 
 class IMS_raw(RawVibrationDataset, DownloadableDataset):
-    source = "https://drive.google.com/file/d/1r9SadjRcUkvI1wJZvi-nu9VzPyQ8oOvE/view?usp=sharing"
 
-    urls = mirrors = ["1r9SadjRcUkvI1wJZvi-nu9VzPyQ8oOvE"]  # Google drive id
-    resources = [("IMS.zip", "4d24ffef04f5869d68c0bc7cf65ebf77")]
+    gdrive_counterpart = {
+        "filename": "IMS.zip", 
+        "md5": "4d24ffef04f5869d68c0bc7cf65ebf77", 
+        "id": "1r9SadjRcUkvI1wJZvi-nu9VzPyQ8oOvE"
+    }
+    source = ["https://data.nasa.gov/docs/legacy/IMS.zip"]
+    dir_md5 = "346c8759b14b9a0a977e5c03539c2cd8"
 
     #
     # Data file organization
@@ -89,20 +94,8 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
     #
     #              }
 
-    def __init__(self, root_dir: str, download=False, with_thirdtest=False):
-        if download:
-            super().__init__(
-                root_dir=root_dir,
-                download_resources=IMS_raw.resources,
-                download_urls=IMS_raw.urls,
-                extract_files=True,
-            )
-        else:
-            super().__init__(
-                root_dir=root_dir,
-                download_resources=IMS_raw.resources,
-                download_mirrors=None,
-            )
+    def __init__(self, root_dir: str, download_from_source=False, with_thirdtest=False):
+        super().__init__(root_dir=root_dir, download_gdrive=self.gdrive_counterpart, download_from_source=download_from_source)
         self.third_test = with_thirdtest
 
     def _get_test_folder(self, ntest: int) -> str:
@@ -164,3 +157,30 @@ class IMS_raw(RawVibrationDataset, DownloadableDataset):
 
     def name(self):
         return "IMS"
+
+    def download(self) -> None:
+        super().download()
+
+        # post-processing
+        if self.download_from_source:
+            # organize structure to follow standard
+            source_dir = os.path.join(self.raw_folder, "IMS", "IMS")
+            aux_dir = os.path.join(os.path.dirname(self.raw_folder), "IMS_aux")
+
+            shutil.move(source_dir, aux_dir)
+            shutil.rmtree(self.raw_folder)
+            os.rename(aux_dir, self.raw_folder) 
+
+            print("Extracting subdirectories ...")
+            # extract the compressed arquives
+            for test_file in filter(lambda f: f.endswith('.rar'), os.listdir(self.raw_folder)):
+                extract_archive_and_remove(os.path.join(self.raw_folder, test_file))
+    
+            # in order to keep the pattern from the gdrive counterpart need to remove the pdf
+            os.remove(os.path.join(self.raw_folder, "Readme Document for IMS Bearing Data.pdf"))
+            # for some reason the 3rd test has a nested directory and the wrong name
+            source_dir = os.path.join(self.raw_folder, "4th_test", "txt")
+            target_dir = os.path.join(self.raw_folder, "3rd_test")
+            shutil.move(source_dir, target_dir)
+            shutil.rmtree(os.path.dirname(source_dir))
+                

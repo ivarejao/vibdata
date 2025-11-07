@@ -73,8 +73,7 @@ class MFPT_raw(RawVibrationDataset, DownloadableDataset):
             # organizing directory in the correct structure
             source_dir = os.path.join(self.raw_folder, "MFPT-Fault-Data-Sets-20200227T131140Z-001/MFPT Fault Data Sets")
             aux_dir = os.path.join(os.path.dirname(self.raw_folder), "MFPT_aux")
-            target_dir = os.path.join(os.path.dirname(self.raw_folder), "MFPT")
             
             shutil.move(source_dir, aux_dir)
-            shutil.rmtree(target_dir)
-            os.rename(aux_dir, target_dir)
+            shutil.rmtree(self.raw_folder)
+            os.rename(aux_dir, self.raw_folder)
