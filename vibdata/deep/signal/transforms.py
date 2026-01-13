@@ -579,35 +579,18 @@ class Aggregator(Transform):
 
     def transform(self, data):
         # Apply each pipeline to a *copy* of the input data
+        new_data = data.copy()
         all_features = []
-        metainfo_ref = None
 
         for pipeline in self.pipelines:
             out = pipeline.transform(copy.deepcopy(data))
 
-            if not isinstance(out, dict) or "signal" not in out or "metainfo" not in out:
-                raise ValueError(f"Pipeline {pipeline} must return a dict with 'signal' and 'metainfo'.")
-
             signal = np.asarray(out["signal"])
 
-            # Initialize metainfo reference
-            if metainfo_ref is None:
-                metainfo_ref = out["metainfo"].reset_index(drop=True)
-                n_samples = len(signal)
-            else:
-                # Ensure same number of samples
-                if len(signal) != n_samples:
-                    raise ValueError(
-                        f"All pipelines must produce the same number of samples. "
-                        f"Got {len(signal)} and expected {n_samples}."
-                    )
-
             all_features.append(signal)
-
-        # Concatenate along feature axis
-        aggregated_features = np.concatenate(all_features, axis=1)
-
-        return {"signal": aggregated_features, "metainfo": metainfo_ref}
+            
+        new_data["signal"] = np.concatenate(all_features, axis=1)
+        return new_data
 
 
 
